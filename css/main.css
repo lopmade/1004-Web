@@ -34,3 +34,14 @@
 .section {
     margin-top:200px;
 }
+
+.container footer {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    border-top: 2px solid grey;
+}
+
+.container footer p{
+    margin-top: 20px;
+}

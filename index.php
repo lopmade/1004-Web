@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/main.css">
 
-        <?php
-        include "nav.inc.php";
-        include "footer.inc.php";
-        ?>
-        
     </head>
     <body>
         <main class = "main">
+
+            <?php
+            include "nav.inc.php";
+            ?>
+            
             <section class = "section">
                 <header>
                     <h1>Welcome to Forum for Selling items</h1>
@@ -20,6 +20,10 @@
                 </header>
 
             </section>
+
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>
