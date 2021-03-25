@@ -4,7 +4,7 @@ require_once "config.php";
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username_err = $email_err = $password_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,6 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement
             mysqli_stmt_close($stmt);
         }
+    }
+
+    // Validate email
+    if (empty(trim($_POST["email"]))) {
+        $password_err = "Please enter an email address.";
+    } else {
+        $password = trim($_POST["email"]);
     }
 
     // Validate password
@@ -126,7 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                     <input type="text" required name="username" class="form-control" placeholder="Username" value="<?php echo $username; ?>">
                     <span class="help-block"><?php echo $username_err; ?></span>
-                </div>    
+                </div>  
+                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                    <input type="email" required name="email" class="form-control" placeholder="Email Address" value="<?php echo $password; ?>">
+                    <span class="help-block"><?php echo $email_err; ?></span>
+                </div>
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <input type="password" required name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
                     <span class="help-block"><?php echo $password_err; ?></span>
