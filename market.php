@@ -35,7 +35,7 @@
             
             <section class = "section">
                 <header>
-                    <h1>Welcome to Forum for Selling items</h1>
+                    <h1>Market</h1>
                     <h2>Home of trading</h2>
                     <i class="fas fa-question-circle"></i>
                 </header>
