@@ -38,18 +38,29 @@ include "./login_process.php";
 
         <!-- font awesome 5 -->
         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+
+        <script>
+            window.onload = function () {
+
+                var span = document.getElementsByClassName("close")[0];
+                
+                span.onclick = function () {
+                    window.location.href = "index.php";
+                }
+            };
+        </script>
     </head>
     <body>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <h2>Login</h2>
+                <h2>Login<span class="close">&times;</span></h2>
                 <p>Please fill in your credentials to login.</p>
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                    <input type="text" placeholdername="username" class="form-control" value="<?php echo $username; ?>">
+                    <input type="text" required placeholder="Username" name="username" class="form-control" value="<?php echo $username; ?>">
                     <span class="help-block"><?php echo $username_err; ?></span>
                 </div>    
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" required placeholder="Password" name="password" class="form-control">
                     <span class="help-block"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
