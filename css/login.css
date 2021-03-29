@@ -61,3 +61,11 @@ input[type=text], input[type=password] {
   cursor: pointer;
   width: 70%;
 }
+
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
