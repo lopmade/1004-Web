@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
     } elseif(!$uppercase || !$lowercase || !$number || !$specialChars || strlen(trim($password)) < 7){
-        $password_err = "Password must have minimally 8 characters.";
+        $password_err = "Password must have mininally 8 characters, a lower case, an upper case, a number and a special character.";
     } else{
         $password = trim($_POST["password"]);
     }
