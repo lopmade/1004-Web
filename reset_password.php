@@ -9,6 +9,13 @@
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
+    <!-- JavaScript for validation -->
+    <script defer src="js/validator.js">
+    </script>
+
+    <!-- CSS for validation -->
+    <link rel="stylesheet" 
+          href="css/validator.css" >
 </head>
 <body>
     <div class="wrapper">
@@ -28,6 +35,14 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+            </div>
+            <div id="message">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="specialchar" class="invalid">A <b>Special Characters</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
             </div>
         </form>
     </div>
