@@ -1,0 +1,218 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Modal (background) */
+.modal1 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-bottom: 100px;
+}
+
+.login-modal-header {
+    padding: 20px 20px;
+    background-color: #4980c0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Modal Body */
+.login-modal-body {
+    padding: 2px 16px;
+}
+
+/* Modal Footer */
+.login-modal-footer {
+    background-color: #4980c0;
+    height:50px;
+}
+
+/* Modal Content */
+.login-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
+}
+
+.login-modal-body h6 {
+    margin: 25px 0px;
+    text-align: left;
+}
+
+.register-modal-body h6 {
+    margin: 25px 0px;
+    text-align: left;
+}
+
+.register-modal-body #message {
+    text-align: left;
+}
+
+/* The Close Button */
+.login-close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.login-close:hover,
+.login-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* end of modal 1 */
+
+
+/* The Modal (background) */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-bottom: 100px;
+}
+
+.register-modal-header {
+    padding: 20px 16px;
+    background-color: #4980c0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Modal Body */
+.register-modal-body {
+    padding: 2px 16px;
+}
+
+/* Modal Footer */
+.register-modal-footer {
+    padding: 10px 16px;
+    background-color: #4980c0;
+    color: white;
+    height: 50px;
+}
+
+/* Modal Content */
+.register-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
+}
+
+.register-modal-content #message {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+
+#message p{
+    padding: 0px;
+    margin: 0px;
+}
+/* The Close Button */
+.register-close {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.register-close:hover,
+.register-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type=submit] {
+    width: 70%;
+    background-color: green;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+    margin: 0px 0px 20px 0px;
+}
+
+input[type=reset] {
+    width: 70%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+    margin: 0px 0px 20px 0px;
+}
+
+input[type=submit]:hover {
+    background-color: darkgreen;
+    color:white;
+}
+
+input[type=reset]:hover {
+    background-color: darkred;
+    color:white;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 70%;
+    margin: 25px auto!important;
+}
+
+
+@media only screen and (max-width: 991px) {
+    .register-modal-content {
+        width: 90%;
+    }
+    
+    .login-modal-content {
+        width: 90%;
+    }
+}
+

@@ -20,3 +20,16 @@ body {
 li {
     padding: 0px 20px;
 }
+
+#mainList li a {
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+#sideList li a {
+    color:#fff;
+    cursor: pointer;
+    font-weight: bold;
+}
