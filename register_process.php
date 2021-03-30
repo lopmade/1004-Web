@@ -1,7 +1,17 @@
 <?php
 // Include config file
 require_once "config.php";
+<<<<<<< Updated upstream
  
+=======
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer-master/src/Exception.php';
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+
+>>>>>>> Stashed changes
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $first_name = $last_name = $email = "";
 $username_err = $password_err = $confirm_password_err = $first_name_err = $last_name_err = $email_err = "";
@@ -112,6 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "INSERT INTO user (username, password, email, first_name, last_name) VALUES (?, ?, ?, ?, ?)";
          
         $stmt = mysqli_prepare($link, $sql);
+<<<<<<< Updated upstream
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_password, $param_email, $param_first_name, $param_last_name);
             
@@ -128,7 +139,58 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: login.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
+=======
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "ssssss", $param_username, $param_password, $param_email, $param_first_name, $param_last_name, $param_token);
+
+        // Set parameters
+        $param_username = $username;
+        $param_password = password_hash($password, PASSWORD_BCRYPT); // Creates a password hash
+        $param_email = $email;
+        $param_first_name = $first_name;
+        $param_last_name = $last_name;
+        $param_token = md5($param_username . date("dmYhis"));
+        $url = $_SERVER['SERVER_NAME'].'verify.php?email='.$email.'&token='.$token;
+
+        // Attempt to execute the prepared statement
+        if(mysqli_stmt_execute($stmt)){
+            // Redirect to login page
+            header("location: login.php");
+
+            $mail = new PHPMailer(true);
+            try {
+                //Initialising
+                $mail->isSMTP();
+                $mail->Mailer = "smtp";
+                //Config
+                $mail->SMTPDebug  = 1;  
+                $mail->SMTPAuth   = TRUE;
+                $mail->SMTPSecure = "tls";
+                $mail->Port       = 587;
+                $mail->Host       = "smtp.gmail.com";
+                $mail->SMTPAuth   = true;
+                $mail->Username   = EMAIL;                          //SMTP username
+                $mail->Password   = PASS;                           //SMTP password
+                
+                $mail->IsHTML(true);
+                $mail->setFrom(EMAIL , 'POKESTOP');                 //SEND FROM
+                $mail->addAddress($email, $first_name);             //SEND TO
+
+                //EMAIL CONTENT
+                $mail->isHTML(true);
+                $mail->Subject = 'Regisration verification!';
+                $mail->Body = $url;
+                $mail->AltBody = $url;
+                echo 'Message has been sent';
+                    
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+>>>>>>> Stashed changes
             }
+
+        } else{
+            echo "Oops! Something went wrong. Please try again later.";
+        }
 
             // Close statement
             mysqli_stmt_close($stmt);
