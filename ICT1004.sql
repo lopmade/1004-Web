@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `last_name` VARCHAR(255) NOT NULL,
   `token` VARCHAR(255) NOT NULL,
   `user_verified` TINYINT NOT NULL DEFAULT 0,
+  `user_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `UserID_UNIQUE` (`user_id` ASC) )
 ENGINE = InnoDB;

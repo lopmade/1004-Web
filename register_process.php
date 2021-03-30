@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_first_name = $first_name;
             $param_last_name = $last_name;
             $param_token = md5($param_username . date("dmYhis"));
-            $url = $_SERVER['SERVER_NAME'];
+            $url = $_SERVER['SERVER_NAME'].'verify.php?email='.$email.'&token='.$token;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -150,10 +150,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //EMAIL CONTENT
                     $mail->isHTML(true);
                     $mail->Subject = 'Regisration verification!';
-                    $mail->Body = '' ;
+                    $mail->Body = $url;
                     $mail->AltBody = '';
-
-                echo 'Message has been sent';
+                    echo 'Message has been sent';
+                    
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
