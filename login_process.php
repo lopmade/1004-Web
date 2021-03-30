@@ -46,7 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Set parameters
         $param_username = $username;
-
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Store result
@@ -67,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["username"] = $username;                            
 
                         // Redirect user to welcome page
-                        header("location: welcome.php");
+                        header("location: profile.php");
                     } else{
                         // Password is not valid, display a generic error message
                         $login_err = "Invalid username or password.";

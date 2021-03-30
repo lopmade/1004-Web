@@ -17,15 +17,21 @@ require_once "config.php";
 // Define variables and initialize with empty values
 $new_password = $confirm_password = "";
 $new_password_err = $confirm_password_err = "";
- 
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+     // Validate password strength
+    $password = $_POST["new_password"];
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $specialChars = preg_match('@[^\w]@', $password);
+    
     // Validate new password
     if(empty(trim($_POST["new_password"]))){
         $new_password_err = "Please enter the new password.";     
-    } elseif(strlen(trim($_POST["new_password"])) < 6){
-        $new_password_err = "Password must have atleast 6 characters.";
+    } elseif(!$uppercase || !$lowercase || !$number || !$specialChars || strlen(trim($password)) < 7){
+        $new_password_err = "Password must have mininally 8 characters, a lower case, an upper case, a number and a special character.";
     } else{
         $new_password = trim($_POST["new_password"]);
     }

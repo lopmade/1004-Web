@@ -1,3 +1,10 @@
+<?php
+// Initialize the session
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid" >
         <a id="logo" class="navbar-brand" href="index.php">
@@ -21,7 +28,21 @@
                     <a class="nav-link" href="about.php">About Us</a>
                 </li>
             </ul>
-
+            <?php
+            // Check if the user is already logged in, if yes then redirect him to welcome page
+            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                ?>
+                <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
+                </li>
+                <li>
+                    <a class="nav-link" href="logout.php">Log Out</a>
+                </li>
+            </ul>
+                <?php
+            } else {
+            ?>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a class="nav-link" href="register.php">Register</a>
@@ -30,7 +51,7 @@
                     <a class="nav-link" href="login.php">Login</a>
                 </li>
             </ul>
-
+            <?php }?>
         </div>
     </div>
 </nav>
