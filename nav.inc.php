@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
                     <a class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="logout.php.php">Log Out</a>
+                    <a class="nav-link" href="logout.php">Log Out</a>
                 </li>
             </ul>
                 <?php
