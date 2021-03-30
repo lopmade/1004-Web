@@ -75,7 +75,15 @@ require_once "./register_process.php";
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Password</label>-->
                     <input id="password" type="password" placeholder="Password" required name="password" class="form-control" value="<?php echo $password; ?>">
-                    <span class="help-block"><?php echo $password_err; ?></span>
+                    <span class="help-block"><br><?php echo $password_err; ?></span>
+                </div>
+                <div id="message">
+                    <h3>Password must contain the following:</h3>
+                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid">A <b>number</b></p>
+                    <p id="specialchar" class="invalid">A <b>Special Characters</b></p>
+                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Confirm Password</label>-->
@@ -87,14 +95,6 @@ require_once "./register_process.php";
                     <input type="reset" id="resetBtn" class="btn btn-default" value="Reset">
                 </div>
                 <p>Already have an account? <a href="login.php">Login here</a>.</p>
-                <div id="message">
-                    <h3>Password must contain the following:</h3>
-                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                    <p id="number" class="invalid">A <b>number</b></p>
-                    <p id="specialchar" class="invalid">A <b>Special Characters</b></p>
-                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                </div>
             </form>	
         </div>	
     </body>

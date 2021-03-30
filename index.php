@@ -1,3 +1,9 @@
+<?php
+// Initialize the session
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <html>
     <head>
         <title>Pokemart - Your one stop marketplace</title>
