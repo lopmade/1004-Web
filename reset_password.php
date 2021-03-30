@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                <a class="btn btn-link ml-2" href="profile.php">Cancel</a>
             </div>
             <div id="message">
                 <h3>Password must contain the following:</h3>
