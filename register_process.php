@@ -1,7 +1,11 @@
 <?php
 // Include config file
 require_once "config.php";
- 
+
+require './email_credentials.php';
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $first_name = $last_name = $email = "";
 $username_err = $password_err = $confirm_password_err = $first_name_err = $last_name_err = $email_err = "";
@@ -116,11 +120,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err && empty($email_err) && empty($first_name_err) && empty($last_name_err))){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO user (username, password, email, first_name, last_name) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO user (username, password, email, first_name, last_name, token) VALUES (?, ?, ?, ?, ? ,?)";
          
         $stmt = mysqli_prepare($link, $sql);
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_password, $param_email, $param_first_name, $param_last_name);
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_username, $param_password, $param_email, $param_first_name, $param_last_name, $param_token);
             
             // Set parameters
             $param_username = $username;
@@ -128,11 +132,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_email = $email;
             $param_first_name = $first_name;
             $param_last_name = $last_name;
+            $param_token = md5($param_username . date("dmYhis"));
+            $url = $_SERVER['SERVER_NAME'];
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
                 header("location: login.php");
+                
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->Username   = EMAIL;                          //SMTP username
+                    $mail->Password   = PASS;                           //SMTP password
+                    $mail->setFrom(EMAIL , 'POKESTOP');                 //SEND FROM
+                    $mail->addAddress($param_email, $param_first_name); //SEND TO
+                    
+                    //EMAIL CONTENT
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Regisration verification!';
+                    $mail->Body = '' ;
+                    $mail->AltBody = '';
+
+                echo 'Message has been sent';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+                
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
