@@ -32,40 +32,40 @@ require "register_process.php";
         loginLink.onclick = function () {
             modal2.style.display = "none";
             modal1.style.display = "block";
-        }
+        };
 
         registerLink.onclick = function () {
             modal1.style.display = "none";
             modal2.style.display = "block";
-        }
+        };
 
         loginBtn.onclick = function () {
             modal1.style.display = "block";
-        }
+        };
 
         registerBtn.onclick = function () {
             modal2.style.display = "block";
-        }
+        };
 
         close1.onclick = function () {
             modal1.style.display = "none";
-        }
+        };
 
         close2.onclick = function () {
             modal2.style.display = "none";
-        }
+        };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            if (event.target == modal1) {
+            if (event.target === modal1) {
                 modal1.style.display = "none";
-            }
-            if (event.target == modal2) {
+            };
+            if (event.target === modal2) {
                 modal2.style.display = "none";
-            }
-        }
+            };
+        };
 
-    }
+    };
 
 
 </script>
@@ -125,7 +125,7 @@ require "register_process.php";
     </div>
 </nav>
 
-<!-- Login Modal -->
+<!--Login Modal-->
 <div id="myModal1" class="modal1">
     <div class="login-modal-content">
         <div class="login-modal-header">
@@ -157,7 +157,7 @@ require "register_process.php";
 
 
 
-<!-- Register Modal-->
+ <!--Register Modal-->
 <div id="myModal2" class="modal2">
     <div class="register-modal-content">
         <div class="register-modal-header">
