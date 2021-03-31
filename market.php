@@ -23,7 +23,8 @@ function getAll(){
         echo "<h1>$item_name</h1>";
         echo "<h1>$date_added</h1>";
         echo "<h1>$$item_price </h1>";
-        echo "<img src=images/market/$item_id_image>";
+        echo "<a href='/marketitem.php?item_id=$item_id'><img src=images/market/$item_id_image></a>";
+        
         
     }
 }

@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`items_listing` (
   `description` LONGTEXT NULL,
   `date_added` DATETIME NOT NULL,
   `item_status` TINYINT NOT NULL,
+  `item_price` FLOAT NOT NULL,
   PRIMARY KEY (`item_id`, `user_user_id`),
   UNIQUE INDEX `item_id_UNIQUE` (`item_id` ASC) ,
   INDEX `fk_items_listing_user_idx` (`user_user_id` ASC) ,
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`items_listing` (
     REFERENCES `mydb`.`user` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;items_listingitems_listing
 
 
 -- -----------------------------------------------------
@@ -130,5 +131,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 use mydb;
 insert into user (username,email,password,first_name,last_name,user_verified) values ('abc','def@123.com','123','adam','lee',0);
 insert into user (username,email,password,first_name,last_name,user_verified) values ('def','def@321.com','321','bob','tan',0);
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status) values ('1','2','someitem','somedesc','24022020','0');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price) values ('1','2','someitem','somedesc','24022020','0','10.00');
 insert into item_image (item_id,image) values ('1','pokemonbg.jpg');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price) values ('2','2','item2','desc','24022020','0','10.00');
+insert into item_image (item_id,image) values ('2','pokemonbg.jpg');
