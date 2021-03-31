@@ -7,10 +7,11 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: profile.php");
     exit;
-
-    include "login_process.php";
-    include "register_process.php";
 }
+
+require "login_process.php";
+require "register_process.php";
+
 ?>
 
 <script>
@@ -138,6 +139,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <input type="text" required placeholder="Username" name="username" class="form-control" value="<?php echo $username; ?>">
                     <span class="help-block"><?php echo $username_err; ?></span>
                 </div>    
+
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <input type="password" required placeholder="Password" name="password" class="form-control">
                     <span class="help-block"><?php echo $password_err; ?></span>

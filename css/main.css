@@ -5,23 +5,32 @@
 
 body {
     font-family: sans-serif;
-    min-width: 220px;
+    min-width: 260px;
 }
 
 #mainNav {
     background-color: #4980c0!important;
-    min-width: 220px!important;
+    min-width: 260px!important;
 }
 
-
-li {
-    padding: 0px 20px;
+#logo {
+    background-color: white;
+    padding: 10px 20px;
 }
 
 #mainList li a {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
+}
+
+#mainList li{
+    display: inline-block!important;
+}
+
+
+#mainList li:hover {
+    background-color: darkblue;
 }
 
 
