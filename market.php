@@ -14,16 +14,17 @@ function getAll(){
         $date_added = $row_all['date_added'];
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
-        
+        $item_image = $row_all['item_image'];
+        /*
         $get_item_id = "select * from item_image where item_id = $item_id";
         $run_item_id = mysqli_query($link, $get_item_id);
         $row_item_id = mysqli_fetch_array($run_item_id);
         $item_id_image = $row_item_id['image'];
-
+        */
         echo "<h1>$item_name</h1>";
         echo "<h1>$date_added</h1>";
         echo "<h1>$$item_price </h1>";
-        echo "<a href='/marketitem.php?item_id=$item_id'><img src=images/market/$item_id_image></a>";
+        echo "<a href='/marketitem.php?item_id=$item_id'><img src=images/market/$item_image></a>";
         
         
     }
