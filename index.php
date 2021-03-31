@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
             include "nav.inc.php";
             ?>
             
-            <section class = "section">
+            <section id="mainContent" class = "section">
                 <header>
                     <h1>Welcome to Forum for Selling items</h1>
                     <h2>Home of trading</h2>

@@ -77,6 +77,14 @@ input[type=text], input[type=password], input[type=email] {
     padding: 0px!important;
 }
 
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1200px) {
     .wrapper form {
         width: 75%;

@@ -49,14 +49,9 @@ body {
 }
 
 #mainList li a:active {
-    background-color: yellow;
+    background-color: white;
+    color: darkblue;
 }
-
-
-#sideList li a:hover {
-    background-color: darkblue;
-}
-
 
 #sideList li a {
     color:#fff;
@@ -67,7 +62,10 @@ body {
 
 #space {
     height:100px;
+}
 
+#mainContent {
+    margin: 50px;
 }
 
 #footer {

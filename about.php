@@ -34,36 +34,49 @@
             <?php
             include "nav.inc.php";
             ?>
+            <section id="mainContent" class = "section">
 
-
-            <div class="bgimg-1">
-                <div class="caption">
-                    <span class="border" style="background-color: rgb(0,0,0);
-                          background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Who are we?</span>
+                <div class="bgimg-1">
+                    <div class="caption">
+                        <span class="border" style="background-color: rgb(0,0,0);
+                              background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Who are we?</span>
+                    </div>
                 </div>
-            </div>
 
-            <div style="color: black;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-                <h3 style="text-align:center;">Pokemart</h3>
-                <p>Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
-            </div>
+                <div style="color:black;background-color:white;box-shadow:black 1px 10px 5px 2px;text-align:center;padding:50px 80px;text-align: justify;">
+                    <h3 style="text-align:center;margin-bottom:30px;">Pokemart</h3>
+                    <p>
+                        Pokemart is our official online store for Pokemon merchandise, focusing on unique designs and high quality products for all ages. Pokémon launched in Japan in 1996 and today is one of the most popular children’s entertainment properties in the world.
 
-            <div class="bgimg-2">
-                <div class="caption">
-                    <span class="border" style="background-color: rgb(0,0,0);
-                          background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Connect with us!</span>
+                        Whether you are a player, collector, parent, professor, or fan, we strive to offer items featuring a wide range of Pokémon to allow you to express yourself.
+
+                        We’re always open. Come say hello and take a look at the wide world of Pokémon!
+                    </p>
                 </div>
-            </div>
-            
-            <div style="color: black;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-                <h3 style="text-align:center;">Pokemart</h3>
-                <p>Parallax scrolling is a web site trend where the background content is moved at a different speed than the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
-            </div>
-            
-            <div class="bgimg-3">
-            </div>
+                <div class="bgimg-2">
+                    <div class="caption">
+                        <span class="border" style="background-color: rgb(0,0,0);
+                              background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Connect with us!</span>
+                    </div>
+                </div>
 
+                <div style="color:black;background-color:white;box-shadow:black 1px 10px 5px 2px;text-align:center;padding:50px 80px;text-align: justify;">
+                    <h3 style="text-align:center;margin-bottom:30px;">Social Links</h3>
+                    <div class="flex-container">
+                        <a title = "Facebook" href="https://www.facebook.com/Pokemon.official.Singapore/"><i style="color:#4980c0;" class="fab fa-facebook fa-7x"></i></a>
+                        <a title = "Instgram" href="https://www.instagram.com/pokemonofficial.sg/?hl=en"><i style="color:#4980c0;" class="fab fa-instagram fa-7x"></i></a>
+                        <a title = "Twitter" href="https://twitter.com/Pokemon"><i style="color:#4980c0;" class="fab fa-twitter-square fa-7x"></i></a>
+                    </div>
+                </div>
 
+                <div class="bgimg-3">
+                    <div class="caption">
+                        <span class="border" style="background-color: rgb(0,0,0);
+                              background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Thank you for supporting us!</span>
+                    </div>
+                </div>
+
+            </section>
             <?php
             include "footer.inc.php";
             ?>

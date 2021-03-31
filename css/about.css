@@ -23,15 +23,18 @@
 .bgimg-3 {
     background-image: url("/images/pokemonbg3.png");
     min-height: 100%;
-    background-position: 0px 30px; 
+    background-position: 0px 0px; 
 }
 
-
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+}
 
 .caption {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 40%;
     width: 100%;
     text-align: center;
     color: #000;
@@ -42,6 +45,11 @@
     padding: 18px;
     font-size: 25px;
     letter-spacing: 10px;
+}
+
+
+#mainContent {
+    margin: 0px;
 }
 
 /* Turn off parallax scrolling for tablets and phones */
