@@ -5,18 +5,54 @@
 
 body {
     font-family: sans-serif;
+    min-width: 260px;
 }
 
 #mainNav {
+    z-index: 100;
+    position: fixed!important;
+    width: 100%!important;
     background-color: #4980c0!important;
+    min-width: 260px!important;
+    height: 100px!important;
 }
 
 #logo {
     background-color: white;
     color: black;
-    padding: 5px 10px;
+    padding: 10px 20px;
 }
 
-li {
-    padding: 0px 20px;
+
+#mainList li a {
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 38px 30px;
+}
+
+
+#mainList li a:hover {
+    background-color: darkblue;
+}
+
+#mainList li a:active {
+    background-color: yellow;
+}
+
+
+#sideList li a:hover {
+    background-color: darkblue;
+}
+
+
+#sideList li a {
+    color:#fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 38px 30px;
+}
+
+#space {
+    height:100px;
 }
