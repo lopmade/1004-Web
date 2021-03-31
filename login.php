@@ -55,13 +55,12 @@ include "./login_process.php";
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <h2>Login<span class="close">&times;</span></h2>
                 <p>Please fill in your credentials to login.</p>
-                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
                     <input type="text" required placeholder="Username" name="username" class="form-control" value="<?php echo $username; ?>">
-                    <span class="help-block"><?php echo $username_err; ?></span>
                 </div>    
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
                     <input type="password" required placeholder="Password" name="password" class="form-control">
-                    <span class="help-block"><?php echo $password_err; ?></span>
+                    <span class="help-block"><br><?php echo $login_err; ?></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">

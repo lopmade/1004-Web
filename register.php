@@ -88,7 +88,7 @@ require_once "./register_process.php";
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Confirm Password</label>-->
                     <input type="password" placeholder="Confirm Password" required name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                    <span class="help-block"><br><?php echo $confirm_password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" id="registerBtn"  class="btn btn-primary" value="Submit">
