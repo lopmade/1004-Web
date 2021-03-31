@@ -1,10 +1,12 @@
 <?php
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $db = "test";
+
  
 /* Attempt to connect to MySQL database */
 $link = new mysqli($servername, $username, $password, $db);
