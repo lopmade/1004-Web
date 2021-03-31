@@ -55,22 +55,22 @@ require_once "./register_process.php";
                 <div class="form-group <?php echo (!empty($first_name_err)) ? 'has-error' : ''; ?>">
                     <!--<label>First Name</label>-->
                     <input type="text" placeholder="First Name" required name="first_name" class="form-control" value="<?php echo $first_name; ?>">
-                    <span class="help-block"><?php echo $first_name_err; ?></span>
+                    <span class="help-block"><br><?php echo $first_name_err; ?></span>
                 </div>
                 <div class="form-group <?php echo (!empty($last_name_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Last Name</label>-->
                     <input type="text" placeholder="Last Name" required name="last_name" class="form-control" value="<?php echo $last_name; ?>">
-                    <span class="help-block"><?php echo $last_name_err; ?></span>
+                    <span class="help-block"><br><?php echo $last_name_err; ?></span>
                 </div>
                 <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                     <!--<label>E-Mail</label>-->
                     <input type="email" placeholder="Email" required name="email" class="form-control" value="<?php echo $email; ?>">
-                    <span class="help-block"><?php echo $email_err; ?></span>
+                    <span class="help-block"><br><?php echo $email_err; ?></span>
                 </div>  
                 <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Username</label>-->
                     <input type="text" placeholder="Username" required name="username" class="form-control" value="<?php echo $username; ?>">
-                    <span class="help-block"><?php echo $username_err; ?></span>
+                    <span class="help-block"><br><?php echo $username_err; ?></span>
                 </div>    
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <!--<label>Password</label>-->

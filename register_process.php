@@ -166,7 +166,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'Here is the subject';
-                    $mail->Body    = 'Hi'.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.$url;
+                    $mail->Body    = 'Hi'.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
                     $mail->AltBody = 'Hi'.$first_name.', thanks for signing up to POKEDEX! We want to make sure that we got your email right. Copy the link and paste it in the URL bar to get verified! '.$url;
 
                     $mail->send();
