@@ -16,7 +16,6 @@ body {
     box-shadow: 4px 4px 4px;
     text-align: center;
     background-color: white;
-
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */

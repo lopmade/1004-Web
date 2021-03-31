@@ -78,11 +78,11 @@ require_once "./register_process.php";
                     <span class="help-block"><br><?php echo $password_err; ?></span>
                 </div>
                 <div id="message">
-                    <h3>Password must contain the following:</h3>
+                    <h5>Password must contain the following:</h5>
                     <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="capital" class="invalid">An <b>uppercase</b> letter</p>
                     <p id="number" class="invalid">A <b>number</b></p>
-                    <p id="specialchar" class="invalid">A <b>Special Characters</b></p>
+                    <p id="specialchar" class="invalid">A <b>Special Character</b></p>
                     <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">

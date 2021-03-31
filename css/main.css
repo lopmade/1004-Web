@@ -17,6 +17,18 @@ body {
     height: 100px!important;
 }
 
+#footer {
+    height:100px;
+    background-color: #4980c0;
+    min-width: 260px;
+}
+
+#footer p {
+    color: white;
+    margin: auto!important;
+    padding: auto!important;
+}
+
 #logo {
     background-color: white;
     color: black;
@@ -55,4 +67,14 @@ body {
 
 #space {
     height:100px;
+
+}
+
+#footer {
+    height: 50px;
+}
+
+#footerText {
+    padding: 10px 0px;
+    font-weight: bold;
 }
