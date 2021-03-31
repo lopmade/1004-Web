@@ -6,9 +6,16 @@ use PHPMailer\PHPMailer\Exception;
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
+require './email_credentials.php';
+
+
+$email = '2003256@sit.singaporetech.edu.sg';
+$token = '31002f68a3c994a11f83eece1bb8b93d';
+$first_name = 'test';
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
+$url = $_SERVER['SERVER_NAME']."/webapplication/verify.php?email=".$email."&token=".$token;
 
 try {
     //Server settings
@@ -22,7 +29,7 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('ict1004.web.project@gmail.com', 'Mailer');
+    $mail->setFrom('ict1004.web.project@gmail.com', 'POKEDEX');
     $mail->addAddress('2003256@sit.singaporetech.edu.sg', 'JJ');     //Add a recipient
 
 
@@ -32,7 +39,7 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Body    = 'Hi'.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below to verify your account!<br>'.$url;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

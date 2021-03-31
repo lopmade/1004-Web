@@ -5,7 +5,7 @@ server with default setting (user 'root' with no password) */
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "test";
+$db = "mydb";
 
  
 /* Attempt to connect to MySQL database */
