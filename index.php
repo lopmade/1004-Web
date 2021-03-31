@@ -51,6 +51,7 @@ if (!isset($_SESSION)) {
             <?php
             include "footer.inc.php";
             ?>
+            
         </main>
     </body>
 </html>

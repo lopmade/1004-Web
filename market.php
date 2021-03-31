@@ -45,13 +45,13 @@
                     <div class="catergories">
                         <div class="row">
                             <div class="col-lg-3">
-                                <img src="../images/ice.svg">
+                                <img src="/images/market/ice.svg">
                             </div>
                             <div class="col-lg-3">
-                                <img src="../images/fire.svg">
+                                <img src="../images/market/fire.svg">
                             </div>
                             <div class="col-lg-3">
-                                <img src="../images/water.svg">
+                                <img src="../images/market/water.svg">
                             </div>
                         </div>
                 </header>

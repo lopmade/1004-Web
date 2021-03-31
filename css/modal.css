@@ -152,6 +152,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     padding: 0px;
     margin: 0px;
 }
+
 /* The Close Button */
 .register-close {
     color: white;
@@ -210,9 +211,19 @@ input[type=text], input[type=email], input[type=password] {
     .register-modal-content {
         width: 90%;
     }
-    
+
     .login-modal-content {
         width: 90%;
+    }
+
+    .login-modal-body h6 {
+        margin: 25px 0px;
+        text-align: center;
+    }
+
+    .register-modal-body h6 {
+        margin: 25px 0px;
+        text-align: center;
     }
 }
 
