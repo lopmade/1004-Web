@@ -17,7 +17,3 @@
 #content .product:hover {
     border: solid 3px #4980c0;
 }
-
-@media only screen and (max-width: 1024px) {
-    width: 300px;
-}

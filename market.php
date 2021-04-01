@@ -21,7 +21,7 @@ function getAll() {
             <div class = 'col-sm-4'>
                 <div class = 'product'>
                     <a href = '/marketitem.php?item_id=$item_id'>
-                        <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                        <img class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                     </a>
                     <div class = 'text'>
                         <h3>
