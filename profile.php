@@ -56,7 +56,7 @@ $status = '';
 <body>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-        <h2>Account Status: <?php echo $status; ?></h2>
+        Account Status: <?php echo $status; ?>
         <?php
         if($status == 'Unverified'){
         ?>

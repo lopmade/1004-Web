@@ -20,14 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["first_name"]))){
         $first_name_err = "Please enter a first name.";
     } else{
-            $first_name = trim($_POST["first_name"]);
+            $first_name = sanitize_input(trim($_POST["first_name"]));
     }
 	
 	// Validate last_name
     if(empty(trim($_POST["last_name"]))){
         $last_name_err = "Please enter a last name.";
     } else{                     
-            $last_name = trim($_POST["last_name"]);
+            $last_name = sanitize_input(trim($_POST["last_name"]));
     }
  
      // Validate email
@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_email);
         // Set parameters
-        $param_email = trim($_POST["email"]);
+        $param_email = sanitize_input(trim($_POST["email"]));
 
 
         // Attempt to execute the prepared statement
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_num_rows($stmt) == 1){
                 $email_err = "This email is already taken.";
             } else{
-                $email = trim($_POST["email"]);
+                $email = sanitize_input(trim($_POST["email"]));
             }
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "s", $param_username);
         // Set parameters
-        $param_username = trim($_POST["username"]);
+        $param_username = sanitize_input(trim($_POST["username"]));
 
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_num_rows($stmt) == 1){
                 $username_err = "This username is already taken.";
             } else{
-                $username = trim($_POST["username"]);
+                $username = sanitize_input(trim($_POST["username"]));
             }
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password strength
-    $password = $_POST["password"];
+    $password = sanitize_input($_POST["password"]);
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
     $number    = preg_match('@[0-9]@', $password);
@@ -110,14 +110,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } elseif(!$uppercase || !$lowercase || !$number || !$specialChars || strlen(trim($password)) < 7){
         $password_err = "Password must have mininally 8 characters, a lower case, an upper case, a number and a special character.";
     } else{
-        $password = trim($_POST["password"]);
+        $password = sanitize_input(trim($_POST["password"]));
     }
     
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm password.";     
     } else{
-        $confirm_password = trim($_POST["confirm_password"]);
+        $confirm_password = sanitize_input(trim($_POST["confirm_password"]));
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
