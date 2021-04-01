@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         $param_date_added = date("Y-m-d H:i:s");
                                         $param_item_status = '0';
                                         $param_item_price = $itemPrice;
-                                        $param_item_image = $tempfilename;
+                                        $param_item_image = $prefix . basename($tempfilename);
                                         // Attempt to execute the prepared statement
                                         if (mysqli_stmt_execute($stmt)) {
                                             // Redirect to success page
