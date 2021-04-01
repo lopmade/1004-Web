@@ -43,14 +43,19 @@ require_once "./register_process.php";
                 var span = document.getElementsByClassName("close")[0];
 
                 span.onclick = function () {
-                    window.location.href = "index.php";
+
+                    if (confirm('Do you want to return to Home page?')) {
+                        window.location.href = "index.php";
+                    } else {
+                        
+                    }
                 }
             };
         </script>
     <body>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <h2>Sign Up</h2>
+                <h2>Sign Up<span class="close">&times;</span></h2>
                 <p>Please fill this form to create an account.</p>
                 <div class="form-group <?php echo (!empty($first_name_err)) ? 'has-error' : ''; ?>">
                     <!--<label>First Name</label>-->
@@ -78,11 +83,11 @@ require_once "./register_process.php";
                     <span class="help-block"><br><?php echo $password_err; ?></span>
                 </div>
                 <div id="message">
-                    <h3>Password must contain the following:</h3>
+                    <h5>Password must contain the following:</h5>
                     <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="capital" class="invalid">An <b>uppercase</b> letter</p>
                     <p id="number" class="invalid">A <b>number</b></p>
-                    <p id="specialchar" class="invalid">A <b>Special Characters</b></p>
+                    <p id="specialchar" class="invalid">A <b>Special Character</b></p>
                     <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">

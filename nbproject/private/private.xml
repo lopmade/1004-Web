@@ -4,13 +4,24 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
 
         <group>
-            <file>file:/D:/xampp/htdocs/webapplication/register_process.php</file>
-            <file>file:/D:/xampp/htdocs/webapplication/css/validator.css</file>
-            <file>file:/D:/xampp/htdocs/webapplication/js/validator.js</file>
-            <file>file:/D:/xampp/htdocs/webapplication/reset_password.php</file>
-            <file>file:/D:/xampp/htdocs/webapplication/profile.php</file>
-            <file>file:/D:/xampp/htdocs/webapplication/register.php</file>
-            <file>file:/D:/xampp/htdocs/webapplication/reset_password_process.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/main.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/reset_password.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/login.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/market.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/about.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/register.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/promotions.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/nav.inc.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/login_process.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/register.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/register_process.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/footer.inc.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/profile.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/bootstrap.min.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/index.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/css/validator.css</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/marketitem.php</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ICT1004/Project/about.php</file>
         </group>
 
     </open-files>

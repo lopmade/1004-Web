@@ -43,9 +43,14 @@ include "./login_process.php";
             window.onload = function () {
 
                 var span = document.getElementsByClassName("close")[0];
-                
+
                 span.onclick = function () {
-                    window.location.href = "index.php";
+
+                    if (confirm('Do you want to return to Home page?')) {
+                        window.location.href = "index.php";
+                    } else {
+                        
+                    }
                 }
             };
         </script>
@@ -67,6 +72,8 @@ include "./login_process.php";
                     <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">
                 </div>
                 <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                <br>
+                <p>Back to <a href="index.php">Home</a>?</p>
             </form>
         </div>    
     </body>

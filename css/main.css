@@ -5,18 +5,85 @@
 
 body {
     font-family: sans-serif;
+    min-width: 260px;
 }
 
 #mainNav {
+    z-index: 100;
+    position: fixed!important;
+    width: 100%!important;
     background-color: #4980c0!important;
+    min-width: 260px!important;
+    height: 100px!important;
+}
+
+#footer {
+    height:100px;
+    background-color: #4980c0;
+    min-width: 260px;
+}
+
+#footer p {
+    color: white;
+    margin: auto!important;
+    padding: auto!important;
 }
 
 #logo {
     background-color: white;
     color: black;
-    padding: 5px 10px;
+    padding: 10px 20px;
 }
 
-li {
-    padding: 0px 20px;
+
+#mainList li a {
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 38px 30px;
 }
+
+
+#mainList li a:hover {
+    background-color: darkblue;
+}
+
+#mainList li a:active {
+    background-color: white;
+    color: darkblue;
+}
+
+#sideList li a {
+    color:#fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 38px 30px;
+}
+
+#sideList li a:hover {
+    background-color: darkblue;
+}
+
+#sideList li a:active {
+    background-color: white;
+    color: darkblue;
+}
+
+#space {
+    height:100px;
+}
+
+#mainContent {
+    margin: 50px;
+}
+
+#footer {
+    height: 50px;
+}
+
+#footerText {
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+
