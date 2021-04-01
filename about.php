@@ -30,7 +30,6 @@
     </head>
     <body>
         <main class = "main">
-
             <?php
             include "nav.inc.php";
             ?>

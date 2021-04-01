@@ -60,6 +60,15 @@ body {
     padding: 38px 30px;
 }
 
+#sideList li a:hover {
+    background-color: darkblue;
+}
+
+#sideList li a:active {
+    background-color: white;
+    color: darkblue;
+}
+
 #space {
     height:100px;
 }
@@ -76,3 +85,5 @@ body {
     padding: 10px 0px;
     font-weight: bold;
 }
+
+
