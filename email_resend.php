@@ -19,9 +19,14 @@ require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
 require './email_credentials.php';
 
+$email = $_SESSION['email'];
+$token = $_SESSION['token'];
+$first_name = $_SESSION['first_name'];
+
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 $url = $_SERVER['SERVER_NAME']."/webapplication/verify.php?email=".$email."&token=".$token;
+
 
 try {
     //Server settings
@@ -40,19 +45,17 @@ try {
     $path = '';
     $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$token;
 
-    //Attachments
-
-
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'Hi'.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
+    $mail->Body    = 'Hi '.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Message has been sent';
+    echo 'Email has been sent. Redirecting you back in 3 seconds. If it does not redirect you back, please <a href = profile.php>Click Here!<a>';
+    header("Refresh:3; url=profile.php");
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}<br>Please contact admin for support.";
 }
 echo'';
 ?>

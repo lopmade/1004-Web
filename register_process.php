@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } elseif ($_POST["username"] < 21) {
+    } elseif (strlen(trim($_POST["username"])) < 21 && strlen(trim($_POST["username"])) > 0) {
         
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE username = ?";
@@ -163,10 +163,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $mail->setFrom(EMAIL, 'POKEDEX');
                     $mail->addAddress($email, $first_name);     //Add a recipient
 
-
-                    //Attachments
-
-
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'Here is the subject';
@@ -176,8 +172,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $mail->send();
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                }
-                // Redirect to login page
+                }                // Redirect to login page
                 header("location: login.php");
                 
             } else{
