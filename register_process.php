@@ -136,13 +136,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_first_name = $first_name;
             $param_last_name = $last_name;
             $param_token = md5($param_username . date("dmYhis"));
-
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 //Instantiation and passing `true` enables exceptions
                 $mail = new PHPMailer(true);
-                $url = $_SERVER['SERVER_NAME']."/webapplication/verify.php?email=".$email."&token=".$token;
+                $path = '';
+                $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$token;
 
                 try {
                     //Server settings
@@ -175,7 +175,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 }
                 // Redirect to login page
                 header("location: login.php");
-                
                 
             } else{
                 echo "Oops! Something went wrong. Please try again later.";

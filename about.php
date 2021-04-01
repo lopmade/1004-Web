@@ -1,9 +1,3 @@
-<?php
-// Initialize the session
-if (!isset($_SESSION)) {
-    session_start();
-}
-?>
 <html>
     <head>
         <title>Pokemart - Your one stop marketplace</title>
@@ -41,7 +35,7 @@ if (!isset($_SESSION)) {
             
             <section class = "section">
                 <header>
-                    <h1>Welcome to Forum for Selling items</h1>
+                    <h1>Huat we do</h1>
                     <h2>Home of trading</h2>
                     <i class="fas fa-question-circle"></i>
                 </header>

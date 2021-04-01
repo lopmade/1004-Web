@@ -61,6 +61,7 @@ include "./login_process.php";
                 <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
                     <input type="password" required placeholder="Password" name="password" class="form-control">
                     <span class="help-block"><br><?php echo $login_err; ?></span>
+
                 </div>
                 <div class="form-group">
                     <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">
