@@ -39,6 +39,14 @@ include "./login_process.php";
         <!-- font awesome 5 -->
         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
 
+
+        <!-- JavaScript for validation -->
+        <script defer src="js/validator.js">
+        </script>
+
+        <!-- CSS for validation -->
+        <link rel="stylesheet" 
+              href="css/validator.css" >
         <script>
             window.onload = function () {
 
@@ -49,7 +57,7 @@ include "./login_process.php";
                     if (confirm('Do you want to return to Home page?')) {
                         window.location.href = "index.php";
                     } else {
-                        
+
                     }
                 }
             };
@@ -65,7 +73,7 @@ include "./login_process.php";
                 </div>    
                 <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
                     <input type="password" required placeholder="Password" name="password" class="form-control">
-                    <span class="help-block"><br><?php echo $login_err; ?></span>
+                    <span style="color:red" class="help-block"><br><?php echo $login_err; ?></span>
 
                 </div>
                 <div class="form-group">
