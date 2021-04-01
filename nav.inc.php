@@ -14,7 +14,7 @@ if (!isset($_SESSION)) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul id="mainList" class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
@@ -22,28 +22,33 @@ if (!isset($_SESSION)) {
                     <a class="nav-link" href="market.php">Marketplace</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="promotions.php">Promotions</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="about.php">About Us</a>
                 </li>
+                <?php
+                // If user is logged in, show the upload page
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload.php">Add Item</a>
+                </li>
+                <?php }?>
             </ul>
             <?php
             // Check if the user is already logged in, if yes then redirect him to welcome page
             if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 ?>
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="sideList" class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
+                    <a title = "Profile" class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="logout.php">Log Out</a>
+                    <a title = "Logout "class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
                 <?php
             } else {
             ?>
-            <ul class="nav navbar-nav navbar-right">
+            <ul id = "sideList" class="nav navbar-nav navbar-right">
                 <li>
                     <a class="nav-link" href="register.php">Register</a>
                 </li>
@@ -55,3 +60,6 @@ if (!isset($_SESSION)) {
         </div>
     </div>
 </nav>
+
+<section id="space">
+</section>
