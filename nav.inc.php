@@ -27,6 +27,14 @@ if (!isset($_SESSION)) {
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">About Us</a>
                 </li>
+                <?php
+                // If user is logged in, show the upload page
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="upload.php">Add Item</a>
+                </li>
+                <?php }?>
             </ul>
             <?php
             // Check if the user is already logged in, if yes then redirect him to welcome page
