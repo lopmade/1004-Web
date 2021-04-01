@@ -4,9 +4,9 @@
         <?php
         include "header.inc.php";
         ?>
-        
+
         <link rel="stylesheet" 
-      href="css/about.css">
+              href="css/about.css">
 
     </head>
     <body>
