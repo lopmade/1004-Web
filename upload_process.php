@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         // upload file sql query goes here
                                         // Prepare an insert statement
 
-                                        $sql = "INSERT INTO items_listing (user_user_id,item_name,description,date_added,item_status,item_price,item_image1) VALUES (?,?,?,?,?,?,?)";
+                                        $sql = "INSERT INTO items_listing (user_user_id,item_name,description,date_added,item_status,item_price,item_image) VALUES (?,?,?,?,?,?,?)";
                                         $stmt = mysqli_prepare($link, $sql);
                                         // Bind variables to the prepared statement as parameters
                                         mysqli_stmt_bind_param($stmt, "sssssss", $param_user_user_id, $param_item_name, $param_description, $param_date_added, $param_item_status, $param_item_price, $param_item_image);
