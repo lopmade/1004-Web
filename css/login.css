@@ -1,6 +1,10 @@
 body {
     background-image:url("../images/pokemonbg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
+    background-color: grey;
 }
 
 
@@ -12,7 +16,6 @@ body {
     box-shadow: 4px 4px 4px;
     text-align: center;
     background-color: white;
-
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -53,19 +56,19 @@ input[type=text], input[type=password] {
 }
 
 #loginBtn {
-  background-color: blue;
-  color: white;
-  padding: 14px 20px;
-  margin: 25px 0;
-  border: none;
-  cursor: pointer;
-  width: 70%;
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 25px 0;
+    border: none;
+    cursor: pointer;
+    width: 70%;
 }
 
 .close {
-  color: black;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }

@@ -78,7 +78,7 @@ function sanitize_input($data) {
             include "nav.inc.php";
             ?>
             
-            <section class = "section">
+            <section id="mainContent" class = "section">
                 <header>
                     <h1>Market</h1>
                     <h2>Home of trading</h2>

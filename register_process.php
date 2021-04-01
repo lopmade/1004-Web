@@ -146,7 +146,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 //Instantiation and passing `true` enables exceptions
                 $mail = new PHPMailer(true);
                 $path = '';
-                $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$token;
+                $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$param_token;
 
                 try {
                     //Server settings
