@@ -19,11 +19,11 @@ require_once "./register_process.php";
         <!-- JavaScript Bundle with Popper -->
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js">
         </script>
-		
+
         <!-- JavaScript for validation -->
         <script defer src="js/validator.js">
         </script>
-		
+
         <!-- CSS for validation -->
         <link rel="stylesheet" 
               href="css/validator.css" >
@@ -37,7 +37,7 @@ require_once "./register_process.php";
         <!-- font awesome 5 -->
         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script></head>
 
-        <script>
+    <script>
             window.onload = function () {
 
                 var span = document.getElementsByClassName("close")[0];
@@ -47,11 +47,11 @@ require_once "./register_process.php";
                     if (confirm('Do you want to return to Home page?')) {
                         window.location.href = "index.php";
                     } else {
-                        
+
                     }
                 }
             };
-        </script>
+    </script>
     <body>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -100,6 +100,8 @@ require_once "./register_process.php";
                     <input type="reset" id="resetBtn" class="btn btn-default" value="Reset">
                 </div>
                 <p>Already have an account? <a href="login.php">Login here</a>.</p>
+                <br>
+                <p>Back to <a href="index.php">Home</a>?</p>
             </form>	
         </div>	
     </body>
