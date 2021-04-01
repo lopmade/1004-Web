@@ -1,0 +1,23 @@
+.main {
+    background-color: lightblue;
+}
+
+#content {
+    padding-left:25px;
+}
+
+#content .product {
+    background: #ffffff;
+    border: solid 3px black;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#content .product:hover {
+    border: solid 3px #4980c0;
+}
+
+@media only screen and (max-width: 1024px) {
+    width: 300px;
+}

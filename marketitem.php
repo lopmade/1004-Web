@@ -73,11 +73,11 @@ function goBackToMarket() {
             include "nav.inc.php";
             ?>
             <section class="section">
-                <h1>USER ID:<?php echo $user_user_id; ?></h1>
-                <h2>USERNAME:<?php echo $user_user_id_username; ?></h2>
-                <h1>ITEM NAME:<?php echo $item_name; ?></h1>
-                <h1>DESCRIPTION:<?php echo $description; ?></h1>
-                <h1>DATE ADDED:<?php echo $date_added; ?></h1>
+                <h6>USER ID:<?php echo $user_user_id; ?></h6>
+                <h6>USERNAME:<?php echo $user_user_id_username; ?></h6>
+                <h6>ITEM NAME:<?php echo $item_name; ?></h6>
+                <h6>DESCRIPTION:<?php echo $description; ?></h6>
+                <h6>DATE ADDED:<?php echo $date_added; ?></h6>
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
             </section>

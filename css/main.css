@@ -74,7 +74,7 @@ body {
 }
 
 #mainContent {
-    margin: 50px;
+    margin: 25px;
     min-height: 500px;
 }
 
@@ -85,6 +85,10 @@ body {
 #footerText {
     padding: 10px 0px;
     font-weight: bold;
+}
+
+h1 {
+    padding: 25px;
 }
 
 
