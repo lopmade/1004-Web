@@ -1,3 +1,15 @@
+<?php
+
+function convertTime($time) {
+    if ($time < 1) {
+        return;
+    }
+    $hours = floor($time / 60);
+    $minutes = ($time % 60);
+    return sprintf($hours);
+}
+?>
+
 
 <?php
 
@@ -16,27 +28,39 @@ function getAll() {
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
         $item_image = $row_all['item_image'];
-        echo
-        "
+        $minutes = (time() - strtotime($date_added)) / 60;
+        $history = "";
+        
+        $test = convertTime($minutes);
+        if ($test < 1) {
+            $history = "Less than an hour ago";
+        } else if ($test < 24) {
+            $history = "$test hours ago";
+        } else if ($test >= 24){
+            $day = $test / 24;
+            if ($day < 2) {
+                $history = "1 day ago";
+            } else if ($day < 7) {
+                $day = number_format($day);
+                $history = "$day days ago";
+            } else {
+                $history = "More than 7 days ago";
+            }
+        }
+            echo
+            "
             <div class = 'col-sm-4'>
-                <div class = 'product'>
-                    <a href = '/marketitem.php?item_id=$item_id'>
-                        <img class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
-                    </a>
-                    <div class = 'text'>
-                        <h3>
-                            <a href = '/marketitem.php?item_id=$item_id'>
-                                $item_name
-                            </a>
-                        </h3>
-                        <p class = 'price'>
-                            $$item_price
-                        </p>
-                        <p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$item_id'>View Details</a>
-                        </p>
+                <a style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
+                    <div class = 'product'>
+                        <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                            <div style='bottom:0'class = 'text'>
+                                <h3>$item_name</h3>
+                                <p style='text-align:left;'>$description</p>
+                                <p style='text-align:left;'>$$item_price</p>
+                                <p style='text-align:left;'>$history</p> 
+                            </div>
                     </div>
-                </div>
+                </a>
             </div>";
 
 
