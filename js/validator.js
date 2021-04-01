@@ -68,4 +68,34 @@ function passwordValidator(){
       }
     }
 }
+
+function usernameValidator(){
+    var myInput1 = document.getElementById("username");
+    var length1 = document.getElementById("length1");
+
+    // When the user clicks on the password field, show the message box
+    myInput1.onfocus = function() {
+      document.getElementById("message1").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput1.onblur = function() {
+      document.getElementById("message1").style.display = "none";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput1.onkeyup = function() {
+
+      // Validate length
+      if(myInput1.value.length <= 20 && myInput1.value.length > 0) {
+        length1.classList.remove("invalid");
+        length1.classList.add("valid");
+      } else {
+        length1.classList.remove("valid");
+        length1.classList.add("invalid");
+      }
+
+    }
+}
 passwordValidator()
+usernameValidator()

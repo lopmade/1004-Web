@@ -65,7 +65,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } else{
+    } elseif ($_POST["username"] < 21) {
+        
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE username = ?";
         
@@ -91,6 +92,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Close statement
         mysqli_stmt_close($stmt);
+    }
+    else{
+        $username_err = 'Username length longer than 20.';
     }
     
     // Validate password strength
