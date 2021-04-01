@@ -134,8 +134,8 @@ use mydb;
 insert into user (username,email,password,first_name,last_name,user_verified) values ('abc','def@123.com','123','adam','lee',0);
 insert into user (username,email,password,first_name,last_name,user_verified) values ('def','def@321.com','321','bob','tan',0);
 
--- insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price) values ('1','2','someitem','somedesc',NOW(),'0','10.00');
--- insert into item_image (item_id,image) values ('1','pokemonbg.jpg');
--- insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price) values ('2','2','item2','desc',NOW(),'0','10.00');
--- insert into item_image (item_id,image) values ('2','pokemonbg.jpg');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('1','2','someitem','somedesc',NOW(),'0','10.00','pokemonbg.jpg');
+insert into item_image (item_id,image) values ('1','pokemonbg.jpg');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('2','2','item2','desc',NOW(),'0','10.00','pokemonbg.jpg');
+insert into item_image (item_id,image) values ('2','pokemonbg.jpg');
 
