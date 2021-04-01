@@ -27,19 +27,19 @@ if (isset($_GET['item_id'])) {
     if ($item_status === 1) {
         goBackToMarket();
     }
-    
+
     $get_user_user_id = "select username from user where user_id = $user_user_id";
-    $run_user_user_id = mysqli_query($link,$get_user_user_id);
+    $run_user_user_id = mysqli_query($link, $get_user_user_id);
     $row_user_user_id = mysqli_fetch_array($run_user_user_id);
     $user_user_id_username = $row_user_user_id['username'];
-    
-    
+
+
     // can only display one image for now might need to implement into a function with loop in the future to display more
     /*
-    $get_item_id = "select * from item_image where item_id = $item_id";
-    $run_item_id = mysqli_query($link, $get_item_id);
-    $row_item_id = mysqli_fetch_array($run_item_id);
-    $item_id_image = $row_item_id['image'];
+      $get_item_id = "select * from item_image where item_id = $item_id";
+      $run_item_id = mysqli_query($link, $get_item_id);
+      $row_item_id = mysqli_fetch_array($run_item_id);
+      $item_id_image = $row_item_id['image'];
      * 
      */
 }
@@ -81,6 +81,9 @@ function goBackToMarket() {
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
             </section>
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>
