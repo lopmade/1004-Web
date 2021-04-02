@@ -50,7 +50,6 @@ if (isset($_GET['item_id'])) {
         $retrieving_err = "An unexpected error occured";
     }
     mysqli_stmt_close($run_item);
-    mysqli_close($link);
     
     require_once "./offer_process.php";
 }
@@ -90,6 +89,9 @@ function goBackToMarket() {
                     echo '<span class="help-block">' . $retrieving_err . '</span>';
                     die();
                 }
+                if (!empty($alreadyOffered_err)) {
+                    echo '<h2>' . $alreadyOffered_err. '</h2>';
+                }
                 ?>
                 <h6>USER ID:<?php echo $user_user_id; ?></h6>
                 <h6>USERNAME:<?php echo $user_user_id_username; ?></h6>
@@ -100,6 +102,7 @@ function goBackToMarket() {
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
                 <?php
+                // if the item being viewed is NOT the user's item
                 if ($user_user_id !== $_SESSION['user_id'])
                 {
                     echo "<form action=".htmlspecialchars(basename($_SERVER['REQUEST_URI']))." method='post'>"
