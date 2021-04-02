@@ -23,5 +23,6 @@ extension=php_openssl.dll
 ### DECLINE OFFER
 * set offer_status in item_offer to 1 (rejected)
 ### REMOVE FROM HISTORY (rejected offers)
-* delete from item_offer where item_status=1 and offer_item_id = blahblah
-## TRANSCATION HISTORY (if got time)
+* delete from item_offer where offer_status=1 and offer_item_id = the one u clicked
+### TRANSCATION HISTORY (if got time)
+* show the items where item_status = 1
