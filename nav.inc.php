@@ -22,9 +22,6 @@ if (!isset($_SESSION)) {
                     <a class="nav-link" href="market.php">Marketplace</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="promotions.php">Promotions</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="about.php">About Us</a>
                 </li>
                 <?php
@@ -40,12 +37,12 @@ if (!isset($_SESSION)) {
             // Check if the user is already logged in, if yes then redirect him to welcome page
             if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 ?>
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="sideList" class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
+                    <a title = "Profile" class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="logout.php">Log Out</a>
+                    <a title = "Logout "class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
                 <?php
