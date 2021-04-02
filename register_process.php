@@ -2,12 +2,9 @@
 // Include config file
 require_once "config.php";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require './email_credentials.php';
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
-require './PHPMailer/src/SMTP.php';
-require './email_credentials.php';
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $first_name = $last_name = $email = "";
@@ -140,14 +137,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_first_name = $first_name;
             $param_last_name = $last_name;
             $param_token = md5($param_username . date("dmYhis"));
+            $url = $_SERVER['SERVER_NAME'].'verify.php?email='.$email.'&token='.$token;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                //Instantiation and passing `true` enables exceptions
+                // Redirect to login page
+                header("location: login.php");
+                
                 $mail = new PHPMailer(true);
-                $path = '';
-                $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$param_token;
-
                 try {
                     //Server settings
                     $mail->SMTPDebug = 1;                                       //Enable verbose debug output
@@ -165,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
-                    $mail->Subject = 'Here is the subject';
+                    $mail->Subject = 'Regisration verification!';
                     $mail->Body    = 'Hi '.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
                     $mail->AltBody = 'Hi '.$first_name.', thanks for signing up to POKEDEX! We want to make sure that we got your email right. Copy the link and paste it in the URL bar to get verified! '.$url;
 
