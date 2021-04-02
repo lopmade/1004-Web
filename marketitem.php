@@ -1,16 +1,5 @@
 <?php
-// Initialize the session
-if (!isset($_SESSION)) {
-    session_start();
-}
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: profile.php");
-    exit;
-}
-
-// Include config file
-include "./login_process.php";
+session_start();
 ?>
 <?php
 include("config.php");
@@ -24,7 +13,6 @@ if (!isset($_GET['item_id'])) {
 
 if (isset($_GET['item_id'])) {
     $item_id = sanitize_input($_GET['item_id']);
-    $_SESSION['item_id'] = $item_id;
     $get_item = "select * from items_listing where item_id='$item_id'";
     $run_item = mysqli_query($link, $get_item);
     // if the item_id does not exist
@@ -48,6 +36,9 @@ if (isset($_GET['item_id'])) {
     $run_user_user_id = mysqli_query($link,$get_user_user_id);
     $row_user_user_id = mysqli_fetch_array($run_user_user_id);
     $user_user_id_username = $row_user_user_id['username'];
+    
+    $chat_id = $item_id ."+". $_SESSION['user_id'];
+    $_SESSION['chat_id']= $chat_id;
     
     
     // can only display one image for now might need to implement into a function with loop in the future to display more
@@ -102,8 +93,7 @@ function goBackToMarket() {
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
                 <form method="post" action="{next_page}">
-                    <input type="hidden" name="item_id" value="echo $_POST"
-                    <a class="btn btn-primary" href="http://localhost:8000/chat.php#" role="button">Go to Chat</a>
+                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
 
                 </form>
             </section>
