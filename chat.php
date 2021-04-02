@@ -62,7 +62,7 @@ $chat_id = $_SESSION['chat_id']."log.html";
                     var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
 
                     $.ajax({
-                        url: "./chats<?php echo $chat_id?>",
+                        url: "./chats/<?php echo $chat_id?>",
                         cache: false,
                         success: function (html) {
                             $("#chatbox").html(html); //Insert chat log into the #chatbox div
