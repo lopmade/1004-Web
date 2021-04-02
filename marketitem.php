@@ -40,13 +40,14 @@ if (isset($_GET['item_id'])) {
     $chat_id = $item_id ."+". $_SESSION['user_id'];
     $_SESSION['chat_id']= $chat_id;
     
-    
+
     // can only display one image for now might need to implement into a function with loop in the future to display more
     /*
     $get_item_id = "select * from item_image where item_id = $item_id";
     $run_item_id = mysqli_query($link, $get_item_id);
     $row_item_id = mysqli_fetch_array($run_item_id);
     $item_id_image = $row_item_id['image'];
+
      */
 }
 
@@ -85,16 +86,15 @@ function goBackToMarket() {
             include "nav.inc.php";
             ?>
             <section class="section">
-                <h1>USER ID:<?php echo $user_user_id; ?></h1>
-                <h2>USERNAME:<?php echo $user_user_id_username; ?></h2>
-                <h1>ITEM NAME:<?php echo $item_name; ?></h1>
-                <h1>DESCRIPTION:<?php echo $description; ?></h1>
-                <h1>DATE ADDED:<?php echo $date_added; ?></h1>
+                <h6>USER ID:<?php echo $user_user_id; ?></h6>
+                <h6>USERNAME:<?php echo $user_user_id_username; ?></h6>
+                <h6>ITEM NAME:<?php echo $item_name; ?></h6>
+                <h6>DESCRIPTION:<?php echo $description; ?></h6>
+                <h6>DATE ADDED:<?php echo $date_added; ?></h6>
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
                 <form method="post" action="{next_page}">
                     <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
-
                 </form>
             </section>
         </main>
