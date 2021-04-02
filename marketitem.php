@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 include("config.php");
 ?>
 
@@ -48,10 +51,19 @@ if (isset($_GET['item_id'])) {
     else 
     {
         $retrieving_err = "An unexpected error occured";
+
+
+    // if the item is sold already
+    if ($item_status === 1) {
+        goBackToMarket();
+
     }
     mysqli_stmt_close($run_item);
-    
     require_once "./offer_process.php";
+
+    $chat_id = $item_id ."+". $_SESSION['user_id'];
+    $_SESSION['chat_id']= $chat_id;
+
 }
 
 function sanitize_input($data) {
@@ -76,6 +88,12 @@ function goBackToMarket() {
         <?php
         include "header.inc.php";
         ?>
+        <link rel="stylesheet" 
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" >
+
+        <!-- JavaScript Bundle with Popper -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js">
+        </script>
     </head>
     <body>
         <main class = "main">
@@ -110,6 +128,9 @@ function goBackToMarket() {
                             . "</form>";
                 }
                 ?>
+                <form method="post" action="{next_page}">
+                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
+                </form>
             </section>
         </main>
     </body>

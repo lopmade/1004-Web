@@ -9,9 +9,7 @@ function getAll() {
     while ($row_all = mysqli_fetch_array($run_all)) {
         $x++;
         $item_id = $row_all['item_id'];
-        $user_user_id = $row_all['user_user_id'];
         $item_name = $row_all['item_name'];
-        $description = $row_all['description'];
         $date_added = $row_all['date_added'];
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
