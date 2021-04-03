@@ -22,7 +22,7 @@ function getOffers($typeofoffer) {
         $get_all_offer = "select * from item_offer where offer_buyer_id= " . $_SESSION['user_id'] . " and offer_status = 0";
     } elseif ($typeofoffer == "rejected") {
         // offer_status 1 = rejected
-        $get_all_offer = "select * from item_offer where offer_seller_id= " . $_SESSION['user_id'] . " and offer_status = 1";
+        $get_all_offer = "select * from item_offer where offer_buyer_id= " . $_SESSION['user_id'] . " and offer_status = 1";
     }
 
     $run_all_offer = mysqli_query($link, $get_all_offer);
@@ -35,9 +35,9 @@ function getOffers($typeofoffer) {
 
         $x++;
         $offer_item_id = $row_all['offer_item_id'];
-        if ($typeofoffer == "incoming" || $typeofoffer == "rejected") {
+        if ($typeofoffer == "incoming") {
             $offer_user_id = $row_all['offer_buyer_id'];
-        } elseif ($typeofoffer == "pending") {
+        } elseif ($typeofoffer == "pending" || $typeofoffer == "rejected") {
             $offer_user_id = $row_all['offer_seller_id'];
         }
         $offer_date = $row_all['offer_date'];
@@ -61,8 +61,8 @@ function getOffers($typeofoffer) {
                             <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
                         </p>";
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>Accept</a>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>Decline</a>
+                            <a href = '/offer_action.php?item_id=$offer_item_id&action=accept'>Accept</a>
+                            <a href = '/offer_action.php?item_id=$offer_item_id&action=decline'>Decline</a>
                         </p>";
         } elseif ($typeofoffer == "pending") {
             $english1 = "to";
@@ -71,14 +71,14 @@ function getOffers($typeofoffer) {
                             <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
                         </p>";
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>Cancel Offer</a>
+                            <a href = '/offer_action.php?item_id=$offer_item_id&action=cancel'>Cancel Offer</a>
                         </p>";
         } elseif ($typeofoffer == "rejected") {
             $english1 = "to";
-            $english2 = "Sent";
+            $english2 = "Rejected";
             $viewChat = "";
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>Remove From History</a>
+                            <a href = '/offer_action.php?item_id=$offer_item_id&action=remove'>Remove From History</a>
                         </p>";
         }
         echo
@@ -116,7 +116,8 @@ function getOffers($typeofoffer) {
         <?php
         include "header.inc.php";
         ?>
-
+        <link rel="stylesheet" 
+              href="css/market.css">
     </head>
     <body>
 
@@ -125,8 +126,7 @@ function getOffers($typeofoffer) {
             <?php
             include "nav.inc.php";
             ?>
-            <link rel="stylesheet" 
-                  href="css/market.css">
+
 
             <section id="mainContent" class = "section">
                 <div class="page-header">
