@@ -12,9 +12,8 @@ extension=php_openssl.dll
 
 ## MARKETITEM
 ### DELETE BUTTON IN MARKETITEM
-* only on items that belong to user where item_status = 0 (not sold)
+* only on items that belong to user where item_status = 0 (not sold) and is not in item_transaction
 * delete from items_listing and item_offer tables
-* delete from item_transaction table (if got time)
 
 ## PROFILE
 ### CHAT
