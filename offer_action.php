@@ -73,9 +73,7 @@ if (isset($_GET['action']) && isset($_GET['item_id'])) {
         }
         if ($link->query($query_action) === FALSE)
         {
-            echo $query_action;
-            echo $link->error;
-            die;
+        
             mysqli_stmt_close($run_item);
             mysqli_close($link);
             goBackToProfile();
@@ -100,8 +98,6 @@ if (isset($_GET['action']) && isset($_GET['item_id'])) {
             $query2_action = "update item_offer set offer_date = NOW() where offer_id = $offer_id";
             if ($link->query($query2_action) === FALSE)
             {
-                echo $link->error;
-                die;
                 mysqli_stmt_close($run_item);
                 mysqli_close($link);
                 goBackToProfile();  
@@ -114,7 +110,6 @@ if (isset($_GET['action']) && isset($_GET['item_id'])) {
         header("Location: success.php");
     } else {
         $retrieving_err = "An unexpected error occured";
-
     }
     
 }
@@ -158,7 +153,6 @@ function goBackToProfile() {
                 // if there is an error, display it
                 if (!empty($retrieving_err)) {
                     echo '<span class="help-block">' . $retrieving_err . '</span>';
-                    die();
                 }
                 ?>
             </section>

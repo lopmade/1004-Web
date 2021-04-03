@@ -101,7 +101,6 @@ function goBackToMarket() {
                 // if there is an error, display it
                 if (!empty($retrieving_err)) {
                     echo '<span class="help-block">' . $retrieving_err . '</span>';
-                    die();
                 }
                 if (!empty($alreadyOffered_err)) {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
