@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Initialize the session
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 <?php
 include("config.php");
@@ -32,7 +35,7 @@ if (isset($_GET['item_id'])) {
         }
 
         // Bind result variables
-        mysqli_stmt_bind_result($run_item, $item_id, $user_user_id, $item_name, $description, $date_added, $item_status,$item_price, $item_image);
+        mysqli_stmt_bind_result($run_item, $item_id, $user_user_id, $item_name, $description, $date_added, $item_status, $item_price, $item_image);
 
         if (mysqli_stmt_fetch($run_item)) {
             // if the item is sold already
@@ -46,24 +49,20 @@ if (isset($_GET['item_id'])) {
         $run_user_user_id = mysqli_query($link, $get_user_user_id);
         $row_user_user_id = mysqli_fetch_array($run_user_user_id);
         $user_user_id_username = $row_user_user_id['username'];
-        
-    }
-    else 
-    {
+    } else {
         $retrieving_err = "An unexpected error occured";
 
-
+    }
     // if the item is sold already
     if ($item_status === 1) {
         goBackToMarket();
-
     }
     mysqli_stmt_close($run_item);
     require_once "./offer_process.php";
 
-    $chat_id = $item_id ."+". $_SESSION['user_id'];
-    $_SESSION['chat_id']= $chat_id;
-
+    $chat_id = $item_id . "+" . $_SESSION['user_id'];
+    $_SESSION['chat_id'] = $chat_id;
+    
 }
 
 function sanitize_input($data) {
@@ -108,7 +107,7 @@ function goBackToMarket() {
                     die();
                 }
                 if (!empty($alreadyOffered_err)) {
-                    echo '<h2>' . $alreadyOffered_err. '</h2>';
+                    echo '<h2>' . $alreadyOffered_err . '</h2>';
                 }
                 ?>
                 <h6>USER ID:<?php echo $user_user_id; ?></h6>
@@ -121,11 +120,10 @@ function goBackToMarket() {
                 <img src="images/market/<?php echo $item_image ?>" >
                 <?php
                 // if the item being viewed is NOT the user's item
-                if ($user_user_id !== $_SESSION['user_id'])
-                {
-                    echo "<form action=".htmlspecialchars(basename($_SERVER['REQUEST_URI']))." method='post'>"
-                            . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
-                            . "</form>";
+                if ($user_user_id !== $_SESSION['user_id']) {
+                    echo "<form action=" . htmlspecialchars(basename($_SERVER['REQUEST_URI'])) . " method='post'>"
+                    . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
+                    . "</form>";
                 }
                 ?>
                 <form method="post" action="{next_page}">
