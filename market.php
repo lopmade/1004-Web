@@ -3,7 +3,7 @@
 
 function getAll() {
     include("config.php");
-    $get_all = "select * from items_listing";
+    $get_all = "select * from items_listing where item_status = 0";
     $run_all = mysqli_query($link, $get_all);
     $x = 0;
     while ($row_all = mysqli_fetch_array($run_all)) {

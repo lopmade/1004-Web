@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_store_result($stmt);
         // if an offer has already been made
         if (mysqli_stmt_num_rows($stmt) > 0) {
-            $alreadyOffered_err = "Already sent offer";
+            $alreadyOffered_err = "Already sent offer. Please check if you are rejected.";
             //header("Location: ".basename($_SERVER['REQUEST_URI']));
             //exit;
         }

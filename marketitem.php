@@ -3,12 +3,9 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-?>
-<?php
-include("config.php");
-?>
 
-<?php
+include("config.php");
+
 // if ?item_id=x is not set
 if (!isset($_GET['item_id'])) {
     goBackToMarket();
