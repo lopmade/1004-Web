@@ -1,6 +1,5 @@
 <?php
 require_once "config.php";
-
 // Initialize the session
 if (!isset($_SESSION)) {
     session_start();
@@ -58,6 +57,12 @@ mysqli_stmt_close($stmt);
             ?>
             <section id="mainContent" class = "section">
             <div class="page-header">
+                <div>
+                    <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                            <input type="submit" value="Upload image" name="submit">
+                    </form> 
+                </div>
                 <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
                 Account Status: <?php echo $status; ?>
             <?php
