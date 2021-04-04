@@ -56,6 +56,10 @@ mysqli_stmt_close($stmt);
             include "nav.inc.php";
             ?>
             <section id="mainContent" class = "section">
+                <div>
+                    <img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64,<?php echo $_SESSION['profile_picture']; ?>' />
+                    
+                </div>
             <div class="page-header">
                 <div>
                     <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">

@@ -45,10 +45,11 @@ if (isset($email) && !empty($email) AND isset($token) && !empty($token)) {
                 $param_email = $email;
                 $param_token = $token;
                 
-                echo "Your account has been verified and activated successfully! Redirecting you back to home page!";
+                echo "Your account has been verified and activated successfully! Please login again!";
                 // Set user status to active (active=1)
                 $connect->query("UPDATE user SET verify='1' WHERE email='$email' ") or die($connect->error);
-                header("refresh:5; url=index.php");
+                include './logout.php';
+                header("refresh:5; url=login.php");
             
             } else {
                 echo "An error occured, please contact admin for support. Redirecting you back to home page!";

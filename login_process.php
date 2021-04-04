@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT user_id, username, password, email, token, first_name, last_name, profile_picture FROM user WHERE username = ?";
+        $sql = "SELECT user_id, username, password, email, token, first_name, last_name, profile_picture, user_verified FROM user WHERE username = ?";
         
         $stmt = mysqli_prepare($link, $sql);
         // Bind variables to the prepared statement as parameters
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Check if username exists, if yes then verify password
             if(mysqli_stmt_num_rows($stmt) == 1){                    
                 // Bind result variables
-                mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password, $email, $token, $first_name, $last_name, $profile_picture);
+                mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password, $email, $token, $first_name, $last_name, $profile_picture, $user_verified);
                 if(mysqli_stmt_fetch($stmt)){
                     if(password_verify($password, $hashed_password)){
                         // Password is correct, so start a new session
@@ -65,6 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["first_name"] = $first_name;
                         $_SESSION["last_name"] = $last_name;
                         $_SESSION["profile_picture"]= $profile_picture;
+                        $_SESSION["user_verified"] = $user_verified;
 
                         // Redirect user to welcome page
                         header("location: profile.php");
