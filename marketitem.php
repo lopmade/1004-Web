@@ -48,6 +48,7 @@ if (isset($_GET['item_id'])) {
         $user_user_id_username = $row_user_user_id['username'];
     } else {
         $retrieving_err = "An unexpected error occured";
+        
     }
     // if the item is sold already
     if ($item_status === 1) {
@@ -59,6 +60,8 @@ if (isset($_GET['item_id'])) {
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
     $_SESSION['chat_id'] = $chat_id;
 
+    
+    
 }
 function sanitize_input($data) {
     // remove extra characters like whitespaces,tabs
@@ -113,12 +116,13 @@ function goBackToMarket() {
                 <h6>DATE ADDED:<?php echo $date_added; ?></h6>
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
+                // Only user's can update or delete its own item.
                 <?php if ($user_user_id == $_SESSION['user_id']) { ?>
                     <a class="btn btn-primary" href="update.php?id=<?php echo $_GET['item_id'] ?>" role="button">Edit</a>
                     <a class="btn btn-primary" href="delete.php?id=<?php echo $_GET['item_id'] ?>" name="delete" role="button">Delete</a>
                 <?php } ?>
                 <?php
-// if the item being viewed is NOT the user's item
+                // if the item being viewed is NOT the user's item
                 if ($user_user_id !== $_SESSION['user_id']) {
                     echo "<form action=" . htmlspecialchars(basename($_SERVER['REQUEST_URI'])) . " method='post'>"
                     . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
