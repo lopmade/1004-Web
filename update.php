@@ -3,8 +3,61 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$item_name = $item_price = $description = "";
-$item_name_err = $item_price_err = $description_err = "";
+$item_name = $item_price = $description = $item_image = "";
+$item_name_err = $item_price_err = $description_err = $imageUpload_err = "";
+
+// Check existence of id parameter before processing further
+    if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
+        // Get URL parameter
+        $id = trim($_GET["id"]);
+
+        // Prepare a select statement
+        $sql = "SELECT * FROM items_listing WHERE item_id = ?";
+        if ($stmt = mysqli_prepare($link, $sql)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "i", $param_id);
+
+            // Set parameters
+            $param_id = $id;
+
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                $result = mysqli_stmt_get_result($stmt);
+
+                if (mysqli_num_rows($result) == 1) {
+                    /* Fetch result row as an associative array. Since the result set
+                      contains only one row, we don't need to use while loop */
+                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                    // Retrieve individual field value
+                    $item_name = $row["item_name"];
+                    $item_price = $row["item_price"];
+                    $description = $row["description"];
+                    $item_image = $row["item_image"];
+                } else {
+                    // URL doesn't contain valid id. Redirect to landing page
+                    echo "Sorry, you've made an invalid request. Please";
+                    header("Refresh:2; url=./marketitem.php?item_id=$id");
+                    exit();
+                }
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+        
+        if (!isset($_POST["id"]) && empty($_POST["id"])) {
+            mysqli_close($link);
+        };
+
+    } else {
+        // URL doesn't contain id parameter. Redirect to landing page
+        echo "Sorry, you've made an invalid request. Please";
+        header("Refresh:2; url=marketitem.php?item_id=$id");
+        exit();
+    }
 
 // Processing form data when form is submitted
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
@@ -38,26 +91,55 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     } else {
         $description = $input_description;
     }
+    
+    $imgFile = sanitize_input($_FILES['fileToUpload']['name']);
+    $tmp_dir = $_FILES['fileToUpload']['tmp_name'];
+    $imgSize = $_FILES['fileToUpload']['size'];
+
+    if ($imgFile) {
+        $upload_dir = "./images/market/"; // upload directory
+        $prefix = date('YmdHis') . '_' . str_pad(rand(1, 10000), 5, '0', STR_PAD_LEFT) . '_';
+        $upload_file = $upload_dir . $prefix . basename($imgFile);
+        $imgExt = strtolower(pathinfo($upload_file, PATHINFO_EXTENSION)); // get image extension
+        $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
+        if (in_array($imgExt, $valid_extensions)) {
+            if (!$imgSize = 0 && $imgSize < 100000) {
+                unlink($upload_dir . $item_image);
+                move_uploaded_file($tmp_dir, $upload_dir . $item_image);
+            } else {
+                $imageUpload_err = "Sorry, your file is too large it should be less then 1M";
+            }
+        } else {
+            $imageUpload_err = "Sorry, only JPG, JPEG, PNG files are allowed.";
+        }
+    } else {
+        // if no image selected the old image remain as it is.
+        $fileToUpload = $item_image; // old image from database
+        $imageUpload_err = "failed.";
+        
+    }
 
     // Check input errors before inserting in database
-    if (empty($item_name_err) && empty($item_price_err) && empty($description_err)) {
+    if (empty($item_name_err) && empty($item_price_err) && empty($description_err) && empty($imageUpload_err)) {
         // Prepare an update statement
-        $sql = "UPDATE items_listing SET item_name=?, item_price=?, description=? WHERE item_id=?";
+        $sql = "UPDATE items_listing SET item_name=?, item_price=?, description=?,item_image=? WHERE item_id=?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_itemname, $param_price, $param_descrption, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssi", $param_itemname, $param_price, $param_descrption, $param_image, $param_id);
 
             // Set parameters
             $param_itemname = $item_name;
             $param_price = $item_price;
             $param_descrption = $description;
+            $param_image = $prefix. basename($imgFile);
             $param_id = $id;
 
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                // Item updated successfully. Redirect to landing page
+                echo "Item values successfully updated.";
+                header("Refresh:2; url=./marketitem.php?item_id=$id");
                 exit();
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -68,54 +150,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     }
     // Close connection
     mysqli_close($link);
-} else {
-    // Check existence of id parameter before processing further
-    if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
-        // Get URL parameter
-        $id = trim($_GET["id"]);
-
-        // Prepare a select statement
-        $sql = "SELECT * FROM items_listing WHERE item_id = ?";
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "i", $param_id);
-
-            // Set parameters
-            $param_id = $id;
-
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                $result = mysqli_stmt_get_result($stmt);
-
-                if (mysqli_num_rows($result) == 1) {
-                    /* Fetch result row as an associative array. Since the result set
-                      contains only one row, we don't need to use while loop */
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-                    // Retrieve individual field value
-                    $item_name = $row["item_name"];
-                    $item_price = $row["item_price"];
-                    $description = $row["description"];
-                } else {
-                    // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
-                    exit();
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
-
-        // Close connection
-        mysqli_close($link);
-    } else {
-        // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
-        exit();
-    }
 }
 
 function sanitize_input($data) {
@@ -149,7 +183,7 @@ function sanitize_input($data) {
                     <div class="col-md-12">
                         <h2 class="mt-5">Update Item</h2>
                         <p>Input value to edit and submit to update the Item.</p>
-                        <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                        <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?> " method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Item Name</label>
                                 <input type="text" name="item_name" class="form-control <?php echo (!empty($item_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $item_name; ?>">
@@ -166,13 +200,13 @@ function sanitize_input($data) {
                                 <span class="invalid-feedback"><?php echo $description_err; ?></span>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
+                                <p>Select image to upload:</p>
                                 <input type="file" name="fileToUpload" id="fileToUpload">
-                                <span class="invalid-feedback"><?php echo $salary_err; ?></span>
+                                <span class="invalid-feedback"><?php echo $imageUpload_err; ?></span>
                             </div>
                             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                             <input type="submit" class="btn btn-primary" value="Submit">
-                            <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                            <a href="marketitem.php?item_id=<?php echo $_GET["id"]?>" class="btn btn-secondary ml-2">Cancel</a>
                         </form>
                     </div>
                 </div>        
