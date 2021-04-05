@@ -62,7 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } else{
+    } elseif (strlen(trim($_POST["username"])) < 21 && strlen(trim($_POST["username"])) > 0) {
+        
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE username = ?";
         
@@ -88,6 +89,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Close statement
         mysqli_stmt_close($stmt);
+    }
+    else{
+        $username_err = 'Username length longer than 20.';
     }
     
     // Validate password strength
@@ -142,21 +146,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 $mail = new PHPMailer(true);
                 try {
-                    $mail->Username   = EMAIL;                          //SMTP username
-                    $mail->Password   = PASS;                           //SMTP password
-                    $mail->setFrom(EMAIL , 'POKESTOP');                 //SEND FROM
-                    $mail->addAddress($param_email, $param_first_name); //SEND TO
-                    
-                    //EMAIL CONTENT
-                    $mail->isHTML(true);
+                    //Server settings
+                    $mail->SMTPDebug = 1;                                       //Enable verbose debug output
+                    $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = EMAIL;                                  //SMTP username
+                    $mail->Password   = PASS;                                   //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                    $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+                    //Recipients
+                    $mail->setFrom(EMAIL, 'POKEDEX');
+                    $mail->addAddress($email, $first_name);     //Add a recipient
+
+                    //Content
+                    $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = 'Regisration verification!';
-                    $mail->Body = $url;
-                    $mail->AltBody = '';
-                    echo 'Message has been sent';
-                    
+                    $mail->Body    = 'Hi '.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
+                    $mail->AltBody = 'Hi '.$first_name.', thanks for signing up to POKEDEX! We want to make sure that we got your email right. Copy the link and paste it in the URL bar to get verified! '.$url;
+
+                    $mail->send();
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                }
+                }                // Redirect to login page
+                header("location: login.php");
                 
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
