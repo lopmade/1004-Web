@@ -12,9 +12,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 $status = '';
+$profile_picture = '';
 
 // Prepare a select statement
-$sql = "SELECT user_verified FROM user WHERE username = ? AND user_verified = 1";
+$sql = "SELECT profile_picture, user_verified FROM user WHERE username = ? AND user_verified = 1";
 
 $stmt = mysqli_prepare($link, $sql);
 // Bind variables to the prepared statement as parameters
@@ -23,11 +24,45 @@ mysqli_stmt_bind_param($stmt, "s", $param_username);
 $param_username = $_SESSION["username"];
 
 // Attempt to execute the prepared statement
-if (mysqli_stmt_execute($stmt)) {
+if(mysqli_stmt_execute($stmt)) {
     /* store result */
     mysqli_stmt_store_result($stmt);
+    
+    if(mysqli_stmt_num_rows($stmt) == 1){
+        
+        mysqli_stmt_bind_result($stmt, $profile_picture, $user_verified);
+        
+            if(mysqli_stmt_fetch($stmt)){
+                
+                if ($user_verified == 1) {
+                    $status = 'Verified';
+                } else {
+                $status = 'Unverified';
+                }
+            }
+        }
+    } else {
+        echo "Oops! Something went wrong. Please try again later.";
+    }
 
-    if (mysqli_stmt_num_rows($stmt) == 1) {
+// Close statement
+mysqli_stmt_close($stmt);
+
+ // Prepare a select statement
+$sql1 = "SELECT profile_picture FROM user WHERE username = ?";
+
+$stmt1 = mysqli_prepare($link, $sql);
+// Bind variables to the prepared statement as parameters
+mysqli_stmt_bind_param($stmt1, "s", $param_username);
+// Set parameters
+$param_username = $_SESSION["username"];
+
+// Attempt to execute the prepared statement
+if (mysqli_stmt_execute($stmt1)) {
+    /* store result */
+    mysqli_stmt_store_result($stmt1);
+
+    if (mysqli_stmt_num_rows($stmt1) == 1) {
         $status = 'Verified';
     } else {
         $status = 'Unverified';
@@ -37,7 +72,7 @@ if (mysqli_stmt_execute($stmt)) {
 }
 
 // Close statement
-mysqli_stmt_close($stmt);
+mysqli_stmt_close($stmt1);
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +80,9 @@ mysqli_stmt_close($stmt);
     <head>
         <meta charset="UTF-8">
         <title>Welcome</title>
+        <?php
+        include "header.inc.php";
+        ?>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
         <style type="text/css">
             body{ font: 14px sans-serif; text-align: center; }
@@ -57,7 +95,7 @@ mysqli_stmt_close($stmt);
             ?>
             <section id="mainContent" class = "section">
                 <div>
-                    <img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64,<?php echo $_SESSION['profile_picture']; ?>' />
+                    <img style='display:block; width:100px;height:100px;' src='images/profile/<?php echo $profile_picture;?>' />
                     
                 </div>
             <div class="page-header">
