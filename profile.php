@@ -34,6 +34,9 @@ if(mysqli_stmt_execute($stmt)) {
         
             if(mysqli_stmt_fetch($stmt)){
                 
+                if(empty($profile_picture)){
+                    $profile_picture = 'default.png';
+                }
                 if ($user_verified == 1) {
                     $status = 'Verified';
                 } else {
@@ -70,7 +73,7 @@ mysqli_stmt_close($stmt);
             ?>
             <section id="mainContent" class = "section">
                 <div>
-                    <img style='display:block; width:100px;height:100px;' src='images/profile/<?php echo $profile_picture;?>' />
+                    <img style='display:block; width:100px;height:100px;' src='images/profile/<?php echo$profile_picture;?>' />
                     
                 </div>
             <div class="page-header">
