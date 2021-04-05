@@ -21,6 +21,17 @@ if (!isset($_SESSION)) {
 
             <section id="mainContent" class = "section">
                 <h1>Welcome to Forum for Selling items</h1>
+                <p>Seller</p>
+                <p>Step 1: Register/Login</p>
+                <p>Step 2: Confirm Email</p>
+                <p>Step 3: Upload Item</p>
+                <p>Step 4: Wait for Buyer</p>
+                <p>Step 5 (Seller): Accept/Decline offer</p>
+                <p>Buyer</p>
+                <p>Step 1: Register/Login</p>
+                <p>Step 2: Click on an item you like</p>
+                <p>Step 3: Make offer</p>
+                <p>Step 4: Go to chat and negotiate</p>
 
             </section>
 

@@ -14,7 +14,7 @@ body {
     width: 100%!important;
     background-color: #4980c0!important;
     min-width: 260px!important;
-    height: 100px!important;
+    height: 80px!important;
 }
 
 #footer {
@@ -40,7 +40,7 @@ body {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 38px 30px;
+    padding: 28px 30px;
 }
 
 
@@ -57,7 +57,7 @@ body {
     color:#fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 38px 30px;
+    padding: 28px 30px;
 }
 
 #sideList li a:hover {
@@ -70,12 +70,11 @@ body {
 }
 
 #space {
-    height:100px;
+    height:80px;
 }
 
 #mainContent {
     margin: 25px;
-    min-height: 500px;
 }
 
 #footer {
