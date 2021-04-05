@@ -7,6 +7,9 @@ body {
     background-color: grey;
 }
 
+.help-block {
+    color: red;
+}
 
 .wrapper {
     position: relative;

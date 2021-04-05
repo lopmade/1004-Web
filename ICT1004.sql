@@ -109,23 +109,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`item_chat` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `mydb`.`item_image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`item_image` (
-  `image_id` INT NOT NULL AUTO_INCREMENT,
-  `item_id` INT NOT NULL,
-  `image` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`image_id`, `item_id`),
-  INDEX `fk_item_image_items_listing1_idx` (`item_id` ASC) ,
-  CONSTRAINT `fk_item_image_items_listing1`
-    FOREIGN KEY (`item_id`)
-    REFERENCES `mydb`.`items_listing` (`item_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Table `mydb`.`item_offer`
 -- -----------------------------------------------------
@@ -146,8 +129,7 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 use mydb;
-insert into user (username,email,password,first_name,last_name,user_verified) values ('abc','def@123.com','123','adam','lee',0);
-insert into user (username,email,password,first_name,last_name,user_verified) values ('def','def@321.com','321','bob','tan',0);
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('1','2','Bulbasaur','Grass type pokemon',NOW(),'0','10.00','001_Bulbasaur.png');
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('2','2','Charmander','Fire type pokemon',NOW(),'0','11.00','004_Charmander.png');
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('3','2','Squirtle','Water type pokemon',NOW(),'0','11.00','007_Squirtle.png');
+insert into user (username,email,password,first_name,last_name,user_verified) values ('default','default@123.com','default','default','account',0);
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('1','1','Bulbasaur','Grass type pokemon',NOW(),'0','10.00','001_Bulbasaur.png');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('2','1','Charmander','Fire type pokemon',NOW(),'0','11.00','004_Charmander.png');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('3','1','Squirtle','Water type pokemon',NOW(),'0','11.00','007_Squirtle.png');
