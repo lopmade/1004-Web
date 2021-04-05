@@ -15,15 +15,13 @@ function convertTime($time) {
 
 function getAll() {
     include("config.php");
-    $get_all = "select * from items_listing";
+    $get_all = "select * from items_listing where item_status = 0";
     $run_all = mysqli_query($link, $get_all);
     $x = 0;
     while ($row_all = mysqli_fetch_array($run_all)) {
         $x++;
         $item_id = $row_all['item_id'];
-        $user_user_id = $row_all['user_user_id'];
         $item_name = $row_all['item_name'];
-        $description = $row_all['description'];
         $date_added = $row_all['date_added'];
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
@@ -63,32 +61,6 @@ function getAll() {
                 </a>
             </div>";
 
-
-
-
-        /*  TABLE FORM
-          echo""
-          . "<a href = '/marketitem.php?item_id=$item_id' "
-          . "class = 'list-group-item list-group-item-action'>"
-          . "<img style = 'width:100px;height:100px;'src = images/market/$item_image>
-          <div class = 'd-flex w-100 justify-content-between'>
-          <h5 class = 'mb-1'>$item_name</h5>
-          <small>$date_added</small>
-          </div>
-          <p class = 'mb-1'>$description</p>
-          <small>Price$$item_price</small>
-          </a>
-          ";
-         */
-
-
-
-        /*
-          echo "<h1>$item_name</h1>";
-          echo "<h1>$date_added</h1>";
-          echo "<h1>$$item_price </h1>";
-          echo "<a href = '/marketitem.php?item_id=$item_id'><img src = images/market/$item_image></a>";
-         */
     }
 }
 

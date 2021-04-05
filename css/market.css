@@ -15,6 +15,7 @@
     text-align: center;
 }
 
+
 .product {
     display:block;
 }
@@ -29,8 +30,6 @@
     color:black;
     padding: 5px 0px;
 }
-
-
 #content .product:hover {
     border: solid 3px #4980c0;
 }
