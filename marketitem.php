@@ -50,16 +50,17 @@ if (isset($_GET['item_id'])) {
         $retrieving_err = "An unexpected error occured";
 
     }
+
     // if the item is sold already
     if ($item_status === 1) {
         goBackToMarket();
     }
+
     mysqli_stmt_close($run_item);
     require_once "./offer_process.php";
 
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
     $_SESSION['chat_id'] = $chat_id;
-    
 }
 
 function sanitize_input($data) {
@@ -126,6 +127,9 @@ function goBackToMarket() {
                     <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
                 </form>
             </section>
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>
