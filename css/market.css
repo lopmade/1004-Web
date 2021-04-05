@@ -10,14 +10,50 @@
     background: #ffffff;
     border: solid 3px black;
     margin-bottom: 30px;
+    padding: 15px;
     box-sizing: border-box;
     text-align: center;
 }
 
+
+.product {
+    display:block;
+}
+
+.text p {
+    color: #686968;
+    margin:0px 15px;
+    padding: 0px;
+}
+
+.text h3 {
+    color:black;
+    padding: 5px 0px;
+}
 #content .product:hover {
     border: solid 3px #4980c0;
 }
 
-@media only screen and (max-width: 1024px) {
-    width: 300px;
+@media only screen and (max-width: 940px) {
+    .product {
+        min-height: 375px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .product {
+        min-height: 350px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .product {
+        min-height: 325px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .product {
+        min-height: 300px;
+    }
 }

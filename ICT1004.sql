@@ -125,6 +125,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`item_image` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `mydb`.`item_offer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`item_offer` (
+  `offer_id` INT NOT NULL AUTO_INCREMENT,
+  `offer_buyer_id` INT NOT NULL,
+  `offer_seller_id` INT NOT NULL,
+  `offer_item_id` INT NOT NULL,
+  `offer_status` TINYINT NOT NULL DEFAULT 0,
+  `offer_date` DATETIME NOT NULL,
+  PRIMARY KEY (`offer_id`),
+  UNIQUE INDEX `offer_id_UNIQUE` (`offer_id` ASC) )
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
