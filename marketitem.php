@@ -60,7 +60,9 @@ if (isset($_GET['item_id'])) {
     require_once "./offer_process.php";
 
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
-    $_SESSION['chat_id'] = $chat_id;
+    $_SESSION['chat_id'] = $chat_id."log.html";
+    $_SESSION['seller_id']=$user_user_id;
+    $_SESSION['item_id']=$item_id;
 }
 
 function sanitize_input($data) {

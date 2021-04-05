@@ -9,20 +9,31 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
+require_once 'config.php';
 
-$chat_id = $_SESSION['chat_id']."log.html";
+$chat_id = $_SESSION['chat_id'];
+$seller_id = $_SESSION['seller_id'];
+$item_id = $_SESSION['item_id'];
+$sql = "INSERT INTO item_chat (chat_id, seller_id, buyer_id, item_id) VALUES (?,?,?,?)";
+$stmt = mysqli_prepare($link, $sql);
+mysqli_stmt_bind_param($stmt,"ssss", $param_chat_id, $param_seller_id, $param_buyer_id, $param_item_id);
+$param_chat_id = $chat_id;
+$param_buyer_id = $_SESSION['user_id'];
+$param_seller_id = $seller_id;
+$param_item_id=$item_id;
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-
-        <title>Tuts+ Chat Application</title>
-        <meta name="description" content="Tuts+ Chat Application" />
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <h1>CHAT_ID:<?php echo $chat_id; ?></h1>
+        <h1>SELLER_ID:<?php echo $seller_id; ?></h1>
+
         <div id="wrapper">
             <div id="menu">
                 <p class="welcome">Chat<b></b></p>
