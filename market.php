@@ -26,6 +26,7 @@ function getAll() {
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
         $item_image = $row_all['item_image'];
+        $description = $row_all['description'];
         $minutes = (time() - strtotime($date_added)) / 60;
         $history = "";
         
