@@ -48,31 +48,6 @@ if(mysqli_stmt_execute($stmt)) {
 // Close statement
 mysqli_stmt_close($stmt);
 
- // Prepare a select statement
-$sql1 = "SELECT profile_picture FROM user WHERE username = ?";
-
-$stmt1 = mysqli_prepare($link, $sql);
-// Bind variables to the prepared statement as parameters
-mysqli_stmt_bind_param($stmt1, "s", $param_username);
-// Set parameters
-$param_username = $_SESSION["username"];
-
-// Attempt to execute the prepared statement
-if (mysqli_stmt_execute($stmt1)) {
-    /* store result */
-    mysqli_stmt_store_result($stmt1);
-
-    if (mysqli_stmt_num_rows($stmt1) == 1) {
-        $status = 'Verified';
-    } else {
-        $status = 'Unverified';
-    }
-} else {
-    echo "Oops! Something went wrong. Please try again later.";
-}
-
-// Close statement
-mysqli_stmt_close($stmt1);
 ?>
 
 <!DOCTYPE html>
