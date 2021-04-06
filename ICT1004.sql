@@ -89,23 +89,12 @@ ENGINE = InnoDB;
 -- Table `mydb`.`item_chat`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`item_chat` (
-  `chat` INT NOT NULL,
+  `chat_id` VARCHAR(255) NOT NULL,
   `seller_id` INT NOT NULL,
   `buyer_id` INT NOT NULL,
-  `timestamp` DATETIME NOT NULL,
-  PRIMARY KEY (`seller_id`, `buyer_id`),
-  INDEX `fk_item_transaction_user1_idx` (`seller_id` ASC) ,
-  INDEX `fk_item_transaction_user2_idx` (`buyer_id` ASC) ,
-  CONSTRAINT `fk_item_transaction_user10`
-    FOREIGN KEY (`seller_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_item_transaction_user20`
-    FOREIGN KEY (`buyer_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `item_id` INT NOT NULL,
+  PRIMARY KEY (`chat_id`),
+  UNIQUE INDEX `chat_id_UNIQUE` (`chat_id` ASC) )
 ENGINE = InnoDB;
 
 
