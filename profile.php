@@ -49,7 +49,57 @@ if(mysqli_stmt_execute($stmt)) {
 
 // Close statement
 mysqli_stmt_close($stmt);
+function getItems(){
+    include("config.php");
+    $get_all = "select * from items_listing where item_status = 0 and user_user_id =" . $_SESSION['user_id'];
+    $run_all = mysqli_query($link, $get_all);
+    $x = 0;
+    while ($row_all = mysqli_fetch_array($run_all)) {
+        $x++;
+        $item_id = $row_all['item_id'];
+        $item_name = $row_all['item_name'];
+        $date_added = $row_all['date_added'];
+        $item_status = $row_all['item_status'];
+        $item_price = $row_all['item_price'];
+        $item_image = $row_all['item_image'];
+        $description = $row_all['description'];
+        $minutes = (time() - strtotime($date_added)) / 60;
+        $history = "";
+        
+        $test = convertTime($minutes);
+        if ($test < 1) {
+            $history = "Less than an hour ago";
+        } else if ($test < 24) {
+            $history = "$test hours ago";
+        } else if ($test >= 24){
+            $day = $test / 24;
+            if ($day < 2) {
+                $history = "1 day ago";
+            } else if ($day < 7) {
+                $day = number_format($day);
+                $history = "$day days ago";
+            } else {
+                $history = "More than 7 days ago";
+            }
+        }
+            echo
+            "
+            <div class = 'col-sm-4'>
+                <a style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
+                    <div class = 'product'>
+                        <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                            <div style='bottom:0'class = 'text'>
+                                <h3>$item_name</h3>
+                                <p style='text-align:left;'>$description</p>
+                                <p style='text-align:left;'>$$item_price</p>
+                                <p style='text-align:left;'>$history</p> 
+                            </div>
+                    </div>
+                </a>
+            </div>";
 
+    }
+}
 function getChats() {
     include("config.php");
     $get_all_chat = "select * from item_chat,user,items_listing where (seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . ")  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
@@ -253,6 +303,14 @@ function getOffers($typeofoffer) {
             }
             ?>
             </div>
+                <div id ="content" class="container-fluid">
+                    <div class="row">
+                        <h4>My Items being sold</h4>
+                        <?php
+                        getItems();
+                        ?>
+                    </div>
+                </div>
                 <div id ="content" class="container-fluid">
                     <div class="row">
                         <h4>My Current Incoming Offers</h4>

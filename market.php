@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 function convertTime($time) {
     if ($time < 1) {
@@ -8,6 +11,9 @@ function convertTime($time) {
     $minutes = ($time % 60);
     return sprintf($hours);
 }
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    $_SESSION['user_id']="";
+}
 ?>
 
 
@@ -15,7 +21,7 @@ function convertTime($time) {
 
 function getAll() {
     include("config.php");
-    $get_all = "select * from items_listing where item_status = 0 and user_user_id !=" . $_SESSION['user_id'];
+    $get_all = "select * from items_listing where item_status = 0";
     $run_all = mysqli_query($link, $get_all);
     $x = 0;
     while ($row_all = mysqli_fetch_array($run_all)) {
@@ -27,6 +33,7 @@ function getAll() {
         $item_price = $row_all['item_price'];
         $item_image = $row_all['item_image'];
         $description = $row_all['description'];
+        $seller_id= $row_all['user_user_id'];
         $minutes = (time() - strtotime($date_added)) / 60;
         $history = "";
         
@@ -46,6 +53,7 @@ function getAll() {
                 $history = "More than 7 days ago";
             }
         }
+        if ($seller_id != $_SESSION['user_id']){
             echo
             "
             <div class = 'col-sm-4'>
@@ -61,6 +69,8 @@ function getAll() {
                     </div>
                 </a>
             </div>";
+        }
+
 
     }
 }

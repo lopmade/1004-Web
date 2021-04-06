@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`items_listing` (
   `description` LONGTEXT NULL,
   `date_added` DATETIME NOT NULL,
   `item_status` TINYINT NOT NULL,
+  `item_price` FLOAT NOT NULL,
+  `item_image` VARHCHAR(255) NOT NULL,
   PRIMARY KEY (`item_id`, `user_user_id`),
   UNIQUE INDEX `item_id_UNIQUE` (`item_id` ASC) ,
   INDEX `fk_items_listing_user_idx` (`user_user_id` ASC) ,
