@@ -12,9 +12,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 function getChats() {
     include("config.php");
-    $get_all_chat = "select * from item_chat,user,items_listing where seller_id= " . $_SESSION['user_id'] . " and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
+    $get_all_chat = "select * from item_chat,user,items_listing where seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . "  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
     $run_all_chat = mysqli_query($link, $get_all_chat);
     $x = 0;
+    $_SESSION['chat_id'] = [];
+    $_SESSION['seller_id'] = [];
+    $_SESSION['item_id'] = [];
     while ($row_all_chat = mysqli_fetch_array($run_all_chat)) {
         $x++;
         $chat_id = $row_all_chat['chat_id'];
@@ -22,14 +25,23 @@ function getChats() {
         $buyer_name = $row_all_chat['username'];
         $item_name = $row_all_chat['item_name'];
         $item_id = $row_all_chat['item_id'];
+        $seller_id = $row_all_chat['seller_id'];
+        $_SESSION['x'] = $x;
+        
         $_SESSION['chat_id'] = $chat_id;
-        $_SESSION['seller_id'] = $_SESSION['user_id'];
-        $_SESSION['item_id'] = $item_id;
+        $_SESSION['seller_id']= $_SESSION['user_id'];
+        $_SESSION['item_id']= $item_id;
+
         echo
         "
             <div>
-                <form method='post' action='{next_page}'>
-                    <a class='btn btn-primary' href='./chat.php' role='button'>Chat $chat_id with $buyer_name about $item_name</a>
+                <form method='post' action='chat2.php'>
+                    <a href='./chat2.php'>
+                        <input type='hidden' name='chat_id' value=$chat_id>
+                        <input type='hidden' name='seller_id' value=$seller_id>
+                        <input type='hidden' name='item_id' value=$item_id>
+                        <input type='submit' role='button' value='Chat with $buyer_name about $item_name.'/>
+                    </a>
                 </form>
             </div>";
     }
