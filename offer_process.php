@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $retrieving_err = "An unexpected error occured";
                 }
             } else {
-                $retrieving_err = "An uneaaaaaxpected error occured";
+                $retrieving_err = "An unexpected error occured";
             }
         }
     } else {
