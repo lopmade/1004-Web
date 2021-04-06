@@ -141,7 +141,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             if (mysqli_stmt_execute($stmt)) {
                 // Item updated successfully. Redirect to landing page
                 echo "<h1>Item values successfully updated.</h1>";
-                header("Refresh:2; url=./marketitem.php?item_id=$id");
+                header("Refresh:2; url=./profile.php");
                 exit();
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -208,7 +208,7 @@ function sanitize_input($data) {
                             </div>
                             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                             <input type="submit" class="btn btn-primary" value="Submit">
-                            <a href="marketitem.php?item_id=<?php echo $_GET["id"] ?>" class="btn btn-secondary ml-2">Cancel</a>
+                            <a href="profile.php" class="btn btn-secondary ml-2">Cancel</a>
                         </form>
                     </div>
                 </div>        
