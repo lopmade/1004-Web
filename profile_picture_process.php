@@ -24,28 +24,34 @@
     // Check if image file is input or not
     if (isset($_POST["submit"])) {
         if ($_FILES["fileToUpload"]["size"] == 0) {
-            $imageUpload_err = "No image detected. Please select an image.";
+            echo "No image detected. Please select an image. Redirecting you back to profile page.";
+            header("Refresh:3; url=profile.php");
         } else {
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             // Check if file is an actual image
             if ($check == false) {
-                $imageUpload_err = "File is not an image.";
+                echo "File is not an image. Redirecting you back to profile page.";
+                header("Refresh:3; url=profile.php");
             } else {
                 // Check if file already exists in the very very rare chance that two files is uploaded at the same time with the same name and hash
                 if (file_exists($target_file)) {
-                    $imageUpload_err = "Sorry, file already exists.";
+                    echo "Sorry, file already exists. Redirecting you back to profile page.";
+                    header("Refresh:3; url=profile.php");
                 } else {
                     // Check file name ensure <= 200 characters
                     if (strlen($tempfilename) > 200) {
-                        $imageUpload_err = "Max file name is 200 characters.";
+                        echo "Max file name is 200 characters.";
+                        header("Refresh:3; url=profile.php");
                     } else {
                         // Check file size
                         if ($_FILES["fileToUpload"]["size"] > 1000000) {
-                            $imageUpload_err = "Sorry, your file is too large. Max is 1MB";
+                            echo "Sorry, your file is too large. Max is 1MB";
+                            header("Refresh:3; url=profile.php");
                         } else {
                             // Allow certain file formats
                             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                                $imageUpload_err = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                                header("Refresh:3; url=profile.php");
                             } else {
                                 // if can upload the file
                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -65,14 +71,14 @@
                                         echo "Picture uploaded successfully. Redirecting you back to profile page.";
                                         header("Refresh:3; url=profile.php");
                                     } else {
-                                        $imageUpload_err = "Oops! Something went wrong. Please try again later.";
+                                        echo "Oops! Something went wrong. Please try again later.";
                                     }
                                     echo "Picture uploaded successfully. Redirecting you back to profile page.";
                                     header("Refresh:3; url=profile.php");
                                     // Close statement
                                     mysqli_stmt_close($stmt);
                                 } else {
-                                    $imageUpload_err = "Sorry, there was an error uploading your file. Redirecting you back to profile page.";
+                                    echo "Sorry, there was an error uploading your file. Redirecting you back to profile page.";
                                     header("Refresh:3; url=profile.php");
                                 }
                             }
