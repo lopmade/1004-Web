@@ -49,6 +49,19 @@ if(mysqli_stmt_execute($stmt)) {
 
 // Close statement
 mysqli_stmt_close($stmt);
+
+function convertTime($time) {
+    if ($time < 1) {
+        return;
+    }
+    $hours = floor($time / 60);
+    $minutes = ($time % 60);
+    return sprintf($hours);
+}
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    $_SESSION['user_id']="";
+}
+
 function getItems(){
     include("config.php");
     $get_all = "select * from items_listing where item_status = 0 and user_user_id =" . $_SESSION['user_id'];
@@ -94,6 +107,8 @@ function getItems(){
                                 <p style='text-align:left;'>$$item_price</p>
                                 <p style='text-align:left;'>$history</p> 
                             </div>
+                            <a class='btn btn-primary' href='update.php?id=$item_id role='button'>Edit</a>
+                            <a class='btn btn-primary' href='delete.php?id=$item_id name='delete' role='button'>Delete</a>
                     </div>
                 </a>
             </div>";
