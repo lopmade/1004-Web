@@ -73,7 +73,6 @@ if (isset($_GET['action']) && isset($_GET['item_id'])) {
         }
         if ($link->query($query_action) === FALSE)
         {
-        
             mysqli_stmt_close($run_item);
             mysqli_close($link);
             goBackToProfile();
