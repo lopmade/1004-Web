@@ -115,10 +115,6 @@ function goBackToMarket() {
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
                 <!--Only user's can update or delete its own item-->
-                <?php if ($user_user_id == $_SESSION['user_id']) { ?>
-                    <a class="btn btn-primary" href="update.php?id=<?php echo $_GET['item_id'] ?>" role="button">Edit</a>
-                    <a class="btn btn-primary" href="delete.php?id=<?php echo $_GET['item_id'] ?>" name="delete" role="button">Delete</a>
-                <?php } ?>
                 <?php
                 // if the item being viewed is NOT the user's item
                 if ($user_user_id !== $_SESSION['user_id']) {
