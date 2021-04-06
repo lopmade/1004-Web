@@ -14,7 +14,7 @@ $status = '';
 $profile_picture = '';
 
 // Prepare a select statement
-$sql = "SELECT profile_picture, user_verified FROM user WHERE username = ? AND user_verified = 1";
+$sql = "SELECT profile_picture, user_verified FROM user WHERE username = ?";
 
 $stmt = mysqli_prepare($link, $sql);
 // Bind variables to the prepared statement as parameters
@@ -39,7 +39,7 @@ if(mysqli_stmt_execute($stmt)) {
                 if ($user_verified == 1) {
                     $status = 'Verified';
                 } else {
-                $status = 'Unverified';
+                    $status = 'Unverified';
                 }
             }
         }
@@ -171,7 +171,7 @@ function getOffers($typeofoffer) {
             ?>
             <section id="mainContent" class = "section">
                 <div>
-                    <img style='display:block; width:100px;height:100px;' src='images/profile/<?php echo$profile_picture;?>' />
+                    <img style='display:block; width:100px;height:100px;' src='images/profile/<?php echo $profile_picture;?>' />
                     
                 </div>
             <div class="page-header">
@@ -221,11 +221,6 @@ function getOffers($typeofoffer) {
                     <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
                 </p>
 
-            </section>
-            <p>
-                <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
-                <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-            </p>
             </section>
 <?php
 include "footer.inc.php";

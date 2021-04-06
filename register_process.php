@@ -2,9 +2,12 @@
 // Include config file
 require_once "config.php";
 
-require './email_credentials.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
+require './email_credentials.php';
 
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $first_name = $last_name = $email = "";
@@ -63,7 +66,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
     } elseif (strlen(trim($_POST["username"])) < 21 && strlen(trim($_POST["username"])) > 0) {
-        
         // Prepare a select statement
         $sql = "SELECT user_id FROM user WHERE username = ?";
         
@@ -89,10 +91,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Close statement
         mysqli_stmt_close($stmt);
-    }
-    else{
+    } else{
         $username_err = 'Username length longer than 20.';
     }
+
     
     // Validate password strength
     $password = $_POST["password"];
@@ -137,14 +139,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_first_name = $first_name;
             $param_last_name = $last_name;
             $param_token = md5($param_username . date("dmYhis"));
-            $url = $_SERVER['SERVER_NAME'].'verify.php?email='.$email.'&token='.$token;
+
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
-                
+                //Instantiation and passing `true` enables exceptions
                 $mail = new PHPMailer(true);
+                $path = '';
+                $url = $_SERVER['SERVER_NAME'].$path."/verify.php?email=".$email."&token=".$param_token;
+
                 try {
                     //Server settings
                     $mail->SMTPDebug = 1;                                       //Enable verbose debug output
@@ -162,15 +165,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
-                    $mail->Subject = 'Regisration verification!';
+                    $mail->Subject = 'Account Verification';
                     $mail->Body    = 'Hi '.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
                     $mail->AltBody = 'Hi '.$first_name.', thanks for signing up to POKEDEX! We want to make sure that we got your email right. Copy the link and paste it in the URL bar to get verified! '.$url;
 
                     $mail->send();
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                }                // Redirect to login page
+                }
+                // Redirect to login page
                 header("location: login.php");
+                
                 
             } else{
                 echo "Oops! Something went wrong. Please try again later.";

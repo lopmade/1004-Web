@@ -25,7 +25,6 @@ $first_name = $_SESSION['first_name'];
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
-$url = $_SERVER['SERVER_NAME']."/webapplication/verify.php?email=".$email."&token=".$token;
 
 
 try {
@@ -47,7 +46,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Account Verification';
     $mail->Body    = 'Hi '.$first_name.',<br>Thanks for signing up to POKEDEX!<br>We want to make sure that we got your email right. Click the link below or copy the URL to the URL bar to verify your account!<br>'.'<a href = http://'.$url.'>Click Here!<a>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
