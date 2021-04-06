@@ -10,8 +10,11 @@ include("config.php");
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
     // Set SQL delete query
-    $del_item = "delete from items_listing where item_id=?";
-
+    $del_item = "delete il, io"
+            . " from items_listing il inner join item_offer io"
+            . " on il.item_id = io.offer_item_id"
+            . " where il.item_id=?";
+echo $del_item;
     // Prepare a delete statement
     if ($run_item = mysqli_prepare($link, $del_item)) {
         // Bind variables to the prepared statement as parameters
