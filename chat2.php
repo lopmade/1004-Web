@@ -13,6 +13,7 @@ require_once 'config.php';
 $chat_id = $_POST['chat_id'];
 $seller_id = $_POST['seller_id'];
 $item_id = $_POST['item_id'];
+$_SESSION['chat_id'] = $chat_id;
 
 ?>
 <!DOCTYPE html>
