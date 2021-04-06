@@ -1,20 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-           window.alert('Please login first!')
-           window.location.href='login.php';
-       </SCRIPT>
-       <NOSCRIPT>
-           <a href='login.php'>Please login first. Click here if you are not redirected.</a>
-       </NOSCRIPT>");
-    //header("location: login.php");
-    exit;
-}
 // Include config file
 require_once "config.php";
 
