@@ -36,13 +36,9 @@ if(isset($email) && !empty($email) AND isset($token) && !empty($token)){
                 } else{
                     echo "Oops! Something went wrong. Please try again later.";
                 }
-                
-                
             } else{
                 echo "Oops! Something went wrong. Please try again later or contact support.";
             }
-            
-            
         }
 
 } else {

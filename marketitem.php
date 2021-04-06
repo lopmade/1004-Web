@@ -50,17 +50,16 @@ if (isset($_GET['item_id'])) {
         $retrieving_err = "An unexpected error occured";
         
     }
+
     // if the item is sold already
     if ($item_status === 1) {
         goBackToMarket();
     }
+
     mysqli_stmt_close($run_item);
-    require_once "./offer_process.php";
-
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
-    $_SESSION['chat_id'] = $chat_id;
-
-    
+    $_SESSION['chat_id'] = $chat_id."log.html";
+    require_once "./offer_process.php";
     
 }
 function sanitize_input($data) {
@@ -102,7 +101,6 @@ function goBackToMarket() {
                 // if there is an error, display it
                 if (!empty($retrieving_err)) {
                     echo '<span class="help-block">' . $retrieving_err . '</span>';
-                    die();
                 }
                 if (!empty($alreadyOffered_err)) {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
@@ -128,11 +126,15 @@ function goBackToMarket() {
                     . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
                     . "</form>";
                 }
+                else
+                {
+                    echo "<h1>This is your item by the way</h1>";
+                }
                 ?>
-                <form method="post" action="{next_page}">
-                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
-                </form>
             </section>
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>
