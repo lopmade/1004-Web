@@ -12,7 +12,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 function getChats() {
     include("config.php");
-    $get_all_chat = "select * from item_chat,user,items_listing where seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . "  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
+    $get_all_chat = "select * from item_chat,user,items_listing where (seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . ")  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
     $run_all_chat = mysqli_query($link, $get_all_chat);
     $x = 0;
     $_SESSION['chat_id'] = [];
@@ -40,7 +40,7 @@ function getChats() {
                         <input type='hidden' name='chat_id' value=$chat_id>
                         <input type='hidden' name='seller_id' value=$seller_id>
                         <input type='hidden' name='item_id' value=$item_id>
-                        <input type='submit' role='button' value='Chat with $buyer_name about $item_name.'/>
+                        <input type='submit' role='button' value='Chat $chat_id with $buyer_name about $item_name.'/>
                     </a>
                 </form>
             </div>";
