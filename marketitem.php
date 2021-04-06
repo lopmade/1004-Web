@@ -57,12 +57,10 @@ if (isset($_GET['item_id'])) {
     }
 
     mysqli_stmt_close($run_item);
-    require_once "./offer_process.php";
-
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
     $_SESSION['chat_id'] = $chat_id."log.html";
-    $_SESSION['seller_id']=$user_user_id;
-    $_SESSION['item_id']=$item_id;
+    require_once "./offer_process.php";
+    
 }
 
 function sanitize_input($data) {
@@ -124,10 +122,11 @@ function goBackToMarket() {
                     . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
                     . "</form>";
                 }
+                else
+                {
+                    echo "<h1>This is your item by the way</h1>";
+                }
                 ?>
-                <form method="post" action="{next_page}">
-                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
-                </form>
             </section>
             <?php
             include "footer.inc.php";
