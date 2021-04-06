@@ -23,7 +23,8 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($run_item)) {
             // Records deleted successfully. Redirect to landing page
-            header("location: index.php");
+            echo "<h1>Item successfully deleted.</h1>";
+            header("Refresh:2; url=./market.php");
             exit();
         } else {
             echo "Oops! Something went wrong. Please try again later.";
@@ -39,7 +40,8 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Check existence of id parameter
     if (empty(trim($_GET["id"]))) {
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        echo "Sorry, you've made an invalid request. Please";
+        header("Refresh:2; url=./marketitem.php?item_id=$id");
         exit();
     }
 }
@@ -81,7 +83,7 @@ function sanitize_input($data) {
                                     <p>Are you sure you want to delete this Item?</p>
                                     <p>
                                         <input type="submit" value="Yes" class="btn btn-danger">
-                                        <a href="market.php" class="btn btn-secondary">No</a>
+                                        <a href="marketitem.php?item_id=<?php echo $_GET["id"]?>" class="btn btn-secondary">No</a>
                                     </p>
                                 </div>
                             </form>
