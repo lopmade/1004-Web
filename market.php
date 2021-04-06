@@ -15,7 +15,7 @@ function convertTime($time) {
 
 function getAll() {
     include("config.php");
-    $get_all = "select * from items_listing where item_status = 0";
+    $get_all = "select * from items_listing where item_status = 0 and user_user_id !=" . $_SESSION['user_id'];
     $run_all = mysqli_query($link, $get_all);
     $x = 0;
     while ($row_all = mysqli_fetch_array($run_all)) {

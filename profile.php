@@ -50,6 +50,35 @@ if(mysqli_stmt_execute($stmt)) {
 // Close statement
 mysqli_stmt_close($stmt);
 
+function getChats() {
+    include("config.php");
+    $get_all_chat = "select * from item_chat,user,items_listing where (seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . ")  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
+    $run_all_chat = mysqli_query($link, $get_all_chat);
+    $x = 0;
+    while ($row_all_chat = mysqli_fetch_array($run_all_chat)) {
+        $x++;
+        $chat_id = $row_all_chat['chat_id'];
+        $buyer_id = $row_all_chat['buyer_id'];
+        $buyer_name = $row_all_chat['username'];
+        $item_name = $row_all_chat['item_name'];
+        $item_id = $row_all_chat['item_id'];
+        $seller_id = $row_all_chat['seller_id'];
+
+        echo
+        "
+            <div>
+                <form method='post' action='chat2.php'>
+                    <a href='./chat2.php'>
+                        <input type='hidden' name='chat_id' value=$chat_id>
+                        <input type='hidden' name='seller_id' value=$seller_id>
+                        <input type='hidden' name='item_id' value=$item_id>
+                        <input type='submit' role='button' value='Chat $chat_id with $buyer_name about $item_name.'/>
+                    </a>
+                </form>
+            </div>";
+    }
+}
+
 function getOffers($typeofoffer) {
     include("config.php");
 
@@ -97,54 +126,92 @@ function getOffers($typeofoffer) {
         if ($typeofoffer == "incoming") {
             $english1 = "by";
             $english2 = "Received";
-            $viewChat = "<p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
-                        </p>";
+            $get_all_chat = "select * from item_chat where (seller_id= " . $_SESSION['user_id'] . " and item_id=$offer_item_id)";
+            $run_all_chat = mysqli_query($link, $get_all_chat);
+            $row_all_chat = mysqli_fetch_array($run_all_chat);
+            $chat_id = $row_all_chat['chat_id'];
+            $buyer_id = $row_all_chat['buyer_id'];
+            $item_id = $row_all_chat['item_id'];
+            $seller_id = $row_all_chat['seller_id'];
+
+            $viewChat = 
+            "
+                        <form method='post' action='chat2.php'>
+                            <a href='./chat2.php'>
+                                <input type='hidden' name='chat_id' value=$chat_id>
+                                <input type='hidden' name='seller_id' value=$seller_id>
+                                <input type='hidden' name='item_id' value=$item_id>
+                                <input type='submit' role='button' value='View Chat'/>
+                            </a>
+                        </form>";
+            /*$viewChat = "<p class = 'button'>
+  <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
+  </p>";*/
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/offer_action.php?item_id=$offer_item_id&action=accept'>Accept</a>
-                            <a href = '/offer_action.php?item_id=$offer_item_id&action=decline'>Decline</a>
-                        </p>";
+  <a href = '/offer_action.php?item_id=$offer_item_id&action=accept'>Accept</a>
+  <a href = '/offer_action.php?item_id=$offer_item_id&action=decline'>Decline</a>
+  </p>";
         } elseif ($typeofoffer == "pending") {
             $english1 = "to";
             $english2 = "Sent";
-            $viewChat = "<p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
-                        </p>";
+            echo $offer_item_id;
+            $get_all_chat = "select * from item_chat where (buyer_id= " . $_SESSION['user_id'] . " and item_id=$offer_item_id)";
+            $run_all_chat = mysqli_query($link, $get_all_chat);
+            $row_all_chat = mysqli_fetch_array($run_all_chat);
+            $chat_id = $row_all_chat['chat_id'];
+            $buyer_id = $row_all_chat['buyer_id'];
+            $item_id = $row_all_chat['item_id'];
+            $seller_id = $row_all_chat['seller_id'];
+
+            $viewChat = 
+            "
+                        <form method='post' action='chat2.php'>
+                            <a href='./chat2.php'>
+                                <input type='hidden' name='chat_id' value=$chat_id>
+                                <input type='hidden' name='seller_id' value=$seller_id>
+                                <input type='hidden' name='item_id' value=$item_id>
+                                <input type='submit' role='button' value='View Chat'/>
+                            </a>
+                        </form>";
+
+            /*$viewChat = "<p class = 'button'>
+  <a href = '/marketitem.php?item_id=$offer_item_id'>View Chat</a>
+  </p>";*/
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/offer_action.php?item_id=$offer_item_id&action=cancel'>Cancel Offer</a>
-                        </p>";
+  <a href = '/offer_action.php?item_id=$offer_item_id&action=cancel'>Cancel Offer</a>
+  </p>";
         } elseif ($typeofoffer == "rejected") {
             $english1 = "to";
             $english2 = "Rejected";
             $viewChat = "";
             $acceptOrDeclineOrDelete = "<p class = 'button'>
-                            <a href = '/offer_action.php?item_id=$offer_item_id&action=remove'>Remove From History</a>
-                        </p>";
+  <a href = '/offer_action.php?item_id=$offer_item_id&action=remove'>Remove From History</a>
+  </p>";
         }
         echo
         "
-            <div class = 'col-sm-4'>
-                <div class = 'product'>
-                    <a href = '/marketitem.php?item_id=$offer_item_id'>
-                        <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
-                    </a>
-                    <div class = 'text'>
-                        <h3>
-                            <a href = '/marketitem.php?item_id=$offer_item_id'>
-                                $item_name
-                            </a>
-                        </h3>
-                        <p class = 'price'>
-                            Offered " . $english1 . ": $user_name
-                        </p>
-                        <p class = 'price'>
-                            Date of " . $english2 . " Offer: $offer_date
-                        </p>
-                        $viewChat
-                        $acceptOrDeclineOrDelete
-                    </div>
-                </div>
-            </div>";
+  <div class = 'col-sm-4'>
+  <div class = 'product'>
+  <a href = '/marketitem.php?item_id=$offer_item_id'>
+  <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+  </a>
+  <div class = 'text'>
+  <h3>
+  <a href = '/marketitem.php?item_id=$offer_item_id'>
+  $item_name
+  </a>
+  </h3>
+  <p class = 'price'>
+  Offered " . $english1 . ": $user_name
+  </p>
+  <p class = 'price'>
+  Date of " . $english2 . " Offer: $offer_date
+  </p>
+  $viewChat
+  $acceptOrDeclineOrDelete
+  </div>
+  </div>
+  </div>";
     }
 }
 ?>
@@ -186,7 +253,6 @@ function getOffers($typeofoffer) {
             }
             ?>
             </div>
-
                 <div id ="content" class="container-fluid">
                     <div class="row">
                         <h4>My Current Incoming Offers</h4>
@@ -211,15 +277,15 @@ function getOffers($typeofoffer) {
                         ?>
                     </div>
                 </div>
-                <p>
-                    <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
-                    <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-                </p>
+                    <p>
+                        <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
+                        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+                    </p>
 
             </section>
-<?php
-include "footer.inc.php";
-?>
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>

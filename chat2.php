@@ -9,20 +9,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
+require_once 'config.php';
+$chat_id = $_POST['chat_id'];
+$seller_id = $_POST['seller_id'];
+$item_id = $_POST['item_id'];
+$_SESSION['chat_id'] = $chat_id;
 
-$chat_id = $_SESSION['chat_id']."log.html";
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-
-        <title>Tuts+ Chat Application</title>
-        <meta name="description" content="Tuts+ Chat Application" />
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <h1>CHAT_ID:<?php echo $chat_id; ?></h1>
+        <h1>SELLER_ID:<?php echo $seller_id; ?></h1>
+
         <div id="wrapper">
             <div id="menu">
                 <p class="welcome">Chat<b></b></p>
