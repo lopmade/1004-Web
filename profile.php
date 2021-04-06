@@ -152,15 +152,10 @@ function getOffers($typeofoffer) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
+        <title>Pokemart - Profile</title>
         <?php
         include "header.inc.php";
         ?>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body{ font: 14px sans-serif; text-align: center; }
-        </style>
         <link rel="stylesheet" 
               href="css/market.css">
     </head>

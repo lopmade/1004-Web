@@ -94,7 +94,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $username_err = 'Username length longer than 20.';
     }
-
     
     // Validate password strength
     $password = $_POST["password"];
