@@ -17,7 +17,7 @@ extension=php_openssl.dll
 
 ## PROFILE
 ### CHAT
-* link to actual chat
+* ~~link to actual chat
 ### ACCEPT OFFER
 * close chat
 * ~~set item_status to 1~~
