@@ -14,7 +14,7 @@ $status = '';
 $profile_picture = '';
 
 // Prepare a select statement
-$sql = "SELECT profile_picture, user_verified FROM user WHERE username = ? AND user_verified = 1";
+$sql = "SELECT profile_picture, user_verified FROM user WHERE username = ?";
 
 $stmt = mysqli_prepare($link, $sql);
 // Bind variables to the prepared statement as parameters
@@ -33,10 +33,13 @@ if(mysqli_stmt_execute($stmt)) {
         
             if(mysqli_stmt_fetch($stmt)){
                 
+                if(empty($profile_picture)){
+                    $profile_picture = 'default.png';
+                }
                 if ($user_verified == 1) {
                     $status = 'Verified';
                 } else {
-                $status = 'Unverified';
+                    $status = 'Unverified';
                 }
             }
         }
@@ -149,15 +152,10 @@ function getOffers($typeofoffer) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Welcome</title>
+        <title>Pokemart - Profile</title>
         <?php
         include "header.inc.php";
         ?>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-        <style type="text/css">
-            body{ font: 14px sans-serif; text-align: center; }
-        </style>
         <link rel="stylesheet" 
               href="css/market.css">
     </head>
@@ -218,11 +216,6 @@ function getOffers($typeofoffer) {
                     <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
                 </p>
 
-            </section>
-            <p>
-                <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
-                <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-            </p>
             </section>
 <?php
 include "footer.inc.php";
