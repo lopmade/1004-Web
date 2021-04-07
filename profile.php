@@ -114,7 +114,7 @@ function getItems() {
                 </a>
             </div>";
     }
-    if ($x==0){
+    if ($x == 0) {
         echo "<div class = 'col-sm-4'>---No items being sold. Use Add Item to start selling---</div>";
     }
 }
@@ -262,79 +262,79 @@ function getOffers($typeofoffer) {
         include "header.inc.php";
         ?>
         <link rel="stylesheet" 
-              href="css/market.css">
+              href="css/profile.css">
     </head>
     <body>
         <main class = "main">
             <?php
             include "nav.inc.php";
             ?>
-            <section id="mainContent" class = "section">
-                <div id='propicverify' class="container-fluid">
-                    <img style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
-                    <div class="row">
-                        <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
-                        <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
-                            <input type="submit" value="Update Profile Picture" name="submit">
-                        </form> 
+            <section class = "section">
+                <h1>Profile</h1>
+                <div id="mainContent" class="container-fluid">
+                    <div id='propicverify' class="container-fluid">
+                        <img style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
+                        <div class="row">
+                            <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
+                            <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
+                                <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+                                <input type="submit" value="Update Profile Picture" name="submit">
+                            </form> 
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <h5 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h5>
+                        </div>
                     </div>
-                    <br><br>
-                    <div class="row">
-                        <h5 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h5>
-                    </div>
-                </div>
-                
-                <?php
-                if ($status == 'Unverified') {
-                    ?>
-                    <div id='verifybutton' class="container-fluid">
-                        <a href="email_resend.php" class="btn btn-warning">Resend verification Email.</a>
-                    </div>
+
                     <?php
-                }
-                ?>
-                <br>
-                <div id ="content" class="container-fluid">
-                    <div class="row">
-                        <h4>My Items</h4>
-                        <?php
-                        getItems();
+                    if ($status == 'Unverified') {
                         ?>
-                    </div>
-                </div>
-                <div id ="content" class="container-fluid">
-                    <div class="row">
-                        <h4>My Current Incoming Offers</h4>
+                        <div id='verifybutton' class="container-fluid">
+                            <a style="padding: 10px 20px;" href="email_resend.php" class="btn btn-warning">Resend verification Email</a>
+                        </div>
                         <?php
-                        getOffers("incoming");
-                        ?>
-                    </div>
-                </div>
-                <div id ="content" class="container-fluid">
-                    <div class ="row">
-                        <h4>My Sent and Pending Offers</h4>
-                        <?php
-                        getOffers("pending");
-                        ?>
-                    </div>
-                </div>
-                <div id ="content" class="container-fluid">
-                    <div class ="row">
-                        <h4>My Sent and Rejected Offers</h4>
-                        <?php
-                        getOffers("rejected");
-                        ?>
-                    </div>
-                </div>
-                <div id ="content" class="container-fluid">
+                    }
+                    ?>
                     <br>
-                    <a href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
-                    <br><br>
-                    <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+                    <div id ="content" class="container-fluid">
+                        <div class="row">
+                            <h4>My Items</h4>
+                            <?php
+                            getItems();
+                            ?>
+                        </div>
+                    </div>
+                    <div id ="content" class="container-fluid">
+                        <div class="row">
+                            <h4>My Current Incoming Offers</h4>
+                            <?php
+                            getOffers("incoming");
+                            ?>
+                        </div>
+                    </div>
+                    <div id ="content" class="container-fluid">
+                        <div class ="row">
+                            <h4>My Sent and Pending Offers</h4>
+                            <?php
+                            getOffers("pending");
+                            ?>
+                        </div>
+                    </div>
+                    <div id ="content" class="container-fluid">
+                        <div class ="row">
+                            <h4>My Sent and Rejected Offers</h4>
+                            <?php
+                            getOffers("rejected");
+                            ?>
+                        </div>
+                    </div>
+                    <div id ="buttonContent" class="container-fluid">
+                        <a style="margin: 25px 100px 0px 0px; padding: 10px 20px;" href="reset_passwstyle="margin-right: 10px;ord.php" class="btn btn-warning">Reset Your Password</a>
+                        <a style="margin: 25px 100px 0px 0px; padding: 10px 20px;" href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
 
+                    </div>
                 </div>
-
             </section>
             <?php
             include "footer.inc.php";

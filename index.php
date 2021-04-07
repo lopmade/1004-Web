@@ -24,8 +24,8 @@ if (!isset($_SESSION)) {
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                            <img src="images/buy.png" alt="Jane" style="width:300px;margin:auto;padding:auto;">
-                            <div class="container">
+                            <img class="img-fluid" src="images/buy.png" alt="Jane" style="width:300px;margin:auto;padding:auto;">
+                            <div class="container-fluid">
                                 <h2>Buyers</h2>
                                 <p class="title">Looking to purchase a product?</p>
                                 <p>Step 1: Register/Login</p>
@@ -38,8 +38,8 @@ if (!isset($_SESSION)) {
 
                     <div class="column">
                         <div class="card">
-                            <img src="images/sell.png" alt="Mike" style="width:300px;margin:auto;padding:auto;">
-                            <div class="container">
+                            <img class="img-fluid" src="images/sell.png" alt="Mike" style="width:300px;margin:auto;padding:auto;">
+                            <div class="container-fluid">
                                 <h2>Sellers</h2>
                                 <p class="title">Looking to sell a product?</p>
                                 <p>Step 1: Register/Login</p>

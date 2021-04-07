@@ -1,0 +1,10 @@
+.main {
+    background-color: lightblue;
+}
+
+#content {
+    background-color: white;
+    border: solid 3px black;
+    color: darkslategray;
+    padding: 15px;
+}
