@@ -1,3 +1,21 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+function convertTime($time) {
+    if ($time < 1) {
+        return;
+    }
+    $hours = floor($time / 60);
+    $minutes = ($time % 60);
+    return sprintf($hours);
+}
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    $_SESSION['user_id']="";
+}
+?>
+
 
 <?php
 
@@ -14,55 +32,46 @@ function getAll() {
         $item_status = $row_all['item_status'];
         $item_price = $row_all['item_price'];
         $item_image = $row_all['item_image'];
-        echo
-        "
+        $description = $row_all['description'];
+        $seller_id= $row_all['user_user_id'];
+        $minutes = (time() - strtotime($date_added)) / 60;
+        $history = "";
+        
+        $test = convertTime($minutes);
+        if ($test < 1) {
+            $history = "Less than an hour ago";
+        } else if ($test < 24) {
+            $history = "$test hours ago";
+        } else if ($test >= 24){
+            $day = $test / 24;
+            if ($day < 2) {
+                $history = "1 day ago";
+            } else if ($day < 7) {
+                $day = number_format($day);
+                $history = "$day days ago";
+            } else {
+                $history = "More than 7 days ago";
+            }
+        }
+        if ($seller_id != $_SESSION['user_id']){
+            echo
+            "
             <div class = 'col-sm-4'>
-                <div class = 'product'>
-                    <a href = '/marketitem.php?item_id=$item_id'>
-                        <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
-                    </a>
-                    <div class = 'text'>
-                        <h3>
-                            <a href = '/marketitem.php?item_id=$item_id'>
-                                $item_name
-                            </a>
-                        </h3>
-                        <p class = 'price'>
-                            $$item_price
-                        </p>
-                        <p class = 'button'>
-                            <a href = '/marketitem.php?item_id=$item_id'>View Details</a>
-                        </p>
+                <a style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
+                    <div class = 'product'>
+                        <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                            <div style='bottom:0'class = 'text'>
+                                <h3>$item_name</h3>
+                                <p style='text-align:left;'>$description</p>
+                                <p style='text-align:left;'>$$item_price</p>
+                                <p style='text-align:left;'>$history</p> 
+                            </div>
                     </div>
-                </div>
+                </a>
             </div>";
+        }
 
 
-
-
-        /*  TABLE FORM
-          echo""
-          . "<a href = '/marketitem.php?item_id=$item_id' "
-          . "class = 'list-group-item list-group-item-action'>"
-          . "<img style = 'width:100px;height:100px;'src = images/market/$item_image>
-          <div class = 'd-flex w-100 justify-content-between'>
-          <h5 class = 'mb-1'>$item_name</h5>
-          <small>$date_added</small>
-          </div>
-          <p class = 'mb-1'>$description</p>
-          <small>Price$$item_price</small>
-          </a>
-          ";
-         */
-
-
-
-        /*
-          echo "<h1>$item_name</h1>";
-          echo "<h1>$date_added</h1>";
-          echo "<h1>$$item_price </h1>";
-          echo "<a href = '/marketitem.php?item_id=$item_id'><img src = images/market/$item_image></a>";
-         */
     }
 }
 

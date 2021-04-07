@@ -48,20 +48,20 @@ if (isset($_GET['item_id'])) {
         $user_user_id_username = $row_user_user_id['username'];
     } else {
         $retrieving_err = "An unexpected error occured";
-
+        
     }
+
     // if the item is sold already
     if ($item_status === 1) {
         goBackToMarket();
     }
-    mysqli_stmt_close($run_item);
-    require_once "./offer_process.php";
 
+    mysqli_stmt_close($run_item);
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
-    $_SESSION['chat_id'] = $chat_id;
+    $_SESSION['chat_id'] = $chat_id."log.html";
+    require_once "./offer_process.php";
     
 }
-
 function sanitize_input($data) {
     // remove extra characters like whitespaces,tabs
     $data = trim($data);
@@ -101,7 +101,6 @@ function goBackToMarket() {
                 // if there is an error, display it
                 if (!empty($retrieving_err)) {
                     echo '<span class="help-block">' . $retrieving_err . '</span>';
-                    die();
                 }
                 if (!empty($alreadyOffered_err)) {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
@@ -115,6 +114,7 @@ function goBackToMarket() {
                 <h6>DATE ADDED:<?php echo $date_added; ?></h6>
                 <!--can only display one image at the time for now ,need carousell or something in the future --> 
                 <img src="images/market/<?php echo $item_image ?>" >
+                <!--Only user's can update or delete its own item-->
                 <?php
                 // if the item being viewed is NOT the user's item
                 if ($user_user_id !== $_SESSION['user_id']) {
@@ -122,11 +122,15 @@ function goBackToMarket() {
                     . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
                     . "</form>";
                 }
+                else
+                {
+                    echo "<h1>This is your item by the way</h1>";
+                }
                 ?>
-                <form method="post" action="{next_page}">
-                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
-                </form>
             </section>
+            <?php
+            include "footer.inc.php";
+            ?>
         </main>
     </body>
 </html>

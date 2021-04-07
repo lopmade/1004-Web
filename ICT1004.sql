@@ -24,9 +24,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `password` VARCHAR(255) NOT NULL,
   `first_name` VARCHAR(255) NOT NULL,
   `last_name` VARCHAR(255) NOT NULL,
-  `user_verified` TINYINT NOT NULL DEFAULT 0,
   `token` VARCHAR(255) NOT NULL,
-  `user_created` TIMESTAMP,
+  `user_verified` TINYINT NOT NULL DEFAULT 0,
+  `user_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `profile_picture` LONGTEXT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `UserID_UNIQUE` (`user_id` ASC) )
 ENGINE = InnoDB;
@@ -90,23 +91,12 @@ ENGINE = InnoDB;
 -- Table `mydb`.`item_chat`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`item_chat` (
-  `chat` INT NOT NULL,
+  `chat_id` VARCHAR(255) NOT NULL,
   `seller_id` INT NOT NULL,
   `buyer_id` INT NOT NULL,
-  `timestamp` DATETIME NOT NULL,
-  PRIMARY KEY (`seller_id`, `buyer_id`),
-  INDEX `fk_item_transaction_user1_idx` (`seller_id` ASC) ,
-  INDEX `fk_item_transaction_user2_idx` (`buyer_id` ASC) ,
-  CONSTRAINT `fk_item_transaction_user10`
-    FOREIGN KEY (`seller_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_item_transaction_user20`
-    FOREIGN KEY (`buyer_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `item_id` INT NOT NULL,
+  PRIMARY KEY (`chat_id`),
+  UNIQUE INDEX `chat_id_UNIQUE` (`chat_id` ASC) )
 ENGINE = InnoDB;
 
 
@@ -114,7 +104,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`item_image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`item_image` (
-  `image_id` INT NOT NULL AUTO_INCREMENT,
+  `image_id` INT NOT NULL,
   `item_id` INT NOT NULL,
   `image` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`image_id`, `item_id`),
@@ -148,6 +138,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 use mydb;
 insert into user (username,email,password,first_name,last_name,user_verified) values ('abc','def@123.com','123','adam','lee',0);
 insert into user (username,email,password,first_name,last_name,user_verified) values ('def','def@321.com','321','bob','tan',0);
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('1','2','Bulbasaur','Grass type pokemon',NOW(),'0','10.00','001_Bulbasaur.png');
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('2','2','Charmander','Fire type pokemon',NOW(),'0','11.00','004_Charmander.png');
-insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status,item_price,item_image) values ('3','2','Squirtle','Water type pokemon',NOW(),'0','11.00','007_Squirtle.png');
+insert into items_listing (item_id,user_user_id,item_name,description,date_added,item_status) values ('1','2','someitem','somedesc','24022020','0');
+insert into item_image (item_id,image) values ('1','pokemonbg.jpg');
