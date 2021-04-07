@@ -107,8 +107,8 @@ function getItems(){
                                 <p style='text-align:left;'>$$item_price</p>
                                 <p style='text-align:left;'>$history</p> 
                             </div>
-                            <a class='btn btn-primary' href='update.php?id=$item_id role='button'>Edit</a>
-                            <a class='btn btn-primary' href='delete.php?id=$item_id name='delete' role='button'>Delete</a>
+                            <a class='btn btn-primary' href='update.php?id=$item_id' role='button'>Edit</a>
+                            <a class='btn btn-primary' href='delete.php?id=$item_id' name='delete' role='button'>Delete</a>
                     </div>
                 </a>
             </div>";
@@ -192,7 +192,6 @@ function getOffers($typeofoffer) {
         } elseif ($typeofoffer == "pending") {
             $english1 = "to";
             $english2 = "Sent";
-            echo $offer_item_id;
             $get_all_chat = "select * from item_chat where (buyer_id= " . $_SESSION['user_id'] . " and item_id=$offer_item_id)";
             $run_all_chat = mysqli_query($link, $get_all_chat);
             $row_all_chat = mysqli_fetch_array($run_all_chat);
