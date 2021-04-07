@@ -55,38 +55,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`items_listing` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `mydb`.`item_transaction`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`item_transaction` (
-  `transaction_id` INT NOT NULL AUTO_INCREMENT,
-  `rating` INT NULL,
-  `seller_id` INT NOT NULL,
-  `buyer_id` INT NOT NULL,
-  `item_id` INT NOT NULL,
-  PRIMARY KEY (`transaction_id`, `seller_id`, `buyer_id`, `item_id`),
-  INDEX `fk_item_transaction_user1_idx` (`seller_id` ASC) ,
-  INDEX `fk_item_transaction_user2_idx` (`buyer_id` ASC) ,
-  INDEX `fk_item_chat_items_listing1_idx` (`item_id` ASC) ,
-  CONSTRAINT `fk_item_transaction_user1`
-    FOREIGN KEY (`seller_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_item_transaction_user2`
-    FOREIGN KEY (`buyer_id`)
-    REFERENCES `mydb`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_item_chat_items_listing1`
-    FOREIGN KEY (`item_id`)
-    REFERENCES `mydb`.`items_listing` (`item_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`item_chat`
 -- -----------------------------------------------------
