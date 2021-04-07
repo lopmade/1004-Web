@@ -102,7 +102,7 @@ function sanitize_input($data) {
                                     <p>Are you sure you want to delete this Item?</p>
                                     <p>
                                         <input type="submit" value="Yes" class="btn btn-danger">
-                                        <a href="marketitem.php?item_id=<?php echo $_GET["id"] ?>" class="btn btn-secondary">No</a>
+                                        <a href="profile.php" class="btn btn-secondary">No</a>
                                     </p>
                                 </div>
                             </form>
