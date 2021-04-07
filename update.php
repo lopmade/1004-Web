@@ -7,9 +7,9 @@ $item_name = $item_price = $description = $item_image = "";
 $item_name_err = $item_price_err = $description_err = $imageUpload_err = "";
 
 // Check existence of id parameter before processing further
-if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
+if (isset($_GET["id"]) && !empty(sanitize_input($_GET["id"]))) {
     // Get URL parameter
-    $id = trim($_GET["id"]);
+    $id = sanitize_input($_GET["id"]);
 
     // Prepare a select statement
     $sql = "SELECT * FROM items_listing WHERE item_id = ?";
@@ -94,7 +94,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
     $imgFile = sanitize_input($_FILES['fileToUpload']['name']);
     $tmp_dir = $_FILES['fileToUpload']['tmp_name'];
-    $imgSize = sanitize_input($_FILES['fileToUpload']['size']);
+    $imgSize = $_FILES['fileToUpload']['size'];
 
     if ($imgFile) {
         $upload_dir = "./images/market/"; // upload directory
@@ -103,13 +103,17 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $imgExt = strtolower(pathinfo($upload_file, PATHINFO_EXTENSION)); // get image extension
         $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
         if (in_array($imgExt, $valid_extensions)) {
-            if (!$imgSize != 0 && $imgSize < 1000000) {
-                unlink($upload_dir . $item_image);
-                if (!move_uploaded_file($tmp_dir, $upload_file)) {
-                    $imageUpload_err = "Sorry, your file didn't upload successfully.";
+            if ($imgSize != 0 ) {
+                if ($imgSize < 1000000) {
+                    unlink($upload_dir . $item_image);
+                    if (!move_uploaded_file($tmp_dir, $upload_file)) {
+                        $imageUpload_err = "Sorry, your file didn't upload successfully.";
+                    };
+                }else{
+                     $imageUpload_err = "Sorry, your file too large it should be less then 1M.";
                 };
             } else {
-                $imageUpload_err = "Sorry, your file is too large it should be less then 1M.";
+                $imageUpload_err = "Sorry, your file is not a image.";
             }
         } else {
             $imageUpload_err = "Sorry, only JPG, JPEG, PNG files are allowed.";
@@ -119,7 +123,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $prefix = "";
         $imgFile = $item_image; // old image from database
     }
-    
+
 
     // Check input errors before inserting in database
     if (empty($item_name_err) && empty($item_price_err) && empty($description_err) && empty($imageUpload_err)) {
