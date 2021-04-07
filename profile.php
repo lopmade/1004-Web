@@ -115,34 +115,6 @@ function getItems(){
 
     }
 }
-function getChats() {
-    include("config.php");
-    $get_all_chat = "select * from item_chat,user,items_listing where (seller_id= " . $_SESSION['user_id'] . " or buyer_id= " . $_SESSION['user_id'] . ")  and user_id=buyer_id and item_chat.item_id=items_listing.item_id";
-    $run_all_chat = mysqli_query($link, $get_all_chat);
-    $x = 0;
-    while ($row_all_chat = mysqli_fetch_array($run_all_chat)) {
-        $x++;
-        $chat_id = $row_all_chat['chat_id'];
-        $buyer_id = $row_all_chat['buyer_id'];
-        $buyer_name = $row_all_chat['username'];
-        $item_name = $row_all_chat['item_name'];
-        $item_id = $row_all_chat['item_id'];
-        $seller_id = $row_all_chat['seller_id'];
-
-        echo
-        "
-            <div>
-                <form method='post' action='chat2.php'>
-                    <a href='./chat2.php'>
-                        <input type='hidden' name='chat_id' value=$chat_id>
-                        <input type='hidden' name='seller_id' value=$seller_id>
-                        <input type='hidden' name='item_id' value=$item_id>
-                        <input type='submit' role='button' value='Chat $chat_id with $buyer_name about $item_name.'/>
-                    </a>
-                </form>
-            </div>";
-    }
-}
 
 function getOffers($typeofoffer) {
     include("config.php");
@@ -198,6 +170,7 @@ function getOffers($typeofoffer) {
             $buyer_id = $row_all_chat['buyer_id'];
             $item_id = $row_all_chat['item_id'];
             $seller_id = $row_all_chat['seller_id'];
+            $item_name = $row_all['item_name'];
 
             $viewChat = 
             "
