@@ -43,7 +43,7 @@ body {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 28px 60px;
+    padding: 28px 40px;
 }
 
 
@@ -61,7 +61,7 @@ body {
     color:#fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 28px 50px;
+    padding: 28px 35px;
 }
 
 #sideList li a:hover {
