@@ -42,7 +42,6 @@ body {
 #mainList li a {
     color: #fff;
     cursor: pointer;
-    font-weight: bold;
     padding: 28px 40px;
 }
 
@@ -60,7 +59,6 @@ body {
 #sideList li a {
     color:#fff;
     cursor: pointer;
-    font-weight: bold;
     padding: 28px 35px;
 }
 
@@ -88,7 +86,6 @@ body {
 
 #footerText {
     padding: 15px 0px;
-    font-weight: bold;
 }
 
 h1 {

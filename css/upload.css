@@ -1,10 +1,40 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 1 Apr 2021, 12:50:59 pm
-    Author     : Martin
-*/
+body {
+    background-color: lightblue;
+}
 
+form {
+    background-color: white;
+    padding: 50px;
+}
+
+input[type=text] {
+    width: 30%;
+    padding: 10px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    color: black;
+}
+
+input[type=submit] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+span {
+    color:red;
+    font-weight: bold;
+}
+
+.g-recaptcha {
+    margin: 20px 0px;
+    padding: 10px 20px;
+    margin: 15px 0;
+    width: 30%;
+}

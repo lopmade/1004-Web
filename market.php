@@ -107,10 +107,6 @@ function sanitize_input($data) {
             <section id="mainContent" class = "section">
                 <h1>Market</h1>
 
-                <!--For table form-->
-                <!--<div class="list-group">-->
-                <!--</div>-->
-
                 <div id="content" class="container-fluid">
                     <div class = 'row'>
                         <?php
@@ -123,6 +119,7 @@ function sanitize_input($data) {
             <?php
             include "footer.inc.php";
             ?>
+            
         </main>
     </body>
 </html>

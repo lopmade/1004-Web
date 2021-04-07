@@ -22,8 +22,8 @@ $_SESSION['chat_id'] = $chat_id;
         include "header.inc.php";
         ?>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/chat.css" />
         <title>Chat</title>
 
     </head>
@@ -35,8 +35,8 @@ $_SESSION['chat_id'] = $chat_id;
 
             <div id="wrapper">
                 <div id="menu">
-                    <p class="welcome">Chat<b></b></p>
-                    <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+                    <p style="font-size: 24px;"class="welcome">Chat<b></b></p>
+                    <p class="logout"><a style="text-decoration:none;" id="exit" href="#">Exit Chat</a></p>
                 </div>
 
                 <div id="chatbox">
