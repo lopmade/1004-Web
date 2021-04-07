@@ -27,6 +27,43 @@ $alreadyOffered_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Prepare a select statement
+    $sql = "SELECT user_verified FROM user WHERE username = ?";
+
+    $stmt = mysqli_prepare($link, $sql);
+    // Bind variables to the prepared statement as parameters
+    mysqli_stmt_bind_param($stmt, "s", $param_username);
+    // Set parameters
+    $param_username = $_SESSION["username"];
+    // Attempt to execute the prepared statement
+    if (mysqli_stmt_execute($stmt)) {
+        /* store result */
+        mysqli_stmt_store_result($stmt);
+
+        if (mysqli_stmt_num_rows($stmt) == 1) {
+
+            mysqli_stmt_bind_result($stmt, $user_verified);
+
+            if (mysqli_stmt_fetch($stmt)) {
+                if ($user_verified !== 1) {
+                    echo ("<SCRIPT LANGUAGE='JavaScript'>
+           window.alert('Please verify your account first!')
+           window.location.href='profile.php';
+       </SCRIPT>
+       <NOSCRIPT>
+           <a href='profile.php'>Please verify your account first. Click here if you are not redirected.</a>
+       </NOSCRIPT>");
+                    exit();
+                }
+            }
+        }
+    }
+
+
+    // Close statement
+    mysqli_stmt_close($stmt);
+
+
     // Prepare a select statement to check if the offer exists already
     $sql = "SELECT offer_buyer_id,offer_seller_id FROM item_offer WHERE offer_buyer_id = ? and offer_item_id = ?";
     $stmt = mysqli_prepare($link, $sql);
