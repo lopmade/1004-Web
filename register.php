@@ -78,7 +78,7 @@ require_once "./register_process.php";
                     <span class="help-block"><br><?php echo $username_err; ?></span>
                 </div>
                 <div id="message1">
-                    <h3>Username must contain the following:</h3>
+                    <h5>Username must contain the following:</h5>
                     <p id="length1" class="invalid">Maximum <b>20 characters</b></p>
                 </div>
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">

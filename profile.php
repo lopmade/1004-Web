@@ -297,7 +297,7 @@ function getOffers($typeofoffer) {
                 <br>
                 <div id ="content" class="container-fluid">
                     <div class="row">
-                        <h4>My Items being sold</h4>
+                        <h4>My Items</h4>
                         <?php
                         getItems();
                         ?>
