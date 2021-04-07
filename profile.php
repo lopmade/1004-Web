@@ -170,6 +170,7 @@ function getOffers($typeofoffer) {
             $buyer_id = $row_all_chat['buyer_id'];
             $item_id = $row_all_chat['item_id'];
             $seller_id = $row_all_chat['seller_id'];
+            $item_name = $row_all['item_name'];
 
             $viewChat = "
                         <form method='post' action='chat2.php'>
