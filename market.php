@@ -21,7 +21,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 function getAll() {
     include("config.php");
-    $get_all = "select * from items_listing where item_status = 0 and user_user_id !=" . $_SESSION['user_id'];
+    $get_all = "select * from items_listing where item_status = 0";
     $run_all = mysqli_query($link, $get_all);
     $x = 0;
     while ($row_all = mysqli_fetch_array($run_all)) {
