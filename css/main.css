@@ -10,15 +10,14 @@ body {
 
 #mainNav {
     z-index: 100;
+    font-size: 18px!important;
     position: fixed!important;
     width: 100%!important;
     background-color: #4980c0!important;
     min-width: 260px!important;
-    height: 80px!important;
 }
 
 #footer {
-    height:100px;
     background-color: #4980c0;
     min-width: 260px;
 }
@@ -30,21 +29,26 @@ body {
 }
 
 #logo {
-    background-color: white;
-    color: black;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
     padding: 10px 20px;
 }
 
+#logo:hover {
+    color: #f9f9f9;
+}
 
 #mainList li a {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 28px 30px;
+    padding: 28px 60px;
 }
 
 
 #mainList li a:hover {
+    color: #f9f9f9;
     background-color: darkblue;
 }
 
@@ -57,10 +61,11 @@ body {
     color:#fff;
     cursor: pointer;
     font-weight: bold;
-    padding: 28px 30px;
+    padding: 28px 50px;
 }
 
 #sideList li a:hover {
+    color: #f9f9f9;
     background-color: darkblue;
 }
 
@@ -69,20 +74,20 @@ body {
     color: darkblue;
 }
 
+#navbarNav {
+    background-color: #4980c0;
+}
+
 #space {
-    height:80px;
+    height:100px;
 }
 
 #mainContent {
     margin: 25px;
 }
 
-#footer {
-    height: 50px;
-}
-
 #footerText {
-    padding: 10px 0px;
+    padding: 15px 0px;
     font-weight: bold;
 }
 
