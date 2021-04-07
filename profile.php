@@ -282,17 +282,19 @@ function getOffers($typeofoffer) {
                     <br><br>
                     <div class="row">
                         <h5 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h5>
-
-                        <?php
-                        if ($status == 'Unverified') {
-                            ?>
-                            <br><a href="email_resend.php" class="btn btn-warning">Resend verification Email.</a>
-                            <?php
-                        }
-                        ?>
-                        <br><br>
                     </div>
                 </div>
+                
+                <?php
+                if ($status == 'Unverified') {
+                    ?>
+                    <div id='verifybutton' class="container-fluid">
+                        <a href="email_resend.php" class="btn btn-warning">Resend verification Email.</a>
+                    </div>
+                    <?php
+                }
+                ?>
+                <br>
                 <div id ="content" class="container-fluid">
                     <div class="row">
                         <h4>My Items being sold</h4>
