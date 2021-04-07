@@ -114,6 +114,9 @@ function getItems(){
             </div>";
 
     }
+    if ($x==0){
+        echo "<div class = 'col-sm-4'>---No items being sold. Use Add Item to start selling---</div>";
+    }
 }
 
 function getOffers($typeofoffer) {
