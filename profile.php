@@ -178,7 +178,7 @@ function getOffers($typeofoffer) {
                                 <input type='hidden' name='chat_id' value=$chat_id>
                                 <input type='hidden' name='seller_id' value=$seller_id>
                                 <input type='hidden' name='item_id' value=$item_id>
-                                <input type='submit' role='button' value='View Chat'/>
+                                <input type='submit' role='button' class='btn btn-primary' value='View Chat'/>
                             </a>
                         </form>";
             /* $viewChat = "<p class = 'button'>
@@ -205,7 +205,7 @@ function getOffers($typeofoffer) {
                                 <input type='hidden' name='chat_id' value=$chat_id>
                                 <input type='hidden' name='seller_id' value=$seller_id>
                                 <input type='hidden' name='item_id' value=$item_id>
-                                <input type='submit' role='button' value='View Chat'/>
+                                <input type='submit' role='button' class='btn btn-primary' value='View Chat'/>
                             </a>
                         </form>";
 
