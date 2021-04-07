@@ -109,7 +109,7 @@ function getItems() {
                                 <p style='text-align:left;'>$history</p> 
                             </div>
                             <a class='btn btn-primary' href='update.php?id=$item_id' role='button'>Edit</a>
-                            <a class='btn btn-primary' href='delete.php?id=$item_id' name='delete' role='button'>Delete</a>
+                            <a class='btn btn-primary' href='delete.php?id=$item_id&image=$item_image' name='delete' role='button'>Delete</a>
                     </div>
                 </a>
             </div>";

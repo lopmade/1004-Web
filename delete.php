@@ -6,11 +6,20 @@ if (!isset($_SESSION)) {
 // Include config file
 include("config.php");
 
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+
 // Process delete operation after confirmation
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
     // Set SQL delete query
-    $del_item = "delete from items_listing where item_id=?";
+    $del_item = "delete il, io"
+            . " from items_listing il left join item_offer io"
+            . " on il.item_id = io.offer_item_id"
+            . " where il.item_id=?";
 
     // Prepare a delete statement
     if ($run_item = mysqli_prepare($link, $del_item)) {
@@ -20,11 +29,15 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         // Set parameters
         $param_id = sanitize_input($_POST["id"]);
 
+        // Delete images file on targeted directory
+        $target_dir = "images/market/";
+        unlink($target_dir . $_POST['image']);
+
         // Attempt to execute the prepared statement
         if (mysqli_stmt_execute($run_item)) {
             // Records deleted successfully. Redirect to landing page
             echo "<h1>Item successfully deleted.</h1>";
-            header("Refresh:2; url=./market.php");
+            header("Refresh:2; url=./profile.php");
             exit();
         } else {
             echo "Oops! Something went wrong. Please try again later.";
@@ -38,10 +51,10 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     mysqli_close($link);
 } else {
     // Check existence of id parameter
-    if (empty(trim($_GET["id"]))) {
-        // URL doesn't contain id parameter. Redirect to error page
+    if (empty(sanitize_input($_GET["id"]))) {
+        // URL doesn't contain id parameter. Redirect to profile page
         echo "Sorry, you've made an invalid request. Please";
-        header("Refresh:2; url=./marketitem.php?item_id=$id");
+        header("Refresh:2; url=./profile.php");
         exit();
     }
 }
@@ -62,7 +75,12 @@ function sanitize_input($data) {
     <head>
         <meta charset="UTF-8">
         <title>Delete Record</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" 
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" >
+
+        <!-- JavaScript Bundle with Popper -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js">
+        </script>
         <style>
             .wrapper{
                 width: 600px;
@@ -72,18 +90,19 @@ function sanitize_input($data) {
     </head>
     <body>
         <main class="main">
-            <section class="wrapper">
-                <div class="container-fluid">
+            <section class="wrapper ">
+                <div class="container-fluidr">
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="mt-5 mb-3">Delete Item</h2>
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <div class="alert alert-danger">
-                                    <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
+                                    <input type="hidden" name="id" value="<?php echo sanitize_input($_GET["id"]); ?>"/>
+                                    <input type="hidden" name="image" value="<?php echo sanitize_input($_GET["image"]); ?>"/>
                                     <p>Are you sure you want to delete this Item?</p>
                                     <p>
                                         <input type="submit" value="Yes" class="btn btn-danger">
-                                        <a href="marketitem.php?item_id=<?php echo $_GET["id"]?>" class="btn btn-secondary">No</a>
+                                        <a href="marketitem.php?item_id=<?php echo $_GET["id"] ?>" class="btn btn-secondary">No</a>
                                     </p>
                                 </div>
                             </form>
