@@ -14,80 +14,92 @@ $chat_id = $_POST['chat_id'];
 $seller_id = $_POST['seller_id'];
 $item_id = $_POST['item_id'];
 $_SESSION['chat_id'] = $chat_id;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <?php
+        include "header.inc.php";
+        ?>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <title>Chat</title>
+
     </head>
     <body>
-        <h1>CHAT_ID:<?php echo $chat_id; ?></h1>
-        <h1>SELLER_ID:<?php echo $seller_id; ?></h1>
+        <main class="main">
+            <?php
+            include "nav.inc.php";
+            ?>
 
-        <div id="wrapper">
-            <div id="menu">
-                <p class="welcome">Chat<b></b></p>
-                <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+            <div id="wrapper">
+                <div id="menu">
+                    <p class="welcome">Chat<b></b></p>
+                    <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+                </div>
+
+                <div id="chatbox">
+                    <?php
+                    if (file_exists("./chats/$chat_id") && filesize("./chats/$chat_id") > 0) {
+                        $contents = file_get_contents("./chats/$chat_id");
+                        echo $contents;
+                    }
+                    ?>
+                </div>
+
+                <form name="message" action="">
+                    <input name="usermsg" type="text" id="usermsg" />
+                    <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+                </form>
             </div>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                // jQuery Document
+                $(document).ready(function () {});
+            </script>
+            <script type="text/javascript">
+                // jQuery Document
+                $(document).ready(function () {
+                    $("#submitmsg").click(function () {
+                        var clientmsg = $("#usermsg").val();
+                        $.post("post.php", {text: clientmsg});
+                        $("#usermsg").val("");
+                        return false;
+                    });
 
-            <div id="chatbox">
-                <?php
-                if (file_exists("./chats/$chat_id") && filesize("./chats/$chat_id") > 0) {
-                    $contents = file_get_contents("./chats/$chat_id");
-                    echo $contents;
-                }
-                ?>
-            </div>
+                    function loadLog() {
+                        var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
 
-            <form name="message" action="">
-                <input name="usermsg" type="text" id="usermsg" />
-                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-            </form>
-        </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            // jQuery Document
-            $(document).ready(function () {});
-        </script>
-        <script type="text/javascript">
-// jQuery Document
-            $(document).ready(function () {
-                $("#submitmsg").click(function () {
-                    var clientmsg = $("#usermsg").val();
-                    $.post("post.php", {text: clientmsg});
-                    $("#usermsg").val("");
-                    return false;
-                });
+                        $.ajax({
+                            url: "./chats/<?php echo $chat_id ?>",
+                            cache: false,
+                            success: function (html) {
+                                $("#chatbox").html(html); //Insert chat log into the #chatbox div
 
-                function loadLog() {
-                    var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
-
-                    $.ajax({
-                        url: "./chats/<?php echo $chat_id?>",
-                        cache: false,
-                        success: function (html) {
-                            $("#chatbox").html(html); //Insert chat log into the #chatbox div
-
-                            //Auto-scroll           
-                            var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request
-                            if (newscrollHeight > oldscrollHeight) {
-                                $("#chatbox").animate({scrollTop: newscrollHeight}, 'normal'); //Autoscroll to bottom of div
+                                //Auto-scroll           
+                                var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request
+                                if (newscrollHeight > oldscrollHeight) {
+                                    $("#chatbox").animate({scrollTop: newscrollHeight}, 'normal'); //Autoscroll to bottom of div
+                                }
                             }
+                        });
+                    }
+
+                    setInterval(loadLog, 2500);
+
+                    $("#exit").click(function () {
+                        var exit = confirm("Return to Item?");
+                        if (exit == true) {
+                            window.history.back();
                         }
                     });
-                }
-
-                setInterval(loadLog, 2500);
-
-                $("#exit").click(function () {
-                    var exit = confirm("Return to Item?");
-                    if (exit == true) {
-                        window.history.back();
-                    }
                 });
-            });
-        </script>
+            </script>
+            <?php
+            include "footer.inc.php";
+            ?>
+        </main>
+
     </body>
 </html>
