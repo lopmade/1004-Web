@@ -80,6 +80,7 @@ function goBackToMarket() {
 ?>
 <html>
     <head>
+        <title> Market Item</title>
         <?php
         include "header.inc.php";
         ?>

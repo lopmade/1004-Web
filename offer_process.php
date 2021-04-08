@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement
             mysqli_stmt_close($stmt);
             // Create chat and add to chat table
-            $sql = "INSERT INTO item_chat (chat_id, seller_id, buyer_id, item_id) VALUES (?,?,?,?)";
+            $sql = "INSERT IGNORE INTO item_chat (chat_id, seller_id, buyer_id, item_id) VALUES (?,?,?,?)";
             $stmt = mysqli_prepare($link, $sql);
             mysqli_stmt_bind_param($stmt, "ssss", $param_chat_id, $param_seller_id, $param_buyer_id, $param_item_id);
             $param_chat_id = $_SESSION['chat_id'];
