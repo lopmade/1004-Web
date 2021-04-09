@@ -21,7 +21,6 @@ $_SESSION['chat_id'] = $chat_id;
         <?php
         include "header.inc.php";
         ?>
-        <meta charset="utf-8" />
         <link rel="stylesheet" href="css/main.css" />
         <link rel="stylesheet" href="css/chat.css" />
         <title>Chat</title>
@@ -49,12 +48,12 @@ $_SESSION['chat_id'] = $chat_id;
                 </div>
 
                 <form name="message" action="">
-                    <input name="usermsg" type="text" id="usermsg" />
+                    <input aria-label="messagebox" name="usermsg" type="text" id="usermsg" />
                     <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
                 </form>
             </div>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script type="text/javascript">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
                 // jQuery Document
                 $(document).ready(function () {});
             </script>
