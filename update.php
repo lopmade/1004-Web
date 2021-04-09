@@ -197,40 +197,40 @@ function sanitize_input($data) {
         </style>
     </head>
     <body>;
-        <div class="wrapper">
+        <main class="wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="mt-5 text-center">Update Item</h2>
+                        <h1 class="mt-5 text-center">Update Item</h1>
                         <p>Input value to edit and submit to update the Item.</p>
                         <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?> " method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Item Name</label>
-                                <input type="text" name="item_name" class="form-control <?php echo (!empty($item_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $item_name; ?>">
+                                <input type="text" name="item_name" aria-label="item name" class="form-control <?php echo (!empty($item_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $item_name; ?>">
                                 <span class="invalid-feedback"><?php echo $item_name_err; ?></span>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <textarea name="item_price" class="form-control <?php echo (!empty($item_price_err)) ? 'is-invalid' : ''; ?>"><?php echo $item_price; ?></textarea>
+                                <textarea name="item_price" aria-label="item price" class="form-control <?php echo (!empty($item_price_err)) ? 'is-invalid' : ''; ?>"><?php echo $item_price; ?></textarea>
                                 <span class="invalid-feedback"><?php echo $item_price_err; ?></span>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control <?php echo (!empty($description_err)) ? 'is-invalid' : ''; ?>"><?php echo $description; ?></textarea>
+                                <textarea name="description" aria-label="description" class="form-control <?php echo (!empty($description_err)) ? 'is-invalid' : ''; ?>"><?php echo $description; ?></textarea>
                                 <span class="invalid-feedback"><?php echo $description_err; ?></span>
                             </div>
                             <div class="form-group">
                                 <p>Select image to upload:</p>
-                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                <input type="file" name="fileToUpload" aria-label="image file" id="fileToUpload" >
                                 <span class="invalid-feedback"><?php echo $imageUpload_err; ?></span>
-                            </div>
+                            </div>  
                             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                            <input type="submit" class="btn btn-primary" value="Submit">
+                            <input type="submit" class="btn btn-warning" value="Submit">
                             <a href="profile.php" class="btn btn-secondary ml-2">Cancel</a>
                         </form>
                     </div>
                 </div>        
             </div>
-        </div>
+        </main>
     </body>
 </html>
