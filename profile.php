@@ -100,10 +100,10 @@ function getItems() {
         echo
         "
             <div class = 'col-sm-4'>
-                <a aria-label='more info' style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
+                <a aria-label='more info' style ='text-decoration:none;' href = '/marketitem.php?item_id=$item_id'></a>
                     <div class = 'product'>
                         <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
-                            <div style='bottom:0'class = 'text'>
+                            <div style='bottom:0' class = 'text'>
                                 <h3>$item_name</h3>
                                 <p style='text-align:left;'>$description</p>
                                 <p style='text-align:left;'>$$item_price</p>

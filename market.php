@@ -57,7 +57,7 @@ function getAll() {
             echo
             "
             <div class = 'col-sm-4'>
-                <a style ='text-decoration:none;' href = '/marketitem.php?item_id=$item_id'>
+                <a style ='text-decoration:none;' href = '/marketitem.php?item_id=$item_id'></a>
                     <div class = 'product'>
                         <img style='max-height: 200px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                             <div style='bottom:0' class = 'text'>
