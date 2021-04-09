@@ -59,9 +59,15 @@ function getAll() {
             <div class = 'col-sm-4'>
                 <a style ='text-decoration:none; 'href = '/marketitem.php?item_id=$item_id'>
                     <div class = 'product'>
+<<<<<<< HEAD
                         <img style='max-height: 250px; 'class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                             <div style='bottom:0 'class = 'text'>
                                 <h2>$item_name</h2>
+=======
+                        <img style='max-height: 200px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                            <div style='bottom:0'class = 'text'>
+                                <h3>$item_name</h3>
+>>>>>>> 0f36d8d80e6cda69c766b3984f7bf6ade179e5e0
                                 <p style='text-align:left;'>$description</p>
                                 <p style='text-align:left;'>$$item_price</p>
                                 <p style='text-align:left;'>$history</p> 

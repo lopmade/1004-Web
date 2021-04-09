@@ -36,7 +36,11 @@ require_once "./register_process.php";
 
         <!-- font awesome 5 -->
         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> parent of 17ca682 (Revert "fixes")
     <script>
             window.onload = function () {
 
@@ -52,7 +56,15 @@ require_once "./register_process.php";
                 }
             };
     </script>
+<<<<<<< HEAD
     </head>
+=======
+        
+        
+    </head>
+
+
+>>>>>>> parent of 17ca682 (Revert "fixes")
     <body>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
