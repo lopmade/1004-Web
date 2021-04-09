@@ -74,9 +74,9 @@ include "./login_process.php";
                     <div class="form-group">
                         <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">
                     </div>
-                    <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                    <p>Don't have an account? <a style="color:#004ad1" href="register.php">Sign up now</a>.</p>
                     <br>
-                    <p>Back to <a href="index.php">Home</a>?</p>
+                    <p>Back to <a style="color:#004ad1" href="index.php">Home</a>?</p>
                 </form>
             </div>  
         </main>

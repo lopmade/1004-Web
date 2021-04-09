@@ -106,9 +106,9 @@ require_once "./register_process.php";
                     <input type="submit" id="registerBtn"  class="btn btn-primary" value="Submit">
                     <input type="reset" id="resetBtn" class="btn btn-default" value="Reset">
                 </div>
-                <p>Already have an account? <a href="login.php">Login here</a>.</p>
+                <p>Already have an account? <a style="color:#004ad1" href="login.php">Login here</a>.</p>
                 <br>
-                <p>Back to <a href="index.php">Home</a>?</p>
+                <p>Back to <a style="color:#004ad1" href="index.php">Home</a>?</p>
             </form>	
         </div>	
         </main>
