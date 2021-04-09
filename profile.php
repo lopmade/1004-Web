@@ -100,7 +100,7 @@ function getItems() {
         echo
         "
             <div class = 'col-sm-4'>
-                <a style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
+                <a aria-label='more info' style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
                     <div class = 'product'>
                         <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                             <div style='bottom:0'class = 'text'>
@@ -231,12 +231,12 @@ function getOffers($typeofoffer) {
         "
   <div class = 'col-sm-4'>
   <div class = 'product'>
-  <a href = '/marketitem.php?item_id=$offer_item_id'>
+  <a href = '/marketitem.php?item_id=$offer_item_id' aria-label='View more info'>
   <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
   </a>
   <div class = 'text'>
   <h3>
-  <a href = '/marketitem.php?item_id=$offer_item_id'>
+  <a aria-label = 'info' href = '/marketitem.php?item_id=$offer_item_id'>
   $item_name
   </a>
   </h3>
