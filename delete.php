@@ -74,7 +74,7 @@ function sanitize_input($data) {
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Delete Item</title>
+        <title>Delete Record</title>
         <link rel="stylesheet" 
               href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" >
 
@@ -86,12 +86,9 @@ function sanitize_input($data) {
                 width: 600px;
                 margin: 0 auto;
             }
-            body{
-                background-color: lightblue;
-            }
         </style>
     </head>
-    <body class="text-center">
+    <body>
         <main class="main">
             <section class="wrapper ">
                 <div class="container-fluid">

@@ -2,16 +2,6 @@
 // Include config file
 require_once "config.php";
 
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
-    exit;
-}
-
 // Define variables and initialize with empty values
 $item_name = $item_price = $description = $item_image = "";
 $item_name_err = $item_price_err = $description_err = $imageUpload_err = "";
@@ -88,7 +78,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     $input_price = sanitize_input($_POST["item_price"]);
     if (empty($input_price)) {
         $item_price_err = "Please enter the price amount.";
-    } elseif (!is_numeric($input_price)) {
+    } elseif (!ctype_digit($input_price)) {
         $item_price_err = "Please enter a positive integer value.";
     } else {
         $item_price = $input_price;
@@ -113,14 +103,14 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $imgExt = strtolower(pathinfo($upload_file, PATHINFO_EXTENSION)); // get image extension
         $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
         if (in_array($imgExt, $valid_extensions)) {
-            if ($imgSize != 0) {
+            if ($imgSize != 0 ) {
                 if ($imgSize < 1000000) {
                     unlink($upload_dir . $item_image);
                     if (!move_uploaded_file($tmp_dir, $upload_file)) {
                         $imageUpload_err = "Sorry, your file didn't upload successfully.";
                     };
-                } else {
-                    $imageUpload_err = "Sorry, your file too large it should be less then 1M.";
+                }else{
+                     $imageUpload_err = "Sorry, your file too large it should be less then 1M.";
                 };
             } else {
                 $imageUpload_err = "Sorry, your file is not a image.";
@@ -138,17 +128,16 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     // Check input errors before inserting in database
     if (empty($item_name_err) && empty($item_price_err) && empty($description_err) && empty($imageUpload_err)) {
         // Prepare an update statement
-        $sql = "UPDATE items_listing SET item_name=?, item_price=?, description=?,date_added=?, item_image=? WHERE item_id=?";
+        $sql = "UPDATE items_listing SET item_name=?, item_price=?, description=?,item_image=? WHERE item_id=?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssssi", $param_itemname, $param_price, $param_descrption, $param_date_added, $param_image, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssi", $param_itemname, $param_price, $param_descrption, $param_image, $param_id);
 
             // Set parameters
             $param_itemname = $item_name;
             $param_price = $item_price;
             $param_descrption = $description;
-            $param_date_added = date("Y-m-d H:i:s");
             $param_image = $prefix . basename($imgFile);
             $param_id = $id;
 
@@ -184,24 +173,21 @@ function sanitize_input($data) {
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Update Item</title>
+        <title>Update Record</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             .wrapper{
                 width: 600px;
                 margin: 0 auto;
             }
-            body{
-                background-color: lightblue;
-            }
         </style>
     </head>
-    <body>;
+    <body>
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="mt-5 text-center">Update Item</h2>
+                        <h2 class="mt-5">Update Item</h2>
                         <p>Input value to edit and submit to update the Item.</p>
                         <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?> " method="post" enctype="multipart/form-data">
                             <div class="form-group">
