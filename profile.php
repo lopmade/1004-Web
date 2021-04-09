@@ -271,11 +271,11 @@ function getOffers($typeofoffer) {
             ?>
             <section id="mainContent" class = "section">
                 <div id='propicverify' class="container-fluid">
-                    <img style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
+                    <img alt="profile img" style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
                     <div class="row">
                         <?php echo "<h1>" . htmlspecialchars($_SESSION["username"]) . "</h1>"; ?>
                         <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+                            <input aria-label="img upload" type="file" name="fileToUpload" id="fileToUpload"><br><br>
                             <input type="submit" value="Update Profile Picture" name="submit">
                         </form> 
                     </div>
