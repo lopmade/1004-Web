@@ -35,8 +35,8 @@ require_once "./register_process.php";
         <script defer src="js/main.js"></script>
 
         <!-- font awesome 5 -->
-        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script></head>
-
+        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+    
     <script>
             window.onload = function () {
 
@@ -52,6 +52,11 @@ require_once "./register_process.php";
                 }
             };
     </script>
+        
+        
+    </head>
+
+
     <body>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
