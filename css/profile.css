@@ -12,7 +12,7 @@ main {
     padding: 15px;
 }
 
-#content {
+.content {
     border: 1px solid black;
     margin: 25px;
     width: 80%;

@@ -36,7 +36,7 @@ require_once "./upload_process.php";
             include "nav.inc.php";
             ?>
             <section id="mainContent" class = "section">
-                <h1>Creating Listing</h1>
+                <h1 style="color:#747474">Creating Listing</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($imageUpload_err)) ? 'has-error' : ''; ?>">
 

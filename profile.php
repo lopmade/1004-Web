@@ -299,7 +299,7 @@ function getOffers($typeofoffer) {
                     }
                     ?>
                     <br>
-                    <div id ="content" class="container-fluid">
+                    <div class="container-fluid content">
                         <div class="row">
                             <h2 style="font-size: 25px">My Items</h2>
                             <?php
@@ -307,7 +307,7 @@ function getOffers($typeofoffer) {
                             ?>
                         </div>
                     </div>
-                    <div id ="content" class="container-fluid">
+                    <div class="container-fluid content">
                         <div class="row">
                             <h2 style="font-size: 25px">My Current Incoming Offers</h2>
                             <?php
@@ -315,7 +315,7 @@ function getOffers($typeofoffer) {
                             ?>
                         </div>
                     </div>
-                    <div id ="content" class="container-fluid">
+                    <div class="container-fluid content">
                         <div class ="row">
                             <h2 style="font-size: 25px">My Sent and Pending Offers</h2>
                             <?php
