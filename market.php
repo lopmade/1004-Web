@@ -57,10 +57,10 @@ function getAll() {
             echo
             "
             <div class = 'col-sm-4'>
-                <a style ='text-decoration:none; 'href = '/marketitem.php?item_id=$item_id'>
+                <a style ='text-decoration:none;' href = '/marketitem.php?item_id=$item_id'>
                     <div class = 'product'>
-                        <img style='max-height: 200px; 'class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
-                            <div style='bottom:0 'class = 'text'>
+                        <img style='max-height: 200px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                            <div style='bottom:0' class = 'text'>
                                 <h2>$item_name</h2>
                                 <p style='text-align:left;'>$description</p>
                                 <p style='text-align:left;'>$$item_price</p>
