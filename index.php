@@ -4,6 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 ?>
+<!doctype html>
 <html lang="en">
     <head>
         <title>Pokemart - Your one stop marketplace</title>
@@ -50,6 +51,7 @@ if (!isset($_SESSION)) {
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
 
             <?php
