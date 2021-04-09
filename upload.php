@@ -46,7 +46,7 @@ require_once "./upload_process.php";
                         }
                         ?>
                         <label>Select image to upload:<br><br>
-                        <input type="file" name="fileToUpload" id="fileToUpload" title="File to upload"></label<br>
+                            <input type="file" name="fileToUpload" id="fileToUpload" title="File to upload"></label><br>
 
                         <?php
                         // to debug use $imageUpload_err = "abc";
