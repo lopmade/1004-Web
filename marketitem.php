@@ -79,6 +79,7 @@ function goBackToMarket() {
     die();
 }
 ?>
+<!doctype html>
 <html lang="en">
     <head>
         <?php
