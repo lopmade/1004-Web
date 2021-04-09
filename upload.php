@@ -21,7 +21,7 @@ require_once "./upload_process.php";
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Pokemart - Add Item</title>
         <?php
@@ -39,13 +39,14 @@ require_once "./upload_process.php";
                 <h1>Creating Listing</h1>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group <?php echo (!empty($imageUpload_err)) ? 'has-error' : ''; ?>">
-                        <p>Select image to upload:</p>
+
                         <?php
                         if (!empty($itemUpload_err)) {
                             echo "<h2>$itemUpload_err</h2>";
                         }
                         ?>
-                        <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                        <label>Select image to upload:<br><br>
+                        <input type="file" name="fileToUpload" id="fileToUpload" title="File to upload"></label<br>
 
                         <?php
                         // to debug use $imageUpload_err = "abc";
@@ -93,7 +94,6 @@ require_once "./upload_process.php";
                     </div>
                 </form>
             </section>
+        </main>
     </body>
 </html>
-
-<?php ?>

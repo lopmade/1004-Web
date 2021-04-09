@@ -35,27 +35,30 @@ require_once "./register_process.php";
         <script defer src="js/main.js"></script>
 
         <!-- font awesome 5 -->
-        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script></head>
+        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+        <script>
+                window.onload = function () {
 
-    <script>
-            window.onload = function () {
+                    var span = document.getElementsByClassName("close")[0];
 
-                var span = document.getElementsByClassName("close")[0];
+                    span.onclick = function () {
 
-                span.onclick = function () {
+                        if (confirm('Do you want to return to Home page?')) {
+                            window.location.href = "index.php";
+                        } else {
 
-                    if (confirm('Do you want to return to Home page?')) {
-                        window.location.href = "index.php";
-                    } else {
-
+                        }
                     }
-                }
-            };
-    </script>
+                };
+        </script>
+    </head>
     <body>
+        <main>
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <h2>Sign Up<span class="close">&times;</span></h2>
+                
+                <span class="close">&times;</span>
+                <br><h1>Sign Up</h1>
                 <p>Please fill this form to create an account.</p>
                 <div class="form-group <?php echo (!empty($first_name_err)) ? 'has-error' : ''; ?>">
                     <!--<label>First Name</label>-->
@@ -108,5 +111,6 @@ require_once "./register_process.php";
                 <p>Back to <a href="index.php">Home</a>?</p>
             </form>	
         </div>	
+        </main>
     </body>
 </html>

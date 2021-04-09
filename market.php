@@ -88,7 +88,7 @@ function sanitize_input($data) {
 
 
 
-<html>
+<html lang="en">
     <head>
         <title>Pokemart - Marketplace</title>
         <?php

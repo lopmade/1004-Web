@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 ?>
-<html>
+<html lang="en">
     <head>
         <title>Pokemart - Your one stop marketplace</title>
         <?php

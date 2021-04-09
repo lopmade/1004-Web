@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
     <head>
         <title>Pokemart - About Us</title>
         <?php
@@ -24,7 +24,7 @@
                 </div>
 
                 <div style="color:black;background-color:white;box-shadow:black 1px 10px 5px 2px;text-align:center;padding:50px 80px;text-align: justify;">
-                    <h3 style="text-align:center;margin-bottom:30px;">Pokemart</h3>
+                    <h1 style="text-align:center;margin-bottom:30px;color: black;">Pokemart</h1>
                     <p>
                         Pokemart is our official online store for Pokemon merchandise, focusing on unique designs and high quality products for all ages. Pokémon launched in Japan in 1996 and today is one of the most popular children’s entertainment properties in the world.
 
@@ -41,7 +41,7 @@
                 </div>
 
                 <div style="color:black;background-color:white;box-shadow:black 1px 10px 5px 2px;text-align:center;padding:50px 80px;text-align: justify;">
-                    <h3 style="text-align:center;margin-bottom:30px;">Social Links</h3>
+                    <h2 style="text-align:center;margin-bottom:30px;">Social Links</h2>
                     <div class="flex-container">
                         <a title = "Facebook" href="https://www.facebook.com/Pokemon.official.Singapore/"><i style="color:#4980c0;" class="fab fa-facebook fa-7x"></i></a>
                         <a title = "Instgram" href="https://www.instagram.com/pokemonofficial.sg/?hl=en"><i style="color:#4980c0;" class="fab fa-instagram fa-7x"></i></a>
@@ -63,6 +63,3 @@
         </main>
     </body>
 </html>
-
-
-</body>

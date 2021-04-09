@@ -274,7 +274,7 @@ function getOffers($typeofoffer) {
                 <h1>Profile</h1>
                 <div id="mainContent" class="container-fluid">
                     <div id='propicverify' class="container-fluid">
-                        <img style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
+                        <img alt="profile_picture" style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
                         <div class="row">
                             <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
                             <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
