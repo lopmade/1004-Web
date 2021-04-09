@@ -76,7 +76,7 @@ body {
     background-color: #4980c0;
 }
 
-#space {
+.space {
     height:100px;
 }
 
@@ -86,6 +86,7 @@ body {
 
 #footerText {
     padding: 15px 0px;
+    color: #001329;
 }
 
 h1 {
