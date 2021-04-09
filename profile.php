@@ -278,7 +278,7 @@ function getOffers($typeofoffer) {
                         <div class="row">
                             <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
                             <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
-                                <label>Select image to upload:<br><br>
+                                <label>Select image to upload:</label><br><br>
                                 <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
                                 <input type="submit" value="Update Profile Picture" name="submit">
                             </form> 
