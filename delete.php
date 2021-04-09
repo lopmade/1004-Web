@@ -97,7 +97,7 @@ function sanitize_input($data) {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mt-5 mb-3">Delete Item</h2>
+                            <h1 class="mt-5 mb-3">Delete Item</h1>
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <div class="alert alert-danger">
                                     <input type="hidden" name="id" value="<?php echo sanitize_input($_GET["id"]); ?>"/>

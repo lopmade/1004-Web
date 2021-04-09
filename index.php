@@ -20,7 +20,7 @@ if (!isset($_SESSION)) {
             ?>
 
             <section id="mainContent" class = "section">
-                <h1>How to</h1>
+                <h1 style="color:#00617c">How to</h1>
                 <div class="row">
                     <div class="column">
                         <div class="card">
@@ -31,7 +31,7 @@ if (!isset($_SESSION)) {
                                 <p>Step 1: Register/Login</p>
                                 <p>Step 2: Click on an item you like</p>
                                 <p>Step 3: Make offer</p>
-                                <p>Step 4: Go to chat and negotiate</p>
+                                <p>Step 4: Go to chat and negotiate (Chat is in the profile page!)</p>
                             </div>
                         </div>
                     </div>
