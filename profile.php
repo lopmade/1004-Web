@@ -332,7 +332,7 @@ function getOffers($typeofoffer) {
                         </div>
                     </div>
                     <div id ="buttonContent" class="container-fluid">
-                        <a style="margin: 25px 100px 0px 0px; padding: 10px 20px;" href="reset_password.php" style="margin-right: 10px;" class="btn btn-warning">Reset Your Password</a>
+                        <a style="margin: 25px 100px 0px 0px; padding: 10px 20px; margin-right: 10px;" href="reset_password.php" class="btn btn-warning">Reset Your Password</a>
                         <a style="margin: 25px 100px 0px 0px; padding: 10px 20px;" href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
 
                     </div>
