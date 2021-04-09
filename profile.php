@@ -278,13 +278,14 @@ function getOffers($typeofoffer) {
                         <div class="row">
                             <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
                             <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
+                                <label>Select image to upload:<br><br>
                                 <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
                                 <input type="submit" value="Update Profile Picture" name="submit">
                             </form> 
                         </div>
                         <br><br>
                         <div class="row">
-                            <h5 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h5>
+                            <h1 class="ml-2" style="color: black; font-size: 25px">Account Status: <?php echo $status ; ?></h1>
                         </div>
                     </div>
 
@@ -300,7 +301,7 @@ function getOffers($typeofoffer) {
                     <br>
                     <div id ="content" class="container-fluid">
                         <div class="row">
-                            <h4>My Items</h4>
+                            <h2 style="font-size: 25px">My Items</h2>
                             <?php
                             getItems();
                             ?>
@@ -308,7 +309,7 @@ function getOffers($typeofoffer) {
                     </div>
                     <div id ="content" class="container-fluid">
                         <div class="row">
-                            <h4>My Current Incoming Offers</h4>
+                            <h2 style="font-size: 25px">My Current Incoming Offers</h2>
                             <?php
                             getOffers("incoming");
                             ?>
@@ -316,7 +317,7 @@ function getOffers($typeofoffer) {
                     </div>
                     <div id ="content" class="container-fluid">
                         <div class ="row">
-                            <h4>My Sent and Pending Offers</h4>
+                            <h2 style="font-size: 25px">My Sent and Pending Offers</h2>
                             <?php
                             getOffers("pending");
                             ?>
@@ -324,7 +325,7 @@ function getOffers($typeofoffer) {
                     </div>
                     <div id ="content" class="container-fluid">
                         <div class ="row">
-                            <h4>My Sent and Rejected Offers</h4>
+                            <h2 style="font-size: 25px">My Sent and Rejected Offers</h2>
                             <?php
                             getOffers("rejected");
                             ?>
