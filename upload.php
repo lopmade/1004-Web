@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    echo ("<SCRIPT>
            window.alert('Please login first!')
            window.location.href='login.php';
        </SCRIPT>
