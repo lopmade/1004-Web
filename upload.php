@@ -21,7 +21,7 @@ require_once "./upload_process.php";
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Pokemart - Add Item</title>
         <?php
@@ -45,7 +45,7 @@ require_once "./upload_process.php";
                             echo "<h2>$itemUpload_err</h2>";
                         }
                         ?>
-                        <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                        <input aria-label="img upload" type="file" name="fileToUpload" id="fileToUpload"><br>
 
                         <?php
                         // to debug use $imageUpload_err = "abc";

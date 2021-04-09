@@ -103,7 +103,7 @@ function getItems() {
                     <div class = 'product'>
                         <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                             <div style='bottom:0'class = 'text'>
-                                <h3>$item_name</h3>
+                                <h2>$item_name</h2>
                                 <p style='text-align:left;'>$description</p>
                                 <p style='text-align:left;'>$$item_price</p>
                                 <p style='text-align:left;'>$history</p> 
@@ -234,11 +234,11 @@ function getOffers($typeofoffer) {
   <img style='height:300px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
   </a>
   <div class = 'text'>
-  <h3>
+  <h2>
   <a href = '/marketitem.php?item_id=$offer_item_id'>
   $item_name
   </a>
-  </h3>
+  </h2>
   <p class = 'price'>
   Offered " . $english1 . ": $user_name
   </p>
@@ -273,7 +273,7 @@ function getOffers($typeofoffer) {
                 <div id='propicverify' class="container-fluid">
                     <img style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
                     <div class="row">
-                        <?php echo "<h2>" . htmlspecialchars($_SESSION["username"]) . "</h2>"; ?>
+                        <?php echo "<h1>" . htmlspecialchars($_SESSION["username"]) . "</h1>"; ?>
                         <form action="profile_picture_process.php" method="post" enctype="multipart/form-data">
                             <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
                             <input type="submit" value="Update Profile Picture" name="submit">
@@ -281,7 +281,7 @@ function getOffers($typeofoffer) {
                     </div>
                     <br><br>
                     <div class="row">
-                        <h5 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h5>
+                        <h2 class="ml-2">Account Status: <?php echo "<b>" . $status . "</b>"; ?></h2>
                     </div>
                 </div>
                 
@@ -297,7 +297,7 @@ function getOffers($typeofoffer) {
                 <br>
                 <div id ="content" class="container-fluid">
                     <div class="row">
-                        <h4>My Items</h4>
+                        <h3>My Items</h3>
                         <?php
                         getItems();
                         ?>
@@ -305,7 +305,7 @@ function getOffers($typeofoffer) {
                 </div>
                 <div id ="content" class="container-fluid">
                     <div class="row">
-                        <h4>My Current Incoming Offers</h4>
+                        <h3>My Current Incoming Offers</h3>
                         <?php
                         getOffers("incoming");
                         ?>
@@ -313,7 +313,7 @@ function getOffers($typeofoffer) {
                 </div>
                 <div id ="content" class="container-fluid">
                     <div class ="row">
-                        <h4>My Sent and Pending Offers</h4>
+                        <h3>My Sent and Pending Offers</h3>
                         <?php
                         getOffers("pending");
                         ?>
@@ -321,7 +321,7 @@ function getOffers($typeofoffer) {
                 </div>
                 <div id ="content" class="container-fluid">
                     <div class ="row">
-                        <h4>My Sent and Rejected Offers</h4>
+                        <h3>My Sent and Rejected Offers</h3>
                         <?php
                         getOffers("rejected");
                         ?>
