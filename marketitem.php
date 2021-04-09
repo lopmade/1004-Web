@@ -109,7 +109,7 @@ function goBackToMarket() {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
                 }
                 ?>
-                <h1><?php echo $item_name; ?></h1>
+                <h1 style="color:#747474"><?php echo $item_name; ?></h1>
                 <div id="content" class="container-fluid">
                     <!--<p>USER ID:<?php echo $user_user_id; ?></p>-->
                     <img alt="item image" class="img-fluid" style="width:200px;" src="images/market/<?php echo $item_image ?>">
