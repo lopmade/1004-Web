@@ -42,7 +42,7 @@ if (!isset($_SESSION)) {
                     <a title = "Profile" class="nav-link" href="profile.php"><?php echo htmlspecialchars($_SESSION["username"]); ?></a>
                 </li>
                 <li>
-                    <a title = "Logout "class="nav-link" href="logout.php">Logout</a>
+                    <a title = "Logout" class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
                 <?php
