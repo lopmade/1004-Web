@@ -271,7 +271,7 @@ function getOffers($typeofoffer) {
             include "nav.inc.php";
             ?>
             <section class = "section">
-                <h1>Profile</h1>
+                <h1 style="color:#747474">Profile</h1>
                 <div id="mainContent" class="container-fluid">
                     <div id='propicverify' class="container-fluid">
                         <img alt="profile_picture" style='display:block; width:100px;height:100px;border-radius:30%;' src='images/profile/<?php echo $profile_picture; ?>' />
