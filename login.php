@@ -39,14 +39,6 @@ include "./login_process.php";
         <!-- font awesome 5 -->
         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
 
-
-        <!-- JavaScript for validation -->
-        <script defer src="js/validator.js">
-        </script>
-
-        <!-- CSS for validation -->
-        <link rel="stylesheet" 
-              href="css/validator.css" >
         <script>
             window.onload = function () {
 
@@ -64,25 +56,27 @@ include "./login_process.php";
         </script>
     </head>
     <body>
-        <div class="wrapper">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <h2>Login<span class="close">&times;</span></h2>
-                <p>Please fill in your credentials to login.</p>
-                <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
-                    <input type="text" required placeholder="Username" name="username" class="form-control" value="<?php echo $username; ?>">
-                </div>    
-                <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
-                    <input type="password" required placeholder="Password" name="password" class="form-control">
-                    <span style="color:red" class="help-block"><br><?php echo $login_err; ?></span>
+        <main>
+            <div class="wrapper">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <h2>Login<span class="close">&times;</span></h2>
+                    <p>Please fill in your credentials to login.</p>
+                    <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
+                        <input type="text" required placeholder="Username" name="username" class="form-control" value="<?php echo $username; ?>">
+                    </div>    
+                    <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
+                        <input type="password" required placeholder="Password" name="password" class="form-control">
+                        <span style="color:red" class="help-block"><br><?php echo $login_err; ?></span>
 
-                </div>
-                <div class="form-group">
-                    <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">
-                </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-                <br>
-                <p>Back to <a href="index.php">Home</a>?</p>
-            </form>
-        </div>    
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="loginBtn" class="btn btn-primary" value="Login">
+                    </div>
+                    <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                    <br>
+                    <p>Back to <a href="index.php">Home</a>?</p>
+                </form>
+            </div> 
+        </main>
     </body>
 </html>
