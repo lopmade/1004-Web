@@ -78,7 +78,8 @@ function goBackToMarket() {
     die();
 }
 ?>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <title> Market Item</title>
         <?php
@@ -111,7 +112,7 @@ function goBackToMarket() {
                 <h1><?php echo $item_name; ?></h1>
                 <div id="content" class="container-fluid">
                     <!--<h6>USER ID:<?php echo $user_user_id; ?></h6>-->
-                    <img class="img-fluid" style="width:200px;" src="images/market/<?php echo $item_image ?>">
+                    <img alt="item image" class="img-fluid" style="width:200px;" src="images/market/<?php echo $item_image ?>">
                     <h6>Listed by:  <?php echo $user_user_id_username; ?></h6>
                     <h6>Price:  $<?php echo $item_price; ?></h6>
                     <h6>Description:    <?php echo $description; ?></h6>

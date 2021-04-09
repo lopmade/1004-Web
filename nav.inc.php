@@ -61,6 +61,6 @@ if (!isset($_SESSION)) {
     </div>
 </nav>
 
-<section id="space">
+<section class="space">
     
 </section>
