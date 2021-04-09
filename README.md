@@ -17,11 +17,11 @@ extension=php_openssl.dll
 
 ## PROFILE
 ### CHAT
-* link to actual chat
+* ~~link to actual chat
 ### ACCEPT OFFER
 * close chat
 * ~~set item_status to 1~~
-* add to item_transaction (if got time)
+
 ### ~~DECLINE OFFER~~
 * ~~set offer_status in item_offer to 1 (rejected)~~
 ### ~~REMOVE FROM HISTORY (rejected offers)~~

@@ -52,7 +52,7 @@
                 <div class="bgimg-3">
                     <div class="caption">
                         <span class="border" style="background-color: rgb(0,0,0);
-                              background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Thank you for supporting us!</span>
+                              background-color: rgba(0,0,0,0.75);font-size:25px;color:white;">Thank you!</span>
                     </div>
                 </div>
 

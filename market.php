@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 function convertTime($time) {
     if ($time < 1) {
@@ -7,6 +10,9 @@ function convertTime($time) {
     $hours = floor($time / 60);
     $minutes = ($time % 60);
     return sprintf($hours);
+}
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    $_SESSION['user_id']="";
 }
 ?>
 
@@ -27,6 +33,7 @@ function getAll() {
         $item_price = $row_all['item_price'];
         $item_image = $row_all['item_image'];
         $description = $row_all['description'];
+        $seller_id= $row_all['user_user_id'];
         $minutes = (time() - strtotime($date_added)) / 60;
         $history = "";
         
@@ -46,12 +53,13 @@ function getAll() {
                 $history = "More than 7 days ago";
             }
         }
+        if ($seller_id != $_SESSION['user_id']){
             echo
             "
             <div class = 'col-sm-4'>
                 <a style ='text-decoration:none;'href = '/marketitem.php?item_id=$item_id'>
                     <div class = 'product'>
-                        <img style='max-height: 250px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
+                        <img style='max-height: 200px;' class = 'img-fluid' src = 'images/market/$item_image' alt = 'Product $x'>
                             <div style='bottom:0'class = 'text'>
                                 <h3>$item_name</h3>
                                 <p style='text-align:left;'>$description</p>
@@ -61,6 +69,8 @@ function getAll() {
                     </div>
                 </a>
             </div>";
+        }
+
 
     }
 }
@@ -97,10 +107,6 @@ function sanitize_input($data) {
             <section id="mainContent" class = "section">
                 <h1>Market</h1>
 
-                <!--For table form-->
-                <!--<div class="list-group">-->
-                <!--</div>-->
-
                 <div id="content" class="container-fluid">
                     <div class = 'row'>
                         <?php
@@ -113,6 +119,7 @@ function sanitize_input($data) {
             <?php
             include "footer.inc.php";
             ?>
+            
         </main>
     </body>
 </html>

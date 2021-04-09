@@ -5,7 +5,7 @@ server with default setting (user 'root' with no password) */
 
 if (!defined('DB_SERVER') && !defined('DB_USERNAME') && !defined('DB_PASSWORD') && !defined('DB_NAME')){
     define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');
+    define('DB_USERNAME', 'sqldev');
     define('DB_PASSWORD', '');
     define('DB_NAME', 'mydb');
 }

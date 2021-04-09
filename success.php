@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Success</title>
         <?php
         include "header.inc.php";
         ?>
@@ -17,19 +18,33 @@ if (!isset($_SESSION)) {
             <?php
             include "nav.inc.php";
             ?>
-            <h2>Success</h2> <br>
-            <?php
-            if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
-            } else {
-                header("location: index.php");
-                die();
-            }
-            ?>
-            <br><br>
-            <a href="index.php"><button class="btn btn-success">Home</button></a>
-            <br><br><br>
+            <section id="mainContent" class = "section">
+                <div class="row">
+                    <div id='successthing' class="d-flex justify-content-center">
+                        <h2>Success</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div id='successthing' class="d-flex justify-content-center">
+                        <?php
+                        if (isset($_SESSION['message']) && !empty($_SESSION['message'])) {
+                            echo $_SESSION['message'];
+                            unset($_SESSION['message']);
+                        } else {
+                            header("location: index.php");
+                            die();
+                        }
+                        ?>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div id='successthing' class="d-flex justify-content-center">
+                        <a href="index.php"><button class="btn btn-success">Home</button></a>
+                    </div>
+                </div>
+            </section>
         </main>
     </body>
 </html>

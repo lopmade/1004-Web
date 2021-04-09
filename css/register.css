@@ -72,8 +72,7 @@ input[type=text], input[type=password], input[type=email] {
     background-color: red;
 }
 
-#message p {
-    font-size: 14px!important;
+p {
     padding: 0px!important;
 }
 
@@ -89,5 +88,10 @@ input[type=text], input[type=password], input[type=email] {
     .wrapper form {
         width: 75%;
     }
+}
+
+span {
+    color:red;
+    font-weight: bold;
 }
 

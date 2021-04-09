@@ -48,7 +48,6 @@ if (isset($_GET['item_id'])) {
         $user_user_id_username = $row_user_user_id['username'];
     } else {
         $retrieving_err = "An unexpected error occured";
-
     }
 
     // if the item is sold already
@@ -57,10 +56,9 @@ if (isset($_GET['item_id'])) {
     }
 
     mysqli_stmt_close($run_item);
-    require_once "./offer_process.php";
-
     $chat_id = $item_id . "+" . $_SESSION['user_id'];
-    $_SESSION['chat_id'] = $chat_id;
+    $_SESSION['chat_id'] = $chat_id . "log.html";
+    require_once "./offer_process.php";
 }
 
 function sanitize_input($data) {
@@ -82,6 +80,7 @@ function goBackToMarket() {
 ?>
 <html>
     <head>
+        <title> Market Item</title>
         <?php
         include "header.inc.php";
         ?>
@@ -91,13 +90,15 @@ function goBackToMarket() {
         <!-- JavaScript Bundle with Popper -->
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js">
         </script>
+        <link rel="stylesheet" 
+              href="css/marketitem.css">
     </head>
     <body>
         <main class = "main">
             <?php
             include "nav.inc.php";
             ?>
-            <section class="section">
+            <section id="mainContent" class = "section">
                 <?php
                 // if there is an error, display it
                 if (!empty($retrieving_err)) {
@@ -107,25 +108,32 @@ function goBackToMarket() {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
                 }
                 ?>
-                <h6>USER ID:<?php echo $user_user_id; ?></h6>
-                <h6>USERNAME:<?php echo $user_user_id_username; ?></h6>
-                <h6>ITEM NAME:<?php echo $item_name; ?></h6>
-                <h6>PRICE:<?php echo $item_price; ?></h6>
-                <h6>DESCRIPTION:<?php echo $description; ?></h6>
-                <h6>DATE ADDED:<?php echo $date_added; ?></h6>
-                <!--can only display one image at the time for now ,need carousell or something in the future --> 
-                <img src="images/market/<?php echo $item_image ?>" >
-                <?php
-                // if the item being viewed is NOT the user's item
-                if ($user_user_id !== $_SESSION['user_id']) {
-                    echo "<form action=" . htmlspecialchars(basename($_SERVER['REQUEST_URI'])) . " method='post'>"
-                    . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
-                    . "</form>";
-                }
-                ?>
-                <form method="post" action="{next_page}">
-                    <a class="btn btn-primary" href="./chat.php" role="button">Go to Chat</a>
-                </form>
+                <h1><?php echo $item_name; ?></h1>
+                <div id="content" class="container-fluid">
+                    <!--<h6>USER ID:<?php echo $user_user_id; ?></h6>-->
+                    <img class="img-fluid" style="width:200px;" src="images/market/<?php echo $item_image ?>">
+                    <h6>Listed by:  <?php echo $user_user_id_username; ?></h6>
+                    <h6>Price:  $<?php echo $item_price; ?></h6>
+                    <h6>Description:    <?php echo $description; ?></h6>
+                    <h6>Date Added:    <?php echo $date_added; ?></h6>
+                    <!--can only display one image at the time for now ,need carousell or something in the future --> 
+                    
+                    <!--Only user's can update or delete its own item-->
+                    <?php
+                    // if the item being viewed is NOT the user's item
+                    if ($user_user_id !== $_SESSION['user_id']) {
+                        echo "<form action=" . htmlspecialchars(basename($_SERVER['REQUEST_URI'])) . " method='post'>"
+                        . "<input type='submit' id='offerItemBtn' class='btn btn-primary' value='Make Offer' name='submit'>"
+                        . "</form>";
+                    } else {
+                        echo "<h1>This is your item by the way</h1>";
+                    }
+                    ?>
+                </div>
+
+
+
+
             </section>
             <?php
             include "footer.inc.php";

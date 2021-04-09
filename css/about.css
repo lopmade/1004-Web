@@ -10,20 +10,18 @@
 
 
 .bgimg-1 {
-    background-image: url("/images/pokemonbg.jpg");
+    background-image: url("../images/pokemonbg.jpg");
     min-height: 100%;
 }
 
 .bgimg-2 {
-    background-image: url("/images/pokemonbg2.jpg");
+    background-image: url("../images/pokemonbg2.jpg");
     min-height: 100%;
-    background-position: 0px 75px; 
 }
 
 .bgimg-3 {
-    background-image: url("/images/pokemonbg3.png");
+    background-image: url("../images/pokemonbg3.png");
     min-height: 100%;
-    background-position: 0px 0px; 
 }
 
 .flex-container {
