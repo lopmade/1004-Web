@@ -109,14 +109,14 @@ function goBackToMarket() {
                     echo '<h2>' . $alreadyOffered_err . '</h2>';
                 }
                 ?>
-                <h1><?php echo $item_name; ?></h1>
+                <h1 class="text-dark"><?php echo $item_name; ?></h1>
                 <div id="content" class="container-fluid">
                     <!--<p>USER ID:<?php echo $user_user_id; ?></p>-->
                     <img alt="item image" class="img-fluid" style="width:200px;" src="images/market/<?php echo $item_image ?>">
-                    <b><p>Listed by:  <?php echo $user_user_id_username; ?></p></b>
-                    <b><p>Price:  $<?php echo $item_price; ?></p></b>
-                    <b><p>Description:    <?php echo $description; ?></p></b>
-                    <b><p>Date Added:    <?php echo $date_added; ?></p></b>
+                    <p><b>Listed by:  <?php echo $user_user_id_username; ?></b></p>
+                    <p><b>Price:  $<?php echo $item_price; ?></b></p>
+                    <p><b>Description:    <?php echo $description; ?></b></p>
+                    <p><b>Date Added:    <?php echo $date_added; ?></b></p>
                     <!--can only display one image at the time for now ,need carousell or something in the future --> 
                     
                     <!--Only user's can update or delete its own item-->
